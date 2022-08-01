@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2022-07-19T00:39:03+10:00
-
-====== lectures ======
-
-1)
