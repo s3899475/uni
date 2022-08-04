@@ -6,9 +6,7 @@ Creation-Date: 2022-07-18T21:52:19+10:00
 
 TODO:
 * Week 1:
-	* Intro to embedded
 	* Network Fundamentals and Apps
-	* Software Fundamentals
 * Week 2:
 	* Engineering Design 2
 	* Intro to embedded

@@ -4,5 +4,37 @@ Creation-Date: 2022-07-18T21:59:22+10:00
 
 ====== Introduction to Embedded Systems ======
 
+===== Resources: =====
+	[[./resources/ATmega32A-DataSheet-Complete-DS40002072A.pdf|ATmega32A-DataSheet-Complete.pdf]]
+	[[./resources/ATmega32A_ISR.pdf|ATmega32A_ISR.pdf]]
+	[[./resources/Atmel-8155-8-bit-Microcontroller-AVR-ATmega32A_Datasheet-Summary.pdf|Atmel-8155-8-bit-Microcontroller-AVR-ATmega32A_Datasheet-Summary.pdf]]
+	[[./resources/AVR-InstructionSet-Manual-DS40002198.pdf|AVR-InstructionSet-Manual.pdf]]
+	[[./resources/open-usb-io_reference.pdf|open-usb-io_reference.pdf]]
+	[[./resources/open-usb-io_schematic_1p1.pdf|open-usb-io_schematic_1p1.pdf]]
+	[[./resources/open-usb-io_schematic_1p2.pdf|open-usb-io_schematic_1p2.pdf]]
+	Actual boards only available in room
+
+===== Assessments: =====
+[ ] Lab 1					Aug 12
+[ ] Lab 2					Aug 26
+[ ] Lab 3					Sep 16
+
+== Major project ==
+[ ] Technical Presentation	Oct 7
+[ ] Technical Report		Oct 14
+[ ] Code submission		Oct 14
+
+== Quizzes (can only do on the date) ==
+[ ] Quiz 1				Aug 15
+[ ] Quiz 2				Sep 26
+[ ] Final Test				Oct 24 (maybe week 14-16)
+
+
+===== Lectures: =====
 
 [[+week_1]]
+
+[[+week_2]]
+
+[[+week_3]]
+
