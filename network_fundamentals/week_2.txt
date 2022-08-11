@@ -88,12 +88,120 @@ fiber cables usually carry infrared (wavelength is longer than visible)
 
 
 ===== 3) Wireless media =====
+Different bands have different uses:
+* radio: wide-area broadcast
+* microwave - most common
+* millimetre wave - 5G point to point links
+* infrared/light - line of sight
+6Ghz to 40Ghz:
+* directional
+* point-to-point
+* satellite
+30MHz to 6GHz:
+* Omnidirectional
+* Access networks (cellular, IoT, WiFi, etc
+* broadcast radio
+
+Aus: ACMA - radio spectrum authority
+UE - FCC
+There are a few unlicensed bands - don't have to apply or pay for them
+ISM bands (Industrial Scientific Medical) - includes WiFi
+
+Infrared:
+* needs line of sight
+* usually doesn't require licence
 
 
+Factors affecting signal loss:
+* Free space - loss with distance
+* Atmospheric Absorption
+* Multipath - interfering signals from reflections
+* Refraction - signal bends away from receiver
 
-===== 4) =====
+
+== Power calculations ==
+spherical power
+flux: power transmitted by area
+{{./equation004.png?type=equation}}
+where P_t is the power at the source
+and d is the distance from the source
+
+Power that can be captured by an antenna:
+{{./equation005.png?type=equation}}
+A = area of antenna
+
+Isotropic antenna:
+{{./equation006.png?type=equation}}
+when frequency * wavelength = speed of light:
+{{./equation007.png?type=equation}}
+
+== basically just inverse square law ==
+
+=== FSPL = free space path loss ===
+{{./equation008.png?type=equation}}
+=== in decibels (more frequently used) ===
+{{./equation009.png?type=equation}}
+or
+{{./equation010.png?type=equation}}
+
+== antennas do not amplify the signal, but they direct the signal, like in a torch ==
+antennas can also be directed. E.g. dipole antenna (used for WiFi) signal is mostly transmitted in plane perpendicular to pole
+
+=== Generic equation for received power: ===
+{{./equation011.png?type=equation}}
+where PL is the path loss (not necessarily free space path loss)
+this equation is all in **decibel scale**
+
+EIRP - Equivalent Isotropic Radiated Power
+
+==== Interference ====
+* main performance limiter in wireless communication
+* originated from other wireless devices
+* more severe in licence free bands
 
 
+===== 4) Modulation =====
+Base Band - uses entire band
+cannot use the whole frequency band in wireless communication as interference will occur
+
+Band Pass - use small amount of base band
+much smaller band
+other users can use a different band
+
+Some different types of modulation
+{{./pasted_image005.png}}
 
 
+Constellation: vector of amplitude and phase
+phase is angle
 
+denser constellation = more bits packed in each symbol
+more density requires a closer distance
+
+==== multiplexing: ====
+types:
+* Frequency Division Multiplexing (FDM)
+	* each device uses different frequencies (e.g. WiFi bands)
+	* very common nowadays
+	* requires a frequency gap between signals
+	* Not very efficient bandwidth utilisation
+* Time Division Multiplexing (TDM)
+	* Allows each user a specific amount of time
+	* used in baseband communication
+	* Was common in old transmission methods
+* **OFDM - Orthogonal FDM**
+	* Signal is designed so that the bands can be much more dense and overlap
+	* More efficient than FDM
+	* Used in WiFi, LTE
+* Wavelength Division Multiplexing
+	* Used in optical fiber, mostly
+	* can be used to carry many signals on one fiber
+	* signals are combined then filtered to one specific one at the end
+
+==== Abstract Channel Model ====
+{{./pasted_image006.png}}
+
+
+==== Max Data Rate of a Channel ====
+{{./equation012.png?type=equation}}
+where B is the Bandwidth (Hz), S is the signal strength (mW or W) and N is the noise (mW or W)

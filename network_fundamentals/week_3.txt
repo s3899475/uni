@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-08-11T21:21:05+10:00
+
+====== week 3 ======
+
+===== 1) Data link Layer (Layer 2) =====
+tasks:
+* Reliable **delivery**
+	* error detection
+	* error recovery
+* Multiple access
+* Regulates flow of data
+	* when to start & stop
+
+Usually happens in Network Interface Card (NIC) - separate from CPU/GPU
+
+
+===== 2) =====
+
+
+===== 3) =====
