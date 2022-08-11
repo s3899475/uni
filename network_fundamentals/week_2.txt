@@ -1,0 +1,99 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-08-10T23:09:17+10:00
+
+====== week 2 ======
+
+===== Attenuation performance of twisted pair & optical fiber =====
+{{./pasted_image004.png}}
+
+
+===== 1) The physical layer =====
+
+=== Two media types: wired & wireless, guided & unguided ===
+Wireless & unguided:
+* WiFi
+* Cellular (LTE)
+* Satellite
+Wired & guided:
+* Ethernet
+* Optical fiber
+
+Properties of physical layer medias:
+* Data rate - bps (bits per second)
+* Propagation delay - time: micro seconds, usually
+* Quality - measured by error rate: BER (Bit error rate) - wireless more noisy
+
+usually physical layer does error correction
+
+==== Twisted pair cables: ====
+twisted pairs reduce signal rate, as opposed to a single wire or two untwisted wires
+
+== Attenuation (or insertion loss) is the output signal over the input signal: ==
+{{./equation.png?type=equation}}
+{{./equation001.png?type=equation}}
+P_t = transmitted signal's power
+P_r = received signal's power
+
+decibel scale is most often used
+
+== NEXT (Near-end crosstalk) ==
+defined in terms of the amount of **signal loss** between the local transmitter and local receiver
+{{./equation002.png?type=equation}}
+where P_c is the power of the crosstalk signal
+
+=== Aim: attenuation as low as possible & NEXT as high possible (so minimise P_c) ===
+
+== Attenuation to crosstalk ratio (ACR) ==
+{{./equation003.png?type=equation}}
+is basically NEXT / A, because of logs
+
+higher frequency = more attenuation (loss)
+
+=== Cable structure: ===
+* UTP - Unshielded Twisted Pair
+* FTP - Foiled Twisted Pair
+* STP - Shielded Twisted Pair
+* S-FTP - Shielded Foilded Twisted Pair
+
+Other attributes:
+* Bending radius
+* Allowed tension
+* Weather proofing
+* PoE (Power over Ethernet)
+* Thickness - thicker wire will outperform thinner wire in terms of attenuation
+
+== Different CAT standard cables use different structure ==
+
+=== Line codes sent symbols that represent one or more bit ===
+{{./pasted_image001.png}}
+
+=== More signal levers gives faster data rate - but cable needs more bandwidth ===
+{{./pasted_image002.png}}
+
+===== 2) Fiber cables =====
+limitation in fiber cables is usually devices at each end, because fiber has enormous bandwidth (Terahertz) and low signal loss
+fiber cables usually carry infrared (wavelength is longer than visible)
+
+=== Types: ===
+* Single-mode
+	* Core is so narrow (10 micrometers) that light can't bounce around
+	* used with lasers for long distances (e.g. 10km)
+	* single glass core, with cladding & a plastic jacket around it
+* Multi-mode
+	* Light can bounce (50 micrometer core)
+	* Used with LEDs for cheap, shorter distance links
+	* Multiple cores, each with its own cladding and jacket, all contained within a sheath
+	* Bitrate is lower as signal must be slowed because of some bouncing rays taking longer to get to the end
+
+
+===== 3) Wireless media =====
+
+
+
+===== 4) =====
+
+
+
+
+
