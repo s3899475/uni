@@ -55,13 +55,8 @@ Production
 
 
 
-
-
-
-
-
 ===== 2) Schematic Design =====
-
+use default project type
 
 ===== 3) Circuit Simulation =====
 
