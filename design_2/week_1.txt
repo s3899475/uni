@@ -4,4 +4,52 @@ Creation-Date: 2022-07-19T00:36:09+10:00
 
 ====== week 1 ======
 
-[[+lectures]]
+===== 1) Electronic Design Process =====
+how to progress from idea to outcome
+
+=== Steps: ===
+* Specification of Requirements
+* Circuit Design
+* Prototype Investigations
+* PCB Layout
+* Testing
+* Final Product
+
+=== Specification of Requirements ===
+* input & output: power and signals
+* temperature
+* frequencies
+* dimensions
+* weight
+
+can have different circuit typologies that may be valid
+
+=== Circuit Design ===
+* Block diagram: break circuit into parts
+* Schematic capture
+* Simulation
+* Component selection (price vs quality)
+
+=== Prototype Investigations ===
+* Explore what is not known about the circuit
+
+=== PCB layout ===
+* Placement & routing
+* make sure it matches with circuit diagram
+* solder components - soldering tutorial on canvas
+	* surface mount devices (SMD) first
+	* smallest to biggest (usually)
+	* then do through-hole components
+
+=== Testing & Verification ===
+* use multimeter & eyes to check over circuit for shorts
+* Do initial power on test - if output is too high turn off immediately!
+* Test functionality incrementally
+* more to come in future lectures
+
+=== Then release to customers! ===
+
+
+
+
+

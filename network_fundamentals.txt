@@ -5,6 +5,32 @@ Creation-Date: 2022-07-18T22:00:06+10:00
 ====== Network Fundamentals and Applications ======
 
 
+===== Resources: =====
+
+
+===== Assessments: =====
+[*] Lab 1					Aug 9
+[ ] Lab 2					Aug 30
+
+== Major project ==
+[ ] Project				???
+
+== Quizzes (can only do on the date) ==
+[ ] Quiz 1 (week 1-3)		Aug 11 - 10pm
+[ ] more quizzes?
+[ ] Mid Semester Test		Week 6
+[ ] Final Test				???
+
+
+
+===== Lectures: =====
 [[+week_1]]
 
+[[+week_2]]
+
+[[+week_3]]
+
+[[+week_4]]
+
+[[+week_5]]
 

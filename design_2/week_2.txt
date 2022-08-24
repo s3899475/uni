@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-07-29T21:35:16+10:00
+
+====== week 2 ======
+
+===== 1) PCB Process Flow =====
+
+=== PCB Terminology: ===
+* Pad: place to solder a SMD device or thru-hole
+* track: copper path that connects components (basically wire)
+* Via: hold in board with connection between layers
+* Soldermask: a layer of insulating lacquer that covers the rest of the board
+* Silkscreen (overlay): letters printed on the final board
+
+=== Component packages (types) ===
+* Through-hole
+	* put solder in hole to hold wire and connect
+	* solder on opposite side to component
+* SMD/SMT (surface mount device/technology)
+	* Soldered on the face of the board
+	* smaller and denser than through hole
+	* Some common form factors:
+		* 0805 (means 0.08"x0.05")
+		* 1206
+		* 1210
+	* harder to solder - especially if small!
+
+=== PCB Tradeoffs ===
+
+== pros: ==
+* Performance/Reliability
+* Space-savings
+* Simple to manufacture
+* More immune to movement
+
+== cons: ==
+* Permanence - hard to hot swap
+* Lead-time
+* Compatibility
+
+=== PCB Process flow - design steps ===
+Stages
+Designer:
+* Schematic
+* Layout
+* Routing
+* CAM Gerber output - send to manufacturer
+Production
+* DFM
+* Production
+* Assembly (can be DIY)
+
+{{./pasted_image001.png?width=500}}
+
+
+
+===== 2) Schematic Design =====
+use default project type
+
+===== 3) Circuit Simulation =====
+
+
+===== 4) Introduction to Power Supply Project =====
