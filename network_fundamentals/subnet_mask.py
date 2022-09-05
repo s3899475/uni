@@ -25,7 +25,7 @@ highest = []
 # get highest address
 for i in parts:
     highest.append(bit_not(i))
-highest[-1] -= 1
+highest[-1] &= 1
 
 
 pp(highest)
