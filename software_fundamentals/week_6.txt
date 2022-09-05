@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2022-08-24T13:35:13+10:00
+
+====== week 6 ======
+
+Assignment 2
+5 activities:
+1. Software architecture
