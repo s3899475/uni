@@ -3,6 +3,72 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-08-22T11:33:55+10:00
 
 ====== week 6 ======
-Created Monday 22 August 2022
 
-L
+Layer 4
+
+multiplexing: multiple users use the same transport protocol
+multiple websites at once
+different source ports, same destination ports
+
+
+UDP provides a checksum, port number for source and destination, only 8 bytes of headder
+
+Connection Oriented Transport porocols
+* provides establishment, maintinence and termination of a logical connection
+* most common type
+* reliable, but complex
+
+Connectionless transport protocols:
+* no establishment, maintinence & termination
+* less common
+* unreliable and simple
+
+Flow control techniques:
+* do nothing - discard overflow
+	* if acknowledge fails, retransmit
+	* sender has increaced output, negates the advantage of a reliable network
+* refuse to accept further segments
+	* relies on network service
+	* refuse additional data when buffer is full
+	* this refusal triggers throtling at the sending end
+	* clumsy and coarse grained
+* fixed sliding window protocol
+	* uses sequence numbers
+	* fixed size window
+	* uses acknowledgements to advance the window
+	* sender will not time out and retransmit in a reliable network
+	* would not work well in an unreliale network
+* use a credit scheme
+	* change window size depending on network conditions
+	* reciever can change the size of the window by acknowleging some ammount of segments
+Ordered Delivery in trnasport layer:
+* segments may arrive out of order
+* numbers each octet sequentially
+* numbered by he first octet in the segment
+
+Comparisson
+
+| Aspect                   | TCP                                                                    | UDP                                                    |
+|:-------------------------|:-----------------------------------------------------------------------|:-------------------------------------------------------|
+| Connection               | Connection oriented                                                    | Connectionless                                         |
+| Function                 | Message makes its way from one computer to another across the internet | Program can send a load of packets                     |
+| Useage                   | High reliability, transmission time not critical                       | fast, efficient. useful for small queries              |
+| Used by                  | HTTP HTTPs FTP SMTP Telnet                                             | DNS DHCP TFTP SNMP RIP VOIP                            |
+| Ordering of data packets | rearranges data into order                                             | no ordering                                            |
+| Speed                    | TCP is slower                                                          | faster because recovery not attempted                  |
+| reliability              | absolute gaurantee that data transfered remains intact                 | no guarantee that packets will reach their destination |
+| Headder size             | 20 bytes                                                               | 8 bytes                                                |
+| Weight                   | Heavy weight as connection needs to be set up                          | lightweight - no ordering, not tracking of connections |
+| Flow control             | Yes                                                                    | No                                                     |
+| Error checking           | Does error checking and recovery                                       | does error checking but discards erroneous packets     |
+| Acknowledgement          | Yes                                                                    | No                                                     |
+| Handshake                | SYN, SYN-ACK, ACK (three way handshake)                                | No                                                     |
+
+
+==== mid sem test: ====
+physical layer - recieve power, attenuation
+data link layer
+network layer - IP (addressing, masking calculations), dykstra's algorithm (definetly in test, table)
+shortet path - list of node numbers e.g. [2, 3, 5 ,7] - shortest path from 2 to 7
+
+

@@ -1,0 +1,89 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-05T11:30:41+10:00
+
+====== week 7 ======
+
+WAN and cellular
+
+circuit switching (obsolete) vs packet switching
+5x2 = 5 inputs 2 outputs
+
+3 stage circuit switching switches
+very complicated
+really need an image
+
+N = total number of inputs & outputs (same number of each)
+n = number of inputs in one box thing
+
+total number of crosspoints in 1st stage = N(2n-1), same number in the third stage
+number in 2nd stage = (2n-1)(N/n)^2
+
+Total number of crossbars in the switch = (2n-1)[2N + (N/n)^2]
+
+
+Cellular:
+
+
+geometrical area of a hexagonal cell = 1.5*r^2*sqrt(3)
+area of entire network = area of cell * number of cells
+number of channels per cell = total channels / reuse factor
+total number of channels = number of channels per cell * number of cells
+
+cluster frequency requse factor is the number of cells in a single cluster
+
+total simultaneous calls (channels) = number of clusters * bandwidth of a cluster / bandwidth for a single call
+number of calls supported by one cell = total number of channels / frequency reuse factor
+
+
+Networks
+more paths through a network enhances reliability so that if one path fails there is another option
+
+advantages of packet switching
+line efficiency is greater as a single node to node link can be dynamically shared by many packets over time
+stations with different data rates can exchange packets because the network can perform data-rate conversion
+packets will still be accepted with havy traffic, but will be delayed (would be on hold in a circuit switching phone network)
+priorities can be used, QoS stuff.
+
+
+fragmentation can be used to split data into more packets - is faster as more can be trasmitted at the same time (don't have to wait for the whole data to trasmitt to next station)
+only to a certain point as the headders on each packet
+
+
+Telephone
+
+Four generic components of PSTN
+* Subscribers - phones
+* Subscriber line - link between subscribr and network
+* Exchanges - switching centres
+* Trunks - branches between exchanges, use FDM or TDM
+
+datagram vs virtual circuit
+datagram - each packet is treated indepently. e.g. IP networks
+virtual circuit - preplanned route is created before any packets are sent. e.g. ATM (async transfer mode), IP with MPLS
+
+| Issue              | Datagram          | Circuit                                                      |
+|:-------------------|:------------------|:-------------------------------------------------------------|
+| Setup              | No setup required | required                                                     |
+| Addressing         |                   |                                                              |
+| State Information  |                   |                                                              |
+| Routing            | Independently     | Route chosen when VC is setup                                |
+| Effect of failure  | No effect         | All VCs that passed through the failed router are terminated |
+| Quality of service | Difficult         | Easy if resources can be allocated in advance                |
+| Congestion Control | Difficuilt        | Can be allocated for                                         |
+	
+frequency reuse allows multiple simultaneous conversaions
+radio power control allows you to limit the escaping signal to adjacent cells
+
+minimum distance between centres of cells that use the same band of frequencies:
+D = sqrt(3*N) * R
+N = number of cells in pattern (cluster)
+R = radius of hex
+
+
+ways to increace capacity
+* add new channels (increace bandwidth) - usually need to pay for it
+* frequency borrowing (cells can borrow frequencies from adjacent cells) - LTE uses this
+* cell splitting - split a cell into smaller parts - used in high use areas
+* cell sectoring - directional wedge shaped sectors. each cell is assigned a subset of the cells channels
+* microcell - small antennas
