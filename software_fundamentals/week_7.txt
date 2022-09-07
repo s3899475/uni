@@ -1,0 +1,108 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2022-09-07T14:08:20+10:00
+
+====== week 7 ======
+
+
+UML Object Diagrams
+UML Activity Diagrams
+UML State Diagrams
+
+===== A) Coupling, Cohesion and Object Diagrams =====
+
+==== Coupling - between modules ====
+interdependence between software modules/classes
+measure of how closely two classes or modules are/strength of relationship
+
+=== High coupling is not good! ===
+if you change something, it has a higher change of impacting everywhere!
+
+==== Cohesion - within modules ====
+degree to which the elements inside a module belong together
+Measure of strength of relation between data and methods of a class and the purpose of the class
+
+=== Low cohesion is not good! ===
+associated with being difficult to maintain, test, reuse or even understand. Everything is mixed up!
+
+{{~/uni/software_fundamentals/modular_vs_monolithic.png}}
+
+
+==== Object Diagrams ====
+objects are instances of classes
+make this after class diagram
+
+=== Purpose is to test class diagrams ===
+* Identify scenarios that you know are valid - check that your model supports them
+* Make sure object diagram is consistent with class diagram:
+	* Instance names
+	* Relationships
+	* Attributes - make sure to include parent ones as well
+	* Multiplicities respected
+	* Don't make generalisations links - don't separate out parents if they don't have an instance
+
+
+
+use colon in from to indicate that it is an object
+
+=== Format = "name:Class" ===
+name is optional, without name = anonymous object
+
+no multiplicities, since it is the actual thing
+give attributes actual values
+
+==== Forward engineering ====
+making an implementation from a UML class diagram
+
+==== Reverse engineering ====
+making a UML class diagram from an implementation
+
+
+===== B) Behavioural diagrams =====
+
+==== Activity Diagram ====
+describes a business workflow or operational workflow
+high level description, no code
+* Illustrates flow of control
+* Describes how activities are coordinated
+* Steps involved
+
+basically a flow chart
+
+event node
+decision node - guard condition for main branch
+merge node - where a branch rejoins main flow, can also have a guard condition (opposite of the decision node)
+Fork node & join node - parallel set of activities
+
+vertical lanes - describes who does what - vertical
+horizontal & table lanes
+
+upside down fork signal - has a sub activity diagram
+
+square corner node - object that is an output or input of an activity, e.g. an invoice
+
+=== more information in less detail: ===
+* Exception handlers
+	* lightning arrow
+* Interruptible Regions
+	* shows where exception can happen
+* Signals
+	* notify someone
+	* send external message
+* Parameterised Activities
+	* only happens if parameters are entered
+* Expansion Regions
+	* same process on multiple items
+
+==== State Diagram ====
+state machine diagram
+similar to activity diagram
+describes objects that act differently according to the state they are in
+must always have a start and an end
+
+entry activity
+do activity
+defferable trigger
+exit activity
+
+
