@@ -6,7 +6,7 @@ Creation-Date: 2022-07-18T22:00:48+10:00
 
 ===== Assessments: =====
 [ ] Requirements & Development Process	Aug 20
-[ ] UML Design							?	Week 5-8
+[ ] UML Design						Sep 21
 [ ] Unit and Acceptance Testing				?
 
 == project: Software design and Development - group of 3-4 ==
@@ -28,3 +28,6 @@ Creation-Date: 2022-07-18T22:00:48+10:00
 
 
 [[+week_6]]
+
+[[+week_7]]
+
