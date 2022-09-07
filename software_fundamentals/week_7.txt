@@ -59,3 +59,50 @@ making a UML class diagram from an implementation
 
 
 ===== B) Behavioural diagrams =====
+
+==== Activity Diagram ====
+describes a business workflow or operational workflow
+high level description, no code
+* Illustrates flow of control
+* Describes how activities are coordinated
+* Steps involved
+
+basically a flow chart
+
+event node
+decision node - guard condition for main branch
+merge node - where a branch rejoins main flow, can also have a guard condition (opposite of the decision node)
+Fork node & join node - parallel set of activities
+
+vertical lanes - describes who does what - vertical
+horizontal & table lanes
+
+upside down fork signal - has a sub activity diagram
+
+square corner node - object that is an output or input of an activity, e.g. an invoice
+
+=== more information in less detail: ===
+* Exception handlers
+	* lightning arrow
+* Interruptible Regions
+	* shows where exception can happen
+* Signals
+	* notify someone
+	* send external message
+* Parameterised Activities
+	* only happens if parameters are entered
+* Expansion Regions
+	* same process on multiple items
+
+==== State Diagram ====
+state machine diagram
+similar to activity diagram
+describes objects that act differently according to the state they are in
+must always have a start and an end
+
+entry activity
+do activity
+defferable trigger
+exit activity
+
+
