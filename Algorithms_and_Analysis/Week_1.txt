@@ -1,0 +1,110 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-24T18:08:29+11:00
+
+====== Week 1 ======
+Sections
+1. What is an algorithm
+2. ##Fundamental_ADTs
+3. Data Structures
+
+==== Fundamental_ADTs ====
+
+=== Set: ===
+Each element can only appear once
+Unordered
+
+=== Sequence: ===
+list of elements
+order is important
+
+=== Stack: ===
+**FILO** - First In Last Out
+**Push** adds data on top of the stack
+**Pop** removes data off the top of the stack
+
+=== Queue: ===
+**FIFO** - First In Last Out
+**Enqueue** adds data at the back of the queue
+**Dequeue** removes data from the front of the Queue
+
+=== Priority Queue: ===
+Each element has a priority
+When data is dequeued, the element with the **highest priority** is removed
+
+=== Dictionary/Maps: ===
+list of **Key/Value pairs, **each key can **only appear once**
+
+=== Graphs: ===
+Comes in **directed** & **undirected** forms, can also be **weighted**
+Is a collection of **verticies** and **edges** that connect them
+
+=== Representations of graphs: ===
+
+== 1. Undirected graphs ==
+{{./pasted_image.png}}
+**Adjacency matrix:**
+|       | a | b | c | d | e | f |
+|:------|:--|:--|:--|:--|:--|:--|
+| **a** | 0 | 0 | 1 | 1 | 0 | 0 |
+| b     | 0 | 0 | 1 | 0 | 0 | 1 |
+| **c** | 1 | 1 | 0 | 0 | 1 | 0 |
+| **d** | 1 | 0 | 0 | 0 | 1 | 0 |
+| **e** | 0 | 0 | 1 | 1 | 0 | 1 |
+| **f** | 0 | 1 | 0 | 0 | 1 | 0 |
+As can be seen, the adjacency matrix for an undirected graph is symmetrical over the diagonal
+
+**Adjacency lists:**
+//**a**// → c → d
+//**b**// → c → f
+//**c**// → a → b → e
+//**d**// → a → e
+//**e**// → c → d → f
+//**f**// → b → e
+Can be read as "**a** goes to **c** and **d**"
+
+== 2. Directed graphs ==
+{{./pasted_image001.png}}
+**Adjacency matrix:**
+|       | a | b | c | d | e | f |
+|:------|:--|:--|:--|:--|:--|:--|
+| **a** | 0 | 0 | 1 | 0 | 0 | 0 |
+| **b** | 0 | 0 | 1 | 0 | 0 | 1 |
+| **c** | 0 | 0 | 0 | 0 | 1 | 0 |
+| **d** | 1 | 0 | 0 | 0 | 1 | 0 |
+| **e** | 0 | 0 | 1 | 0 | 0 | 1 |
+| **f** | 0 | 0 | 0 | 0 | 0 | 0 |
+
+The 'from' column is on the left and the 'to' row is on the top
+e.g. **a** goes to **c**, but **c** does not go to **a**
+
+**Adjacency lists:**
+//**a**// → c
+//**b**// → c → f
+//**c**// → e
+//**d**// → a → e
+//**e**// → c → f
+//**f**// → 
+Can be read as "**a** goes to **c**"
+
+== Weighted graphs ==
+{{./pasted_image002.png}}
+**Adjacency matrix:**
+|       | a | b | c | d |
+|:------|:--|:--|:--|:--|
+| **a** | ∞ | 5 | 1 | ∞ |
+| **b** | 5 | ∞ | 7 | 4 |
+| **c** | 1 | 7 | ∞ | 2 |
+| **d** | ∞ | 4 | 2 | ∞ |
+
+The ∞ means that there is no link, i.e. infinite weight
+
+**Adjacency lists:**
+//**a**// → b, 5 → c, 1
+//**b**// → a, 5 → c, 7
+//**c**// → a, 1 → b, 7 → d, 2
+//**d**// → b, 4 → c, 2 
+Can be read as "**a** goes to **b** with 5 weight and **c** with 1 weight"
+
+=== Trees: ===
+A form of graph where there are no cyclic connections

@@ -1,32 +1,9 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2022-07-18T21:52:19+10:00
+Creation-Date: 2023-02-24T16:58:37+11:00
 
-====== Home ======
-
-TODO:
-* Week 1:
-	* Network Fundamentals and Apps
-* Week 2:
-	* Engineering Design 2
-	* Intro to embedded
-	* Network Fundamentals and Apps
-	* Software Fundamentals
-* Week 3:
-	* Engineering Design 2
-	* Intro to embedded
-	* Network Fundamentals and Apps
-	* Software Fundamentals
-
-
-
-[[design 2|Engineering Design 2]]
-
-
-[[embedded systems|Introduction to Embedded Systems]]
-
-
-[[network fundamentals|Network Fundamentals and Applications]]
-
-
-[[software fundamentals|Software Engineering Fundamentals]]
+===== Subjects: =====
+* [[:Algorithms_and_Analysis]]
+* [[:Embedded_System_Design_and_Implementation]]
+* [[:Further_Programming]]
+* [[:Network_Engineering]]

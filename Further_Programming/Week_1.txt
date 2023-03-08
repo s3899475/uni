@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-24T18:08:19+11:00
+
+====== Week 1 ======
+
+==== What I will be learning: ====
+* JBDC
+* JUnit
+* JavaFX
+* Design Patterns
+* Data Structures & Generics
+
+==== JDK vs JRE vs JVM ====
+* JVM - Converts bytecode to machine-specific code
+* JRE - Executes Java programs. Includes JVM
+* JDK - Dev kit that includes JRE, compiler, debugger, etc.
+

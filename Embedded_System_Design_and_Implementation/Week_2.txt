@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-06T13:58:46+11:00
+
+====== Week 2 ======
+
+Lecture
+designing a program to average 10 numbers
+1st setp - design in draw.io
+2nd step - plan it out in pseudo-code
+
+Register operations to load values to R0-R9
+
+Addition of all numbers
+Division
+
+=== Start of program ===
+MOV instruction - can load constant 16 bit value
