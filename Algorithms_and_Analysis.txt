@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-24T18:06:17+11:00
+
+====== Algorithms and Analysis ======
+don't contact lecture guy
+ed forum instead of canvas
+
+[ ] [[+Week 1]]
+[ ] [[+Week_2]]
+
+==== Assessments: ====
+[ ] Assignments - 50%
+[ ] Weekly test - 10% - due each sunday
+[ ] In person paper exam - 40%
+
+Assignment 1 - 2 persion group - starts in week 3
+Assignment 2 - individual

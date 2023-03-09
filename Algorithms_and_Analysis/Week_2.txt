@@ -1,0 +1,104 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-06T11:28:58+11:00
+
+====== Week 2 - estimating the running time ======
+Contents:
+[*] Part 1: Overview
+[ ] Part 2: Fundamentals
+[ ] Part 3: Asymptotic Complexity
+[ ] Part 4: Complexity Analysis for Non-Recursive Algorithms
+
+
+
+===== Part 1: Overview =====
+Obvious solution to compare algorithms - run algorithm on a certain data set and record the time it takes
+
+=== Problems: ===
+- different sized datasets can have a big difference
+- also countless different datasets (real world data will probably not be random as well)
+- many algorithms out there, would need to test each one
+
+S**olution: Big O & friends (estimation)** - can talk about speed of algorithms without implementing them - can therefore compare them
+
+=== 2 types of analysis: ===
+non-recursive - this week
+recursive - next week
+
+It is vital to analyse the resource usage of an algorithm, well before it is implemented and deployed - week 11
+
+===== Part 2: Fundamentals =====
+**Estimation of the running time of an algorithm**
+An Algorithm consists of some operations executed a number of times
+Estimate can be obtained through:
+* Determining operations
+* How long to execute each operation
+* Number of times they are executed
+
+^^^ called **basic operations**, time is based on **input size**
+
+=== **basic operations:** ===
+* Operations that contribute the most to the total running time
+	* e.g. compare, add, multiply, divide, assignment
+* Typically most frequently executed, although dependent on the time of each operation
+
+=== Input size ===
+* characteristic of the problem 'size of the problem'
+	* e.g. searching through an array of size n, the input size is 'n'
+* need to estimate the running time in terms of the problem - relative terms
+* state running time (number of times the basic operation is executed) in terms of the input size
+
+=== e.g. pseudo-code: ===
+''// INPUT a, n''
+''// OUTPUT: s = a''^{''n''}
+''for i = 1 to n do''
+	''s = s * a''
+''end for''
+''return s''
+
+n and a are the input, n is the input size because it is the number of iterations it runs
+
+==== estimation of running time ====
+running time is approximately equal to time to execute a basic operation × number of basic operations
+{{./equation.png?type=equation}}
+* t(n) is the running time
+* n is the input size
+* C_{op} is the execution time for a basic operation
+* C(n) is the number of times the basic operation is executed
+
+=== e.g. calculation of running time for pseudo-code ===
+multiplication is the only basic operation
+we don't care about non-basic operations
+C(n) = n in for loop
+
+==== complexity cases ====
+worst case - maximum running time
+best case - minimum running time
+average case, **average over all possible inputs**
+
+=== e.g. pseudo-code 2 ===
+'''
+//INPUT: An array of length n and search key K
+// OUTPUT: The index of the first element of A which
+// matches K or n (length of A) otherwise
+set i = 0
+while i < n and A[i] ≠ K do
+	set i = i + i
+end while
+return i
+'''
+* basic operation: comparison, addition, assignment (any of these are okay)
+* input size: n
+* best case: C_{b} = 1
+* worst case: C_{w} = n or n + 1 (constant added doesn't matter)
+* average case - average across all inputs, typically not straightforward
+	* need to know how often we search for items in the array and also how often we search for items not in the array!
+
+====== Need to watch derivation on canvas ======
+average case analysis:
+{{./equation001.png?type=equation}}
+where p(n+1) is the probability of a successful search
+
+
+===== Part 3: Asymptotic Complexity =====
+

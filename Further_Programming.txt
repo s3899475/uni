@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-24T18:06:41+11:00
+
+====== Further Programming ======
+
+* [[+Week 1]]
+
+==== Assessments: ====
+
+=== Lab coding exercises (25%) ===
+[ ] Coding Exercise 1					Week 5
+[ ] Coding Exercise 1					Week 9
+[ ] Coding Exercise 1					Week 12
+
+=== Assignment 1 (20%) ===
+[ ] Assignment 1 Milestone Video Demo	24 Mar
+[ ] Assignment 1						9 Apr
+
+=== Assignment 2 (45%) ===
+[ ] Assignment 2 Lab Milestone Check	Week 11?
+[ ] Assignment 2						?
+[ ] Assignment 2 Final Interview (online)	Week 14
+
+=== Assignment Milestones (10%) ===
