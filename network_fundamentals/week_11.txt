@@ -1,0 +1,105 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-03T11:26:36+11:00
+
+====== week 11 ======
+
+Tutorial
+
+Q1
+ALOHA slotted access
+
+length of frame = length (in bits) / bitrate
+{{./equation.png?type=equation}}
+
+Q1b
+average frame rate
+{{./equation001.png?type=equation}}
+frame rate = Notes * frames per second per node
+
+Q1c
+Average frame rate of combined traffic
+
+Frames per packet time:
+{{./equation002.png?type=equation}}
+Loading = frame time * frame arrival rate
+
+Q1d
+Probability of success for unslotted ALOHA (pure ALOHA)
+{{./equation003.png?type=equation}}
+
+Q1e
+Probability of exactly 2 collisions and then a success
+{{./equation004.png?type=equation}}
+
+Q1f
+Slotted ALOHA
+expected transmission attempts
+{{./equation005.png?type=equation}}
+
+Q1g
+efficiency (throughbput) of channel
+Slotted
+max throughput for slotted when G = 1 -> S=37%
+{{./equation006.png?type=equation}}
+
+Unslotted
+max throughput for slotted when G = 0.5 -> S=18%
+{{./equation007.png?type=equation}}
+
+Slotted has double efficiency (throughput)
+
+Q1h
+adding extra nodes, keep average attempts below set value (lambda zero?)
+
+{{./equation008.png?type=equation}}
+round down
+
+DNS
+Q2
+nslookup to find IP from domain, can add ip of dns server after
+
+Q3
+name server - holds information on a portin of domain name structure and associated RRs
+resolver - extract infomation from name servers in response to client requests. Client usually requests the ip for a domain name. program on the client is called the resolver
+
+Q4
+resource record(RR) -  32 bit structure
+TODO: get picture from lecture
+
+Rdata has a lot of different types
+
+Q5
+dns operation steps:
+TODO
+
+
+dns hierarchy:
+* root servers
+	* com servers
+		* individual domain name
+	* org servers
+		* individual domain name (e.g. archlinux.org)
+	* edu servers
+		* individual domain name
+
+there are 13 root servers
+
+Q6
+difference between recurisve & iterative
+recursive: query a name server and it sends a result, if it doesnt know it queries another server, keeps going until the authoritative DNS server
+diagram in lectures
+
+iterative: if local DNS server doesn't know the IP, it asks the root DNS server, then will ask TLD (top level domain) server, then asks authoritative DNS server
+local DNS server does most of the work
+another diagram in lectures
+
+Q7
+when we query DNS for a website (e.g. example.com) we will get RR, but in a different order each time. This is because many large sites have a pool of web sites with identical contents, and load is distributed among them. This is called 'DNS round robin', not really load balancing, but still was widely used. Will cycle RRs after each client.
+
+Q8
+http cache:
+stores previous requests and responses for handling new requests. If a new request is the same as a stored one, cache will respond rather than accessing the actual resources
+proxy servers can also act as caches?
+
+
