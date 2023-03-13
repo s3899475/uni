@@ -6,8 +6,9 @@ Creation-Date: 2023-02-24T18:06:17+11:00
 don't contact lecture guy
 ed forum instead of canvas
 
-[ ] [[+Week 1]]
-[ ] [[+Week_2]]
+[*] [[+Week 1]]
+[*] [[+Week_2]]
+[ ] [[+Week_3]]
 
 ==== Assessments: ====
 [ ] Assignments - 50%

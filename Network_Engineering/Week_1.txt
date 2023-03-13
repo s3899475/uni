@@ -3,5 +3,115 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-02-24T18:08:44+11:00
 
 ====== Week 1 ======
+Contents:
+[*] [[#Part 1: Internet Introduction|Part 1: Internet Introduction]]
+[ ] [[#Part 2: Layer 2 and Layer 3 Equiptment Focus|Part 2: Layer 2 and Layer 3 Equiptment Focus]]
 
-a
+
+===== Part 1: Internet Introduction =====
+GW - gateway
+ISP - Internet Service Provider
+ICP - Internet Content Provider
+
+=== Service Provider Tiers: ===
+Tier 1
+* Server primarily as transit provider
+* e.g. AT&T, Level 3, Sprint
+Tier 2
+* Purchase services from Tier 1
+* Also provide transit for some smaller providers
+* e.g. Bell Canada
+Tier 3
+* Re-sell services for varios Teir 2 service providers to their customes
+* Depend on transit service (other tiers)
+
+IXP - Internet Exchange Point
+* Allows traffic to be exchanged between ISPs
+
+POP - Point of Presence
+* Physical location where an ISP aggregates its customer connections and connects them to the internet
+* ISP usually have POPs in different cities, a city may not have direct access to a content provider
+
+SLAs - Service Level Agreements
+* Contract to define traffic guarantees
+
+Demarcation Points
+* Seperates the customer network and the provider network
+* Also seperates service provider and customer responsibilities
+
+==== Services Building Blocks ====
+* Customer Edge (CE) devices
+	* end user owned and operated
+	* unaware of tunneling protocols or VPN services provided by ISP
+* Provider Edge (PE) Devices
+	* has at least one interface connected to CE
+	* gateway to VPN services of the ISP
+* Provider (P) Router
+	* supports bandwidth and switching requirements of the ISP
+
+==== TCP/IP Model ====
+{{./pasted_image001.png}}
+* standardized method of communicating over the internet
+* layered prtocol structure
+* each layer is responsible for a set of services and capabilities provided to the layers above and below
+* Layering simpilfies procedures, makes it easier to understand
+
+
+==== Data Encapsulation ====
+{{./pasted_image002.png}}
+* TCP/IP stack adds layerd information to the application-generated data
+* Encapsulation occurs in each layer as data travels from the upper layer down:
+	* Application encapsulation
+	* Transport encapsulation
+	* IP encapsulation
+	* Network interface encapsulation
+
+===== Part 2: Layer 2 and Layer 3 Equiptment Focus =====
+Lot of useless stuff and marketing material in the slides, this is all that seemed important
+
+Control and forwarding planes are seperated in Junos OS routers
+Routing Engine:
+* Part of the Control plane
+* Maintains routing and forwarding tables
+* Manages the Packet Forwarding Engine (PFE)
+* Exception Traffic (e.g. TTL) is rate-limited in internal link between RE and PFE to protect the RE from potential DoS attacks
+Packet Forwarding Engine
+* uses Layer 2 and Layer 3 forwarding tables, provided by RE
+* Implements various services such as policing, stateless firewall filtering and class of service
+* Control traffic (i.e. exception traffic) is given preference when congestion exists
+
+=== You need to commit config changes on router using 'commit' to activate them ===
+=== you can then use the 'rollback n' command to go back to previous versions ===
+==== Commands ====
+* 'edit' == 'cd' when in conf mode
+* 'up' == 'cd ..'
+* 'top' == 'cd [[/']]
+* 'exit' to leave config mode when at top
+* 'set' == touch
+* 'delete' == rm
+* 'rename' == 'mv' - rename {dir} {old} to {new}
+* 'replace pattern' - replace pattern {old} with {new}
+* 'copy' == cp
+* 'deactivate'
+* 'insert' - insert term {one} before term {two}
+* 'annotate' - annotae a setting
+
+* 'commit check' - check syntax
+* 'commit confirmed' - will be auto rolled back
+* 'commit at 21:00:00'
+* 'commit comment'
+* 'show | compare' - comapare changes
+* 'show conf | compare rollback {number}
+* 'show conf | compare {filename}'
+* 'save {filename/url} - saves only current dir down by default
+* 'load' - can replace. merge, override
+* 'request system halt' - gracefully power off
+* 'request system configuration rescue' or 'rollback rescue' - load rescue configuration
+
+==== Interfaces ====
+* Management - connects to management network
+* Internal - Connects control and forwarding planes
+* Network - provides media-specific network connectivity. e.g. ethernet, SONET, ATM
+* Services - Provides specific capabilities for manipulating traffic before it is delivered
+* Loopback - Logical interface that is always up. All Junos devices use the lo0 designation for it
+
