@@ -4,13 +4,30 @@ Creation-Date: 2023-02-24T18:06:30+11:00
 
 ====== Embedded System Design and Implementation ======
 
-* [[+Week 1]]
-* [[+Week_2]]
+[*] [[+Week 1]]
+[ ] [[+Week_2]]
 
 Resources:
+* Device: STM32F439IIH6
 * Datasheet
 * ISR
 
 
 ==== Assessments: ====
-[ ] a
+=== Labs: ===
+[ ] Lab 1				24 Mar
+[ ] Lab 2				7 Apr
+[ ] Lab 3				28 Apr
+
+=== Lectorial quizzes ===
+[ ] Quiz 1			Week 8 Lectorial
+[ ] Quiz 2			Week 11 Lectorial
+
+=== Project Assignment ===
+[ ] Demonstraction	Week 11 Lab
+[ ] Technical Report	6 Jun
+
+=== Design and Implementation Problem (Timed Assesment)  - Exam ===
+
+
+

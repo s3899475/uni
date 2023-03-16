@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-15T17:38:48+11:00
+
+====== Week 3 ======
+
+in a switch, broadcast frames go to all ports in a vlan, axcept the sending port
+unknown destination → broadcast
+from 1 vlan to another, frame will be dropped if there is no Layer 3 networking device (IP router)
+MAC Address structure
+OUI (Orginizationally Unique ID) is first 6 bytes
+Logical Units are always required in Juniper Router Interface
+IRB - Integrated Routeing and Bridging interface
+* It is a logical Layer 3 interface
+
+Collision domain:
+* remove layer 3 and bridging devices, keep their interfaces
+* Count sub-networks (each interface has a collision domain, but 2 can be in the same doimain)
+
+MAC addresses only work in one broadcast domain
+
+trunk ports send any VLANs
+different VLANs must be in different broadcast domains

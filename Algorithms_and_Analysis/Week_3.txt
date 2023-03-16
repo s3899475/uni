@@ -4,11 +4,11 @@ Creation-Date: 2023-03-12T22:09:10+11:00
 
 ====== Week 3 ======
 Contents:
-[ ] [[#Part 1: Analysing Recursive Algorithms|Part 1: Analysing Recursive Algorithms]]
+[ ] [[#Part 1: Analyzing Recursive Algorithms|Part 1: Analyzing Recursive Algorithms]]
 [ ] [[#Part 2: Empirical Analysis|Part 2: Empirical Analysis]]
 [ ] [[#Part 3: rule of Thumb Estimation of Complexity|Part 3: rule of Thumb Estimation of Complexity]]
 
-===== Part 1: Analysing Recursive Algorithms =====
+===== Part 1: Analyzing Recursive Algorithms =====
 
 
 ===== Part 2: Empirical Analysis =====

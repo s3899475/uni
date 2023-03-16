@@ -5,7 +5,7 @@ Creation-Date: 2023-02-24T18:08:44+11:00
 ====== Week 1 ======
 Contents:
 [*] [[#Part 1: Internet Introduction|Part 1: Internet Introduction]]
-[ ] [[#Part 2: Layer 2 and Layer 3 Equiptment Focus|Part 2: Layer 2 and Layer 3 Equiptment Focus]]
+[ ] [[#Part 2: Layer 2 and Layer 3 Equipment Focus|Part 2: Layer 2 and Layer 3 Equipment Focus]]
 
 
 ===== Part 1: Internet Introduction =====
@@ -22,7 +22,7 @@ Tier 2
 * Also provide transit for some smaller providers
 * e.g. Bell Canada
 Tier 3
-* Re-sell services for varios Teir 2 service providers to their customes
+* Re-sell services for various Tier 2 service providers to their customes
 * Depend on transit service (other tiers)
 
 IXP - Internet Exchange Point
@@ -36,8 +36,8 @@ SLAs - Service Level Agreements
 * Contract to define traffic guarantees
 
 Demarcation Points
-* Seperates the customer network and the provider network
-* Also seperates service provider and customer responsibilities
+* Separates the customer network and the provider network
+* Also separates service provider and customer responsibilities
 
 ==== Services Building Blocks ====
 * Customer Edge (CE) devices
@@ -52,9 +52,9 @@ Demarcation Points
 ==== TCP/IP Model ====
 {{./pasted_image001.png}}
 * standardized method of communicating over the internet
-* layered prtocol structure
+* layered protocol structure
 * each layer is responsible for a set of services and capabilities provided to the layers above and below
-* Layering simpilfies procedures, makes it easier to understand
+* Layering simplifies procedures, makes it easier to understand
 
 
 ==== Data Encapsulation ====
@@ -66,10 +66,10 @@ Demarcation Points
 	* IP encapsulation
 	* Network interface encapsulation
 
-===== Part 2: Layer 2 and Layer 3 Equiptment Focus =====
+===== Part 2: Layer 2 and Layer 3 Equipment Focus =====
 Lot of useless stuff and marketing material in the slides, this is all that seemed important
 
-Control and forwarding planes are seperated in Junos OS routers
+Control and forwarding planes are separated in Junos OS routers
 Routing Engine:
 * Part of the Control plane
 * Maintains routing and forwarding tables
@@ -100,7 +100,7 @@ Packet Forwarding Engine
 * 'commit confirmed' - will be auto rolled back
 * 'commit at 21:00:00'
 * 'commit comment'
-* 'show | compare' - comapare changes
+* 'show | compare' - compare changes
 * 'show conf | compare rollback {number}
 * 'show conf | compare {filename}'
 * 'save {filename/url} - saves only current dir down by default
