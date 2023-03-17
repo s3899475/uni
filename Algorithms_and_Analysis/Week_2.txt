@@ -5,9 +5,9 @@ Creation-Date: 2023-03-06T11:28:58+11:00
 ====== Week 2 - estimating the running time ======
 Contents:
 [*] [[#Part 1: Overview|Part 1: Overview]]
-[ ] [[#Part 2: Fundamentals|Part 2: Fundamentals]]
-[ ] [[#Part 3: Asymptotic Complexity|Part 3: Asymptotic Complexity]]
-[ ] Part 4: Complexity Analysis for Non-Recursive Algorithms
+[*] [[#Part 2: Fundamentals|Part 2: Fundamentals]]
+[*] [[#Part 3: Asymptotic Complexity|Part 3: Asymptotic Complexity]]
+[*] [[#Part 4: Complexity Analysis for Non-Recursive Algorithms|Part 4: Complexity Analysis for Non-Recursive Algorithms]]
 
 ===== Part 1: Overview =====
 Obvious solution to compare algorithms - run algorithm on a certain data set and record the time it takes
@@ -17,7 +17,7 @@ Obvious solution to compare algorithms - run algorithm on a certain data set and
 - also countless different datasets (real world data will probably not be random as well)
 - many algorithms out there, would need to test each one
 
-S**olution: Big O & friends (estimation)** - can talk about speed of algorithms without implementing them - can therefore compare them
+**Solution: Big O & friends (estimation)** - can talk about speed of algorithms without implementing them - can therefore compare them
 
 === 2 types of analysis: ===
 non-recursive - this week
@@ -93,10 +93,115 @@ return i
 	* need to know how often we search for items in the array and also how often we search for items not in the array!
 
 ====== Need to watch derivation on canvas ======
-average case analysis:
+average case analysis for pseudocode:
 {{./equation001.png?type=equation}}
 where p(n+1) is the probability of a successful search
 
 
 ===== Part 3: Asymptotic Complexity =====
+Problem: how to compare running times in a meaningful way?
+Solution:
+* Group algorithms into **equivalence classes**, with respect to input size (n)
+
+Asymptotic complexity:
+* When n becomes large, what is the dominant term contributing to the running time?
+=== = ===
+given function t(n) (running time of an algorithm)
+* let c × g(n) be a function that is an upper bound on t(n) for some c > 0 and "large" n
+	* n_{0} = large n (lowest n that we care about, can be anything. e.g. 100, 1000, etc.)
+
+==== Big-O notation (upper bound) ====
+{{./pasted_image003.png}}
+* O(n): given a function t(n)
+	* Informal: t(n) ∈ O(g(n)) means g(n) is a function that, as n increases, provides an upper bound for t(n)
+	* Formal: t(n) ∈ O(g(n)), if g(n) is a function and c × g(n) is an upper bound on t(n) for some c > 0 and for "large" n
+
+=== e.g. ===
+if t(n) = 5.1n
+* g(n) = n
+	* c could be 6 in this instance, because 6n is always ≥ 5.1n when n > 0
+	* therefore, t(n) ∈ O(n)
+* g(n) = 0.001n - 6
+	* c could be 6000, because 6n - 36,000 is always ≥ 5.1n when n is big enough
+	* therefore, t(n) ∈ O(0.001n - 6)
+* g(n) = n^{2}
+	* c could be 1, because n^{2} is always ≥ n when n is anything
+	* therefore, t(n) ∈ O(n^{2})
+these functions are all true if t(n) = 5.2n, 5.3n, etc.
+
+==== Equivalence classes ====
+| Time                       | Big-O       | Example                     |
+|:---------------------------|:------------|:----------------------------|
+| Constant                   | O(1)        | Access array element        |
+| Logarithmic                | O(log(n))   | Binary Search               |
+| Linear                     | O(n)        | Linked List Search          |
+| Linearithmic (Supralinear) | O(n log(n)) | Merge Sorting               |
+| Quadratic                  | O(n ^ 2)    | Selection Sorting           |
+| Exponential                | O(2 ^ n)    | Generating all subsets      |
+| Factorial                  | O(n!)       | Generating all permutations |
+
+To find the **equivalence function class** that upper bounds different t(n):
+* Do not include constants (n - 5 → n)
+* Omit all the lower ordered terms (n^{2} + n → n^{2})
+* Omit the coefficient of the highest order term (6n → n)
+
+
+==== Lower bounds (Ω(n)) ====
+{{./pasted_image002.png}}
+* Informal: t(n) ∈ Ω(g(n)) means g(n) is a function that, as n increases, is a lower bound of t(n)
+* Formal: t(n) ∈ Ω(g(n)), is g(n) is a function and c × g(n) is a lower bound on t(n) for some c > 0 and for "large" n
+
+==== Exact bounds (Θ(n)) ====
+{{./pasted_image001.png}}
+* Informal: t(n) ∈ Θ(g(n)) means g(n) is a function that, as n increases, is both an upper and lower bound of t(n)
+* Formal: t(n) ∈ Θ(g(n)), is g(n) is a function and c_{1} × g(n) is an upper bound on t(n) and c_{2} × g(n) is a lower bound on t(n), for some c_{1} > 0 and c_{2} > 0 and for "large" n.
+
+==== O(n), Θ(n) and Ω(n) are not the same as worst, best and average case efficiency, respecively ====
+
+===== Part 4: Complexity Analysis for Non-Recursive Algorithms =====
+{{./equation002.png?type=equation}}
+can usually only care about C(n), as c_{op} is a constant
+=== Determine bounds on the order of growth of an algorithm ===
+* Determine what is the input size (n)
+* Identify the basic operation
+* Determine the number of basic executions in terms of n (i.e. C(n))
+	* Setup as summation for C(n), reflecting the algorithm's loop structure
+	* Simplify the summation using standard formulas in Appendix A of textbook
+
+=== e.g. pseudocode ===
+''// INPUT: a, n''
+''// OUTPUT: s = a''^{''n''}
+''set s = 1''
+''for i = 1 to n do''
+	''s = s * a''
+''end for''
+''return''
+* input size: n
+* basic operation: multiplication
+* C(n): 1 + 1 + 1 + ... + 1 =
+{{./equation003.png?type=equation}}
+simplify (using below summation rules)
+{{./equation007.png?type=equation}}
+{{./equation008.png?type=equation}}
+
+=== e.g. code 2 ===
+Add two square matrices, of dimensions n × n
+''for (int i=0; i <= n-1; i++) {''
+	''for (int j=0; j<= n-1; j++) {''
+		''C[i, j] = A[i, j] + B[i, j];''
+	''}''
+''}''
+* input size: n
+* Basic operation: addition
+* C(n):
+{{./equation004.png?type=equation}}
+simplify inner sum:
+{{./equation005.png?type=equation}}
+simplify:
+{{./equation009.png?type=equation}}
+{{./equation006.png?type=equation}}
+
+==== Summation rules ====
+{{./pasted_image004.png}}
+
 

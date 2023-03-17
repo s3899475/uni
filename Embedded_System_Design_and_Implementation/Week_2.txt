@@ -5,10 +5,65 @@ Creation-Date: 2023-03-06T13:58:46+11:00
 ====== Week 2 ======
 
 [[+Lab 1]]
+=======
+==== Register Layout (Register File) ====
+* Low Registers: R0-R7 - 32-bit registers that can be used with any instruction
+* High Registers: R8-R12 - 32-bit registers that can be used with 32-bit instructions, 16-bit instructions (Thumb) cannot access these registers
+* R13-R15:
+	* Stack Pointer: Points to the last value written to the stack, has 2 versions: PSP (Process SP) & MSP (Main SP) (banked version)
+	* Link Register: Stores the return address of a subroutine
+	* Program Counter: Points to instruction we are currently running
+* Special Registers:
+	* PSR: Program Status Register
+	* PRIMASK, FAULTMASK, BASEPRI: Exception mask registers
+	* CONTROL: Control register
+
+=== Stack Pointer: ===
+When a new value is pushed to the stack, the SP decrements and then writes the new value to memory
+MC has 2 modes, 'Thread' and 'Handler'
+Handler:
+	* Used for Exception Handlers
+	* Enables exceptions/interrupt sources
+	* Is always privileged
+	* Always uses MSP
+Thread:
+	* Used for Applications
+	* Can be privileged or unprivileged
+	* Can use MSP or PSP
+	* CONTROL register decides whether MSP or PSP is used
+
+=== Link Register ===
+Stores the return address of a subroutine
+Will be set when a 'Branch with Link' style instruction
+Is only 1 level deep, for more levels, the stack must be used
+
+=== Program Counter ===
+LSB is always 0, so that instructions can be 32-bit or 16-bit
+at reset, will be loaded with address of reset vector (at 0x0000 0004)
+
+=== Status Register ===
+{{./pasted_image.png}}
+Parts:
+* N - Negative flag: set to 1 if operation was negative, or less than 0.
+* Z - Zero Flag: set to 1 if the operation result was zero
+* C - Carry/Borrow Flag: set to 1 if addition resulted in a carry, or subtract did not result in a borrow but.
+* V - Overflow flag: set to 1 if the operation overflowed
+* Q - DSP Overflow and Saturation flag: set to 1 is the SSAT or USAT instruction results in saturation or indicates a DSP overflow. must be manually reset using MRS?
+* GE - Greater than or Equal to
+* ICI/IT - Handles interruptible instructions or If-Then instructions
+* ISR_NUMBER - the interrupt number that is currently running. Each value has a specific meaning
+
+To modify the status register directly, it must be copied, then the copy can be modified and then written back to the status register (read-modify-write sequence)
+
+==== Memory Access ====
+memory is addressed in bytes, but words should be aligned (to 4 byte boundaries for 32 bits)
+or half word aligned?
+Little-Endian addressing system
+{{./pasted_image001.png}}
 
 Lecture
 designing a program to average 10 numbers
-1st setp - design in draw.io
+1st step - design in draw.io
 2nd step - plan it out in pseudo-code
 
 Register operations to load values to R0-R9
