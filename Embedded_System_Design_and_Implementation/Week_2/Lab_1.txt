@@ -1,0 +1,51 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-10T12:24:32+11:00
+
+====== Lab 1 ======
+By Christopher Tait (S3899475)
+
+Sections:
+[ ] [[#Introduction|Introduction]]
+[ ] [[#Design and Implementation|Design and Implementation]]
+[ ] [[#Discussion|Discussion]]
+[ ] [[#Conclusion|Conclusion]]
+
+===== Introduction =====
+
+
+===== Design and Implementation =====
+
+
+Code:
+	''LDR R1, =tblConstant2''
+	''LDR R2, =tblSpace0''
+	''LDR R6, [R1], #0x04''
+	''LDR R7, [R1], #0x04''
+	''LDR R8, [R1], #0x04''
+	''LDR R9, [R1]''
+	''MUL R6, R6, R7''
+	''MLA R6, R6, R8, R9''
+	''STR R6, [R2]''
+
+The MUL instruction multiplies the values from Rn and Rm, and places the least significant 32 bits of the result in Rd.
+
+MLA{cond} Rd, Rn, Rm, Ra ; Multiply with accumulate
+The MLA instruction multiplies the values from Rn and Rm, adds the value from Ra, and places the least significant 32 bits of the result in Rd
+
+LDR without B, etc. means load a Word
+
+== Code does this: ==
+Load all values from tblConstant 2 intro registers R6-R9
+Multiply R6 with R7, store the result in R7
+Multiply R6 with R8, then add R9 - this will overflow
+Store the result in tblSpace0
+
+the result should be 0x285D E2D3 2140 8ABA
+actual result = 0x2140 8ABA
+as seen, the upper 32 bits are cut off
+
+===== Discussion =====
+
+
+===== Conclusion =====

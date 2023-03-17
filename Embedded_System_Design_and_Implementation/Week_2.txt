@@ -4,6 +4,8 @@ Creation-Date: 2023-03-06T13:58:46+11:00
 
 ====== Week 2 ======
 
+[[+Lab 1]]
+
 Lecture
 designing a program to average 10 numbers
 1st setp - design in draw.io
