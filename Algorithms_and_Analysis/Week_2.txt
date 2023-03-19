@@ -8,6 +8,7 @@ Contents:
 [*] [[#Part 2: Fundamentals|Part 2: Fundamentals]]
 [*] [[#Part 3: Asymptotic Complexity|Part 3: Asymptotic Complexity]]
 [*] [[#Part 4: Complexity Analysis for Non-Recursive Algorithms|Part 4: Complexity Analysis for Non-Recursive Algorithms]]
+[*] [[#Summation Rules|Summation Rules]]
 
 ===== Part 1: Overview =====
 Obvious solution to compare algorithms - run algorithm on a certain data set and record the time it takes
@@ -201,7 +202,7 @@ simplify:
 {{./equation009.png?type=equation}}
 {{./equation006.png?type=equation}}
 
-==== Summation rules ====
+===== Summation rules =====
 {{./pasted_image004.png}}
 
 

@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-19T21:28:04+11:00
+
+====== Week 4 ======
+Contents
+[ ] [[#Part 1: Overview & Selection Sort|Part 1: Overview & Selection Sort]]
+[ ] [[#Part 2: Bubble Sort|Part 2: Bubble Sort]]
+[ ] [[#Part 3: Knapsack Problem|Part 3: Knapsack Problem]]
+[ ] [[#Part 4: Depth First Search|Part 4: Depth First Search]]
+[ ] [[#Part 5: Breadth First Search & Case Study|Part 5: Breadth First Search & Case Study]]
+
+===== Part 1: Overview & Selection Sort =====
+
+===== Part 2: Bubble Sort =====
+
+===== Part 3: Knapsack Problem =====
+
+===== Part 4: Depth First Search =====
+
+===== Part 5: Breadth First Search & Case Study =====

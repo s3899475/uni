@@ -5,7 +5,9 @@ Creation-Date: 2023-02-24T18:06:30+11:00
 ====== Embedded System Design and Implementation ======
 
 [*] [[+Week 1]]
-[ ] [[+Week_2]]
+[*] [[+Week_2]]
+[ ] [[+Week_3]]
+
 
 Resources:
 * Device: STM32F439IIH6

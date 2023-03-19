@@ -8,11 +8,12 @@ ed forum instead of canvas discussions
 
 [*] [[+Week 1]]
 [*] [[+Week_2]]
-[ ] [[+Week_3]]
+[*] [[+Week_3]]
+[ ] [[+Week_4]]
 
 ==== Assessments: ====
 [ ] Assignments - 50%
-[ ] Weekly test - 10% - due each sunday
+[ ] Weekly test - 10% - due each Sunday
 [ ] In person paper exam - 40%
 
 Assignment 1 - 2 person group - starts in week 3
