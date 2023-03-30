@@ -14,5 +14,5 @@ default_file_extension=.txt
 notebook_layout=files
 
 [SpellPlugin]
-language=
+language=en_AU:en
 

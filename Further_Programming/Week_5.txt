@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-27T18:51:34+11:00
+
+====== Week 5 ======
+
+use ObjectOutputStream(new FileStream(fname)) to serialize arbitrary objects

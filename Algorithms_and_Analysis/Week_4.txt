@@ -11,11 +11,92 @@ Contents
 [ ] [[#Part 5: Breadth First Search & Case Study|Part 5: Breadth First Search & Case Study]]
 
 ===== Part 1: Overview & Selection Sort =====
+Brute force - enumerate all solutions and select the best one
+
+==== Stability ====
+A sorting method is said to be **stable** if is preserves the relative order of duplicate keys in the file/array
+
+==== selection sort ====
+a brute force sorting algorithm
+complexity:
+{{./equation.png?type=equation}}
+best, average and worst case are the same
+
+=== description ===
+search through array for smallest value, swap it with the first value
+then go to the next value and find the smallest value after it
+do this for each value in the array
+
+=== stability ===
+selection sort is a **not** a stable sorting algorithm
+e.g. try sorting [5, 5, 3, 2]
+
+why use:
+* makes only O(n) writes
+* for small arrays, selection sort is relatively efficient and simple to implement
 
 ===== Part 2: Bubble Sort =====
+also a brute force sorting algorithm
+designed for tape disks, where random access was slow
+complexity:
+{{./equation001.png?type=equation}}
+best case: list is already sorted
+	about n^{2}/2 comparisons & 0 swaps
+worst case: list is sorted in reverse
+	about n^{2}/2 comparisons & n^{2}/2 swaps
+average case: original list in random order
+	about n^{2}/2 comparisons & less than n^{2}/2 swaps
+
+=== description ===
+compare each adjacent pair of elements and swap them if they are out of order.
+eventually the largest element gets pushed to the end
+
+=== stability ===
+bubble sort is a **stable** sorting algorithm
+
+=== modification ===
+early-termination bubble sort
+attempts to reduce redundant iterations, after the list is already sorted
+checks if no swaps were made, if so then it stops sorting
+best case: only one pass needed
+	n -1 comparisons
+worst case: no change
+average case: cost is lower than original
+	still likely to be O(n^{2})
 
 ===== Part 3: Knapsack Problem =====
+given n items of known weight and value, and a knapsack of capacity W.
+Find the most valuable subset of the items that fit into the knapsack
+
+==== Knapsack problem - brute force solution ====
+generate all potential solutions
+evaluate one by one, keep track of best
+when all have been evaluated, announce the best solution(s) found
+
+=== description ===
+consider all subsets of the n items
+compute total weight of each subset in order to identify feasible subsets (ones that fit within the weight capacity)
+find the largest value among them
+complexity:
+O(n) = 2^{n}
+because of finding all subsets
+
+=== data entry ===
+set - {}
+containing item numbers (start from 1 at the left)
+
 
 ===== Part 4: Depth First Search =====
+vertices - nodes
+edges - connections between nodes
+
+=== DFS ===
+from node, go to unvisited neighbor
+if no unvisited nodes connected to node, backtrack to previous node
+
+Complexity:
+For graphs represented as adjacency matrices, O(|V|^{2})
+For graphs represented as adjacency lists, O(|V| + |E|)
+where |V| is the number of vertices and |E| is the number of edges
 
 ===== Part 5: Breadth First Search & Case Study =====

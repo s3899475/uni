@@ -3,8 +3,8 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-03-06T13:58:46+11:00
 
 ====== Week 2 ======
-
 [[+Lab 1]]
+
 ==== Register Layout (Register File) ====
 * Low Registers: R0-R7 - 32-bit registers that can be used with any instruction
 * High Registers: R8-R12 - 32-bit registers that can be used with 32-bit instructions, 16-bit instructions (Thumb) cannot access these registers

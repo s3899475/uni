@@ -9,7 +9,9 @@ ed forum instead of canvas discussions
 [*] [[+Week 1]]
 [*] [[+Week_2]]
 [*] [[+Week_3]]
-[ ] [[+Week_4]]
+[*] [[+Week_4]]
+[ ] [[+Week_5]]
+[ ] 
 
 ==== Assessments: ====
 [ ] Assignments - 50%

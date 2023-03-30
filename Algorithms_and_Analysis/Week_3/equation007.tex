@@ -3,7 +3,7 @@ C(n) &= 2 \times C(n-1)\\
 &= 2^2 \times C(n-2)\\
 &= 2^2 \times [2 \times C(n-3)]\\
 &= 2^3 \times C(n-3)\\
-&= 2 \times C(n-i),\ 1 \le i \le n-1\\
+&= 2^i \times C(n-i),\ 1 \le i \le n-1\\
 1 &= n - i,\ i = n - 1\\
-&= n^{n-1} \times C(n-(n-1))\\
+&= 2^{n-1} \times C(n-(n-1))\\
 &= 2^{n-1} \times C(1) = 2^{n-1}

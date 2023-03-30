@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-30T23:16:20+11:00
+
+====== Timed Assessment 1 ======
+
+===== Q11 =====
+a)
+No other hosts will recieve this frame, as the only other host on VLAN 300 is host 4, which is on a different broadcast domain because it is only connected to the router.
+
+b)
+The switch that will remove the VLAN 100 tag will be switch 2, as that is the ingress switch. Switch 3 will remove the tag because it is the egress switch in this scenario.
+
+c)
+Since Host 1 and Host 2 are on different VLANs, a layer 3 protocol would be required.
+The IRB protocol could be used on switch 1 or switch 3 to bridge the two VLANs. This would allow the frame's VLAN tag to be changed from 100 to 200.
+Another solution would be to configure the router's Internet Protocol to allow it to route between the two broadcast domains.
+===== Q12 =====
+a)
+There are 4 broadcast domains in the figure as when you remove the routers, there are 4 distinct areas that are not connected.
+There are 11 collision domains if you remove the switches and routers and count the disconnected networks
+
+b)
+The hosts that will receive this frame are:
+Host 4 - through hub 2 flooding all ports
+Host 5 - switch 3 will forward the frame from interface ge-0/0/2 to interface ge-0/0/3 as its bridge table shows
+switch 1 will discard the frame as the destination is on the same interface as the ingress interface in its bridging table
+
+c)
+because the address of router 1's interface is not in the bridge table of switch 3, it will flood the frame on all interfaces except the ingress. This means that router 3, router 1 and switch 1 will receive the frame, on the interfaces closest to switch 3. Switch 1 will then match the destination address to its interface ge-0/0/2 in its bridge table, so the router 1 will receive the frame again, this time on another interface.
+
+d)
+The source MAC address of the frame will be router 2, as this is the point the IP packet will be routed into the broadcast domain that host 7 is in.
+
+===== Q13 =====
+a)
+switch 5 will become the root switch, as it has the lowest bridge priority
+
+b)
+Since switch 5 is the root switch, all of its ports will be in the designated role
+all ports directly connected to switch 5 will be in the root role, this includes:
+- ge-/0/0/2 of switch 1
+- ge-/0/0/4 of switch 3
+- ge-/0/0/1 of switch 4
+The lowest path-cost from switch 5 to switch 2 is 5 -> 1 -> 2, with a cost of 190
+This means that ge-0/0/3 of switch 2 will be in the root role
+The lowest path-cost from switch 5 to switch 6 is 5 -> 1 -> 6, with a cost of 220
+This means that ge-0/0/4 of switch 6 will be in the root role
+Now that all switches have a path to the root bridge, all other links will be blocked.
+
+For switch 1, its side of ge-0/0/1 has a lower path cost than switch 3's side, so that port will be in the designated role and switch 3's port will be in the alterate port role
+For switch 3, its side of ge-0/0/3 has a lower path cost than switch 4's side, so that port will be in the designated role and switch 4's port will be in the alterate port role
+For switch 6, its side of ge-0/0/2 has a lower path cost than switch 4's side, so that port will be in the designated role and switch 4's port will be in the alterate port role
+For switch 2, its side of ge-0/0/1 has a lower path cost than switch 6's side, so that port will be in the designated role and switch 6's port will be in the alterate port role
+Switch 2 and switch 4 have the same path-cost accross ge-0/0/4, so the one with the lowest priority would have the designated role on its port on this interface and the other would have the alternate port role
+

@@ -5,6 +5,7 @@ Creation-Date: 2023-02-24T18:06:41+11:00
 ====== Further Programming ======
 
 * [[+Week 1]]
+* [[+Week_5]] 
 
 ==== Assessments: ====
 
@@ -14,7 +15,7 @@ Creation-Date: 2023-02-24T18:06:41+11:00
 [ ] Coding Exercise 1					Week 12
 
 === Assignment 1 (20%) ===
-[ ] Assignment 1 Milestone Video Demo	24 Mar
+[*] Assignment 1 Milestone Video Demo	24 Mar
 [ ] Assignment 1						9 Apr
 
 === Assignment 2 (45%) ===

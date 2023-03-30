@@ -3,19 +3,174 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-03-15T17:38:48+11:00
 
 ====== Week 3 ======
+Contents:
+* Part 1
+* [[#Part 2 - Ethernet Devices|Part 2 - Ethernet Devices]]
+* [[#Part 3 - Design|Part 3 - Design]]
+* [[#Part 4 - VLANs|Part 4 - VLANs]]
 
-in a switch, broadcast frames go to all ports in a vlan, axcept the sending port
+===== Part 1 =====
+L2 networks separated by routers (L3)
+Headers not modified unless a network is crossed by a router
+
+==== Ethernet ====
+uses MAC addresses
+passive, wait-and-listen architecture
+encapsulates higher level traffic
+includes source and destination MAC addresses
+can broadcast to all devices attached to switch
+used on a LAN
+
+=== layout of Ethernet frame: ===
+| Name        | Length  | Description                     <|
+|:------------|:--------|:---------------------------------|
+| Preamble    | 8       |                                  |
+| SFD         | -       | Fixed sequence to alert receiver |
+| DA          | 6       | Destination address              |
+| SA          | 6       | Source address                   |
+| Length/type | 2       | frame lenght or type information |
+| Payload/LCC | 46-1500 |                                  |
+| FCS         | 4       | frame check sequence             |
+2 types of Ethernet frames
+Ethernet 2 has type field - used for ip traffic
+IEEE has length and LCC
+
+=== MAC Address Format ===
+48-bit address
+OUI is assigned by IEE to vendors - unique to each vector
+first 3 bytes are OUI
+next 3 are vendor assigned ID
+
+=== Unicast ===
+one source and destination
+
+=== Broadcast ===
+address - 0xff:ff:ff:ff:ff:ff
+meant for all devices that are members of the group
+
+=== Multicast ===
+frame is meant for devices that are members of a group
+all IPv4 multicast addresses have an OUI of 0x01:00:5e
+
+=== Ethernet Standards: ===
+| Speed (Mbps) | Name                           |
+|:-------------|:-------------------------------|
+| 10           | 10BASE-T Ethernet              |
+| 100          | 100BASE-T or Fast Ethernet     |
+| 1,000        | 1000BAST-T or Gigabit Ethernet |
+| 10,000       | 10 Gigabit Ethernet            |
+| 40,000       | 40 Gigabit Ethernet            |
+| 100,000      | 100 Gigabit Ethernet           |
+| 400,000      | 400 Gigabit Ethernet           |
+
+===== Part 2 - Ethernet Devices =====
+=== **Hubs** ===
+* Performs signal amplification and replication
+* Receives Ethernet frames and replicates across all ports except the receiving port
+* Does not inspect headers
+* Half-duplex operation - one direction (send or receive) at a time
+=== **Switches** ===
+* Inspects Ethernet frames
+* Transmits Ethernet frames based on destination MAC address
+* Full-duplex operation - send and receive at the same time
+
+==== Broadcast Domain ====
+same as a LAN
+remove all routers to find
+cannot be crossed without Layer 3
+
+==== Collision Domain ====
+there is one in between each device except where a hub is connected
+remove all switches and routers to find
+if only a hub is connected to a router or switch, that is its own collision domain
+
+=== Shared LANs ===
+combines devices into a single collision domain, increased chance of collisions
+floods traffic out on all ports, can consume network resources and introduce security risks
+typically connected via a hub
+=== Bridged (or switched) LANs ===
+breaks a collision domain into multiple smaller collision domains, minimizes the chance of collisions
+preforms intelligent forwarding decisions based on the contents of the bridge table (forwarding table)
+
+==== Bridging table ====
+has 5 things it does
+bridge table is organized by VLAN to ensure that broadcast domains do not leak into each other
+=== Learning ===
+The switch learns the source MAC addresses of all incoming Ethernet frames
+MAC addresses are associated with an incoming interface
+=== Forwarding ===
+The switch consults the bridge table to find a forwarding entry for the destination MAC address of the received frames
+=== Flooding ===
+The switch floods all frames to all ports belonging to the same VLAN when the destination MAC address is unknown
+This may update the bridging table
+=== Filtering ===
+The switch filters (or discards) frames when the destination MAC address is associated with the ingress interface
+=== Aging ===
+The switch monitors activity of MAC addresses and removes them after a specified period of inactivity
+
+===== Part 3 - Design =====
+==== Hierarchical Design ====
+{{./pasted_image.png}}
+Can consist of access, aggregation and core layers
+Benefits:
+* modularity - facilitates change
+* Function-to-layer mapping - isolates faults
+
+Aggregation layer switches often provide inter-VLAN routing and policy-based connectivity
+Access layer switches enforce access policy
+All three layers support CoS
+
+=== Branch and Data center ===
+data center will probably need all layers of he hierarchical design
+
+frames only go into the routing plane when the destination is not known?
+
+==== cmdline ====
+**family ethernet-switching** to configure interface for Layer 2
+**interface-range** for configuring multiple interfaces at once
+**show interfaces extensive** to view detailed info
+use **show ethernet-switching table** to show the bridging table
+clear ethernet-switching table to clear bridge table entries
+can define static bridge table entries under vlans
+
+===== Part 4 - VLANS =====
+a logical VLAN that allows you to assign users to a common broadcast domain, regardless of the physical topology
+a tag is added to Ethernet frames to assign VLAN between switches
+default id = 1 (bassically means untagged traffic)
+must be assigned by interface in a switch
+
+switch ports can be in either **access** or **trunk** mode
+=== Access ports: ===
+* on by default
+* typically carry untagged traffic
+=== Trunk ports ===
+* must be configured
+* used to connect switches
+* typically carry tagged traffic
+* **interface-mode trunk** to set
+* use **native-vlan-id** on trunk ports (both ends of a connection) to accept untagged traffic
+
+==== IRB (Integrated Routing and Bridging interface) ====
+logical layer 3 interface
+facilitates inter-VLAN routing
+typically defined on aggregation or access switches
+no routing
+IRBs must be associated witha VLAN
+needs a 'Direct' and 'Local' route for each irb
+
+===== Lectorial =====
+in a switch, broadcast frames go to all ports in a VLAN, except the sending port
 unknown destination → broadcast
-from 1 vlan to another, frame will be dropped if there is no Layer 3 networking device (IP router)
+from 1 VLAN to another, frame will be dropped if there is no Layer 3 networking device (IP router)
 MAC Address structure
-OUI (Orginizationally Unique ID) is first 6 bytes
+OUI (Organizationally Unique ID) is first 6 bytes
 Logical Units are always required in Juniper Router Interface
 IRB - Integrated Routeing and Bridging interface
 * It is a logical Layer 3 interface
 
 Collision domain:
 * remove layer 3 and bridging devices, keep their interfaces
-* Count sub-networks (each interface has a collision domain, but 2 can be in the same doimain)
+* Count sub-networks (each interface has a collision domain, but 2 can be in the same domain)
 
 MAC addresses only work in one broadcast domain
 

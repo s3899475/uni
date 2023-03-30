@@ -115,3 +115,46 @@ Packet Forwarding Engine
 * Services - Provides specific capabilities for manipulating traffic before it is delivered
 * Loopback - Logical interface that is always up. All Junos devices use the lo0 designation for it
 
+==== Naming ====
+Most interface names consist of:
+* Media type (ge, etc)
+* Line card (FPC) slot number
+* Interface card (PIC) slot number
+* Port number
+
+e.g.
+ge-0/2/3
+	port 3 of a giabit ethernet PIC in slot 2 on FPC 0
+
+==== Logical units ====
+similar to subinterfaces
+always required
+some encapsulations support only one logical unit
+	unit number must be 0 for these
+logical unit numbers are separate in meaning from circuit identifiers (do not need to match)
+supports multiple protocol addresses
+
+==== Interface Properties ====
+=== Physical ===
+* Data Link Layer protocol
+* Link speed and duplex
+* Physical Maximum transmission unit (MTU)
+=== Logical ===
+* Protocol family:
+	* inet
+	* inet6
+	* iso
+	* mpls
+	* bridge
+* Addresses (IPv4 or v6 and ISO NET)
+* Virtual circuits (VLAN tag, DLCI and VPI or VCI)
+
+primary and preferred address
+
+
+
+
+
+
+
+

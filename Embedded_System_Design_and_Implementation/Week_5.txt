@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-27T13:36:00+11:00
+
+====== Week 5 ======
+
+reference programming manual + TRM in lab report!
+show how u got bit masks
+demonstrate lab 2 next week (try to finish it this week)
+WATCH LECTORIAL
+CPU clock - 16MHz at start (use this value for lab 2)
+25 MHz external clock, 180 MHz max, uses PLL (Phase lock loop)
+===== Lecture: =====
+emulate gpio inputs in uVision
+set GPIOA_IDR to 0x600 for both switches not pressed
+remember machine is little endian
+
+=== GPIO process ===
+enable clocks - RCC_EN
+reset - RCC_AHB1RSTR - set reset bit to 1, must manually set back to 0
+setup GPIO peripheral
+OTYPER
+	open-drain - one mosfet for current drain, floats if mosfet is not on
+	psuh-pull - two mosfets
+OSPEEDR
+	rate of change - low speed for HID
+PUPDR
+	default state for IO - needs to be defined for input
+	switches are active low
+	pull up resistors on MC are not precise
+	dont want pull down
+	pull up - voltage divider (10k and 80k), adds redundancy
+	LEDS active low
+		set pull up for off by defautlt
+AFR, ADFH
+	set all alternate functions to 0 for configured ports
+
+=== Asm code ===
+comment the output register of a fuction
+push used registers to stack
+pop after function is done
+don't worry about debouncing
+

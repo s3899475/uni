@@ -1,0 +1,117 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-30T21:39:25+11:00
+
+====== Week 4 ======
+
+===== Part 1 =====
+
+
+
+if trunk ports form a loop, frames can get broadcast infinitely
+spanning tree is the solution
+dykstras
+
+==== Spanning tree ====
+STP - spanning tree protocol
+automatically builds tree when topology changes
+
+=== Creating a spanning tree: ===
+* Switches exchange bridge protocol data units (BPDUs)
+* Root bridge is elected
+* Port role and state (on/off) are determined
+* Tree is fully converged (finished)
+
+=== Key terms: ===
+* Bridge ID: Unique id for each switch
+* Root bridge: Switch with lowest bridge ID
+* Root port: The port on each bridge closest to the root bridge
+* Root path cost: A bridge's calculated cost to get from itself to the root bridge
+	* equal to the received root path cost from configuration BPDUs plus the port cost of the root port
+* Port cost: every interface on a bridge has an assigned port cost value
+	* Used in the configuration of the root path cost for the local bridge
+	* configurable value (1-200,000,000)
+	* Default value is 20,000 for 1 Gigabit Ethernet
+* Designated bridge: a switch that is not the root switch
+* Port ID: unique id for each port on each switch
+* Designated port: any port that is enabled and not the root port
+* Bridge protocol data unit: Packets used to exchange information between switches, 2 types:
+	* Configuration BPDU
+	* Topology change notification BPDU
+
+=== Port states: ===
+* Blocking
+	* drops all data packets and listens to BPDUs
+	* Not used in active topology
+* Listening
+	* Drops all data packets and listens to BPDUs
+	* Transitioning and will be used in active topology
+* Learning
+	* Drops all data packets and listens to BPDUs
+	* Transitioning and switch is learning MAC addresses
+* Forwarding
+	* The port receives and forwards data packets and sends and receives BPDUs
+	* Has transitioned and the switch continues to learn MAC addresses
+
+==== BPDU Format ====
+inside an Ethernet frame
+octets = bytes
+{{./pasted_image.png}}
+
+
+==== Building a spanning tree ====
+switches exchange BPDUs
+do not flood
+root bridge is elected based on BPDU
+	criteria is the bridge ID
+	lowest priority wins
+	if priorities are the same, bridge MAC addresses are compared - lowest id wins
+
+Then least-cost path calculation to root bridge determines port role
+**if the switches should have a blocked link between them, the one that has the least cost should have the designated port, and the other should have a blocking port**
+
+=== SPT drawbacks ===
+slow convergence time
+uses timers to transition between port states
+	can take 30 to 50 seconds to respond to a topology change
+root bridge is responsible for communicating the current tree topology
+
+===== Part 2 - RSTP =====
+Rapid spanning tree
+=== improvements ===
+* Point-to-point link designation
+* Edge port designation
+	* A port that connects to a LAN with no other bridges attached
+	* Is always in forwarding state
+* Allows for rapid recovery from failures
+	* New root port or designated port can transition to forwarding without waiting for the timers to expire
+* Direct and indirect link failure and recovery
+
+=== New port roles ===
+* Alternate port
+	* provides an alternate path to the root bridge
+	* blocks traffic while receiveing superior BPDUs from neighboring switch
+* Backup port
+	* provides a redundant path to a segment (on designated switches only)
+	* blocks traffic while a more preferred port functions as the designatedport
+RSTP continues to use root and designated port roles
+
+Blocking and Listening combined into discarding state
+
+=== RSTP BPDUs ===
+Act as keepalives
+	ports send configuration BPDUs every hello time (default 2 seconds)
+Provides faster failure detection
+	If a neighboring bridge receives no BPDU withing 3 times the hello interval (3x2 = 6 seconds), connectivity to the neighbor is faulty
+
+=== use bpdu-block-on-edge to block bpdu ===
+can also protect root with **no-root-port**
+
+=== Topology Change ===
+Occurs only when non-edge ports transition to the forwarding state:
+* Port transitions to the discarding state don't trigger the STP TCN ack sequence
+* The initiator sends RSTP TCNs out of all designated and root ports
+* Upon received RSTP TCN, switches flush all MAC addresses not learned from edge ports or learned from receiving the TCN
+
+
+==== RST BPDU Format in Module 3p3 ====
