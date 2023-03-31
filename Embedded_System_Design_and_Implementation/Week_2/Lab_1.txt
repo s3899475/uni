@@ -40,7 +40,7 @@ The four bytes pointed to by R2
 {{.\pasted_image008.png}}
 The four bytes pointed to by R3
 
-The STR instruction was used to store the value of R0 at the memory pointd to by R2 and the STRB instruction was used for R3. The behavior is as expected as only one byte was written for the STRB instruction
+The STR instruction was used to store the value of R0 at the memory pointed to by R2 and the STRB instruction was used for R3. The behavior is as expected as only one byte was written for the STRB instruction
 
 ==== Section 3 ====
 {{.\pasted_image009.png}}
@@ -59,7 +59,7 @@ In this section, the LDR instruction was used to load data into R4 and the LDRB 
 | ADD R1, R1, #0x01    | 0x08000028 | 0xF1010101            | Add 1 to R1, store the result in R1                          |
 | ADD R2, R2, #0x01    | 0x0800002C | 0xF1020201            | Add 1 to R2, store the result in R2                          |
 | SUBS R0, R0, #0x01   | 0x08000030 | 0x1E40                | Subtract 1 from R0 and set the status register               |
-| BNE loop1            | 0x08000032 | 0xD1F7                | Branch back to loop1 if negative flag set in status register |
+| BNE loop1            | 0x08000032 | 0xD1F7                | Branch back to loop1 if zero flag not set in status register |
 
 
 === Before Execution ===
@@ -91,7 +91,7 @@ This section includes the same functionality as a for loop in most programming l
 | SUB R2, R2, R4       | 0x08000048 | 0xEBA20204            | Subtract R4 from R2, store the result in R2                  |
 | ADD R1, R1, #0x01    | 0x0800004C | 0xF1010101            | Add 1 to R1                                                  |
 | SUBS R0, R0, #0x01   | 0x08000050 | 0x1E40                | Subtract 1 from R0, set the status register                  |
-| BNE loop2            | 0x08000052 | 0xD1F8                | Branch back to loop2 if negative flag set in status register |
+| BNE loop2            | 0x08000052 | 0xD1F8                | Branch back to loop2 if zero flag not set in status register |
 | STR R2, [R3]         | 0x08000054 | 0x601A                | Store the value of R2 at the memory pointed to by R3         |
 
 {{.\pasted_image014.png}}
@@ -156,7 +156,7 @@ a. Description of pseudo instructions:
 	1. EQU - Used to define constant values with a specific name
 	2. DCB - Used to manually allocate one or more bytes of memory in the current area
 	3. DCD - Used to manually allocate one or more words in the current area. Will make sure that they are aligned (use DCDU to ignore alignment)
-b. With the 'LDR R3, =tblSpace0' instruction, the MCU loaded a value at a location relative to the current PC (Program Counter), that could be up to ± 4095 bytes away. This value was a 32-bit address that would then be loaded into the desination register (R3).
+b. With the 'LDR R3, =tblSpace0' instruction, the MCU loaded a value at a location relative to the current PC (Program Counter), that could be up to ± 4095 bytes away. This value was a 32-bit address that would then be loaded into the destination register (R3).
 c. Microcontroller status flags - most conditional branch instructions check if a flag is set or unset (1 or 0)
 	1. N - Negative Flag: set to 1 if operation result was less than zero
 	2. Z - Zero Flag: set to 1 if the operation result was zero
@@ -167,7 +167,7 @@ d. Examples of branch instructions:
 	1. BEQ - branch if values are equal
 	2. BNE - branch if values not equal
 	3. BMI - branch if result is negative
-	4. BVS - branch if reult overflowed
+	4. BVS - branch if result overflowed
 	5. BGE - branch if 1st value greater or equal to 2nd value (signed)
 	6. BAL - always branch
 e. Code included in uVision file, but I will include it here as well

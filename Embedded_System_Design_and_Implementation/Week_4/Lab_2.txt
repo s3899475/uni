@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-24T11:37:20+11:00
+
+====== Lab 2 ======
+By Christopher Tait (S3899475)
+
+===== Introduction =====
+
+===== Design and Implementation =====
+
+GPIO[A-J] - 16 bit
+GPIOK - 8 bit
+
+switches active low
+
+aim: use L and R buttons to controll states of LED 7 + 6
+{{.\pasted_image.png}}
+
+{{.\pasted_image001.png}}
+
+{{.\pasted_image002.png}}
+
+GPIOA
+	 v MODER 15                                                     v MODER 0
+0b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0b 00 00 00 00 00 **00** **00** 00 00 00 00 00 00 00 00 00
+= 0x140000
+
+GPIO B + F
+0b 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00
+= 0x10000
+
+| Registers | Base Offset | GPIOA Value | GPIOB Value | GPIOF Value |
+|:----------|:------------|:------------|:------------|:------------|
+| MODER     | 0x00        | 0x0         | 0x10000     | 0x10000     |
+| OTYPER    | 0x04        |             |             |             |
+| OSPEEDR   | 0x08        |             |             |             |
+| PUPDR     | 0x0C        |             |             |             |
+| IDR       | 0x10        |             |             |             |
+| ODR       | 0x14        |             |             |             |
+| BSRR      | 0x18        |             |             |             |
+
+
+===== Discussion =====
+
+===== Conclusion =====
