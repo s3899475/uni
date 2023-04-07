@@ -6,42 +6,153 @@ Creation-Date: 2023-03-24T11:37:20+11:00
 By Christopher Tait (S3899475)
 
 ===== Introduction =====
-
-===== Design and Implementation =====
-
+Theory
+used programming manual and technical reference manual
 GPIO[A-J] - 16 bit
 GPIOK - 8 bit
 
 switches active low
 
 aim: use L and R buttons to controll states of LED 7 + 6
-{{.\pasted_image.png}}
 
-{{.\pasted_image001.png}}
+===== Design and Implementation =====
+The design and implementation of the lab was split into four main parts which were:
+* Enabling the GPIO clocks with the RCC module
+* Setting up the GPIO
+* Creating the main part of the application
+* Hardware testing
+The initial assembly template copied from pab 1 contained the reset, |.text|, Table and Result AREAs, of witch only the reset and |.text| were needed. The target settings were also the same, thought the Sim_ROM.ini file was added to the debug settings to simulate the GPIO.
 
-{{.\pasted_image002.png}}
+==== Subroutine for RCC ====
+Through reading the Technical reference manual, it was found that enabling GPIOA, GPIOB and GPIOF required the correct bits to be set in the RCC_AHB1ENR register. Then the RCC_AHB1RSTR register would have to be used to reset the same clocks, by setting the correct bits and then unsetting them. The layout of both of these registers was the same in terms of where the bits for the GPIO were, with bits 0-10 for GPIOA-K.
+This means that bits 0, 1 and 5 were the important bits for GPIOA, B and F, so the mask that was used to enable the bits was 0b100011 = 0x23. The same mask could be used to disasble the bits with the BIC instruction.
+With this information, a subroutine was created to first enable the correct bits in RCC_AHB1ENR, then enable them in RCC_AHB1RSTR, then a delay of two clock cycles was created using two NOP instructions. After this the bits in RCC_AHB1RSTR needed to be unset and another delay of two clock cycles to ensure the reset was successful.
+During the development of this subroutine, a hard to track bug was found that caused the GPIO to not be enabled. The cause was a single ~ character before the mask used in the final BIC instruction. The ~ acted as a bit flip on the value during compilation, which caused only the non important bits to be unset.
 
-GPIOA
-	 v MODER 15                                                     v MODER 0
-0b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-0b 00 00 00 00 00 **00** **00** 00 00 00 00 00 00 00 00 00
-= 0x140000
+==== Results of RCC code ====
+{{.\pasted_image003.png}}
+screenshot of AHB1ENR block (before initialization)
 
-GPIO B + F
-0b 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00
-= 0x10000
+{{.\pasted_image004.png}}
+screenshot of AHB1ENR block (after initialization)
 
+{{.\pasted_image005.png}}
+screenshot of AHB1RSTR (during initialization)
+
+
+==== GPIO Registers ====
 | Registers | Base Offset | GPIOA Value | GPIOB Value | GPIOF Value |
 |:----------|:------------|:------------|:------------|:------------|
 | MODER     | 0x00        | 0x0         | 0x10000     | 0x10000     |
-| OTYPER    | 0x04        |             |             |             |
-| OSPEEDR   | 0x08        |             |             |             |
-| PUPDR     | 0x0C        |             |             |             |
-| IDR       | 0x10        |             |             |             |
-| ODR       | 0x14        |             |             |             |
+| OTYPER    | 0x04        | 0x0         | 0x0         | 0x0         |
+| OSPEEDR   | 0x08        | 0x0         | 0x0         | 0x0         |
+| PUPDR     | 0x0C        | 0x140000    | 0x10000     | 0x10000     |
+| IDR       | 0x10        | 0x0         |             |             |
+| ODR       | 0x14        |             | 0x100       | 0x100       |
 | BSRR      | 0x18        |             |             |             |
 
+The values for GPIOB and F are the same, as LED 6 and 7 are both on pin 8 of B and F.
+
+== Masks required: ==
+Using the BIC instrction is easier than AND, so it will be used to clear specific bits
+
+=== MODER ===
+A 32 bit register for each GPIO, with 2 bits for each pin. Setting these two bits to 00 will put the pin into the input state, and setting them to 01 will put it into the output state.
+
+**GPIOA**
+value required:
+	 v MODER 15                                                     v MODER 0
+0b 00 00 00 00 00 **00** **00** 00 00 00 00 00 00 00 00 00
+mask using BIC instruction
+0b 00 00 00 00 00 11 11 00 00 00 00 00 00 00 00 00
+= 0x140000
+
+**GPIO B + F**
+value required using ORR instruction to set bits:
+0b 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00
+= 0x10000
+mask using BIC instruction
+0b 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00
+= 0x20000
+
+=== OTYPER ===
+A 16 bit register for each GPIO. set to 0 for push-pull and 1 for open-drain. This lab will use push-pull for LEDs and switches
+
+**GPIO A**
+mask to unset bits 9 and 10 using BIC instruction
+0b 0 0 0 0 0 **1** **1** 0 0 0 0 0 0 0 0 0
+= 0x600
+
+**GPIO B+F**
+mask to unset bit 8 using BIC
+0b 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+= 0x100
+
+=== OSPEEDR ===
+Two bits for each pin, 00 to 11 for low to very high speed. Since the LEDs and switched are used for human interaction, low speed is sufficient
+**GPIOA**
+same as MODER for GPIOA
+
+**GPIO B + F**
+value required:
+0b 00 00 00 00 00 00 00 **00** 00 00 00 00 00 00 00 00
+mask that will be used in BIC:
+0b 00 00 00 00 00 00 00 **11** 00 00 00 00 00 00 00 00
+= 0x30000
+
+=== PUPDR ===
+Used to controll pull-up and pull-down resistors. 00 used for nothing, 01 for pull-up and 10 for pull-down. Pull down resistors are used on the switches and LEDs to prevent a floating state where the input/output could be influenced by any electromagnetic interference.
+
+**GPIOA**
+set pull-up on all used ports
+bits set using ORR
+0b 00 00 00 00 00 **01** **01** 00 00 00 00 00 00 00 00 00
+= 0x140000
+bits unset using BIC
+0b 00 00 00 00 00 **10** **10** 00 00 00 00 00 00 00 00 00
+= 0xA0000
+
+**GPIO B + F**
+bits set using ORR
+0b 00 00 00 00 00 00 00 **01** 00 00 00 00 00 00 00 00
+= 0x10000
+bits unset using BIC
+0b 00 00 00 00 00 00 00 **10** 00 00 00 00 00 00 00 00
+= 0x20000
+
+==== Results of GPIO setup ====
+{{.\pasted_image006.png}}
+GPIOA after configuration
+
+{{.\pasted_image007.png}}
+GPIOB after configuration
+
+{{.\pasted_image008.png}}
+GPIOF after configuration
+
+==== Design of application ====
+subroutines for everything
+link register used in some places for this
+can't be used twice
+
+issues with flowchart & better design
+use interrupts?
+
+==== Deployment ====
+intro text
+pictures
 
 ===== Discussion =====
+Introduction for section
+what results was I expecing and what was achieved
+improvements:
+current code uses software timer, a hardware timer could be used for more accurcy and to free up the CPU
 
 ===== Conclusion =====
+In conclusion, 
+
+===== References =====
+[1] ST Microelectronics, “RM0090 – Reference Manual”, ST Microelectronics, June 2018,
+Available Online
+[2] ST Microelectronics, “PM0214 – Programming Manual”, ST Microelectronics, February 2019,
+Available Online.
