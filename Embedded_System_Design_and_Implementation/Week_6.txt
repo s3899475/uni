@@ -1,7 +1,23 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-04-07T19:56:47+10:00
+Creation-Date: 2023-04-03T13:40:04+10:00
 
 ====== Week 6 ======
 
-t
+===== Lectorial =====
+timer 6 code in lecture notes
+simplest timer
+(1 & 8) are advanced?
+apb1 - 46 MHz
+timers run at twice the rate?
+gpio F already configured in template code - for external RAM clocks
+
+bunch of constants in c header - use to enable certain bits
+__asm("NOP"); — inline asm
+
+GPIO_MODER_MODEx_Msk — 0x3 shifted into position (x)
+use bit flip (~) of this to clear
+
+to set
+0x01 « GPIO_MODER_MODEx_Pos
+or use 0x03 to set both bits, 0x02 to set 2nd bit

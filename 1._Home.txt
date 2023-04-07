@@ -7,3 +7,7 @@ Creation-Date: 2023-02-24T16:58:37+11:00
 * [[:Embedded_System_Design_and_Implementation]]
 * [[:Further_Programming]]
 * [[:Network_Engineering]]
+
+===== TODO: =====
+[ ] Embedded - 7 Apr (Friday), presentation due on another day
+[ ] Programming - 9 Apr (Sunday)
