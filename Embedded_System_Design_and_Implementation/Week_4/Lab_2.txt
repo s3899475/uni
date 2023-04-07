@@ -6,14 +6,8 @@ Creation-Date: 2023-03-24T11:37:20+11:00
 By Christopher Tait (S3899475)
 
 ===== Introduction =====
-Theory
-used programming manual and technical reference manual
-GPIO[A-J] - 16 bit
-GPIOK - 8 bit
-
-switches active low
-
-aim: use L and R buttons to controll states of LED 7 + 6
+This lab will focus on configuring and using GPIO (General Purpose Input/Output) on the STM32 platform using ARM assembly code. The Keil uVision development environment will be used to simulate and debug this code. The culmination of the lab will be deploying the finished code onto the STM32F4II development board and debugging on the real hardware using a J-Link probe. The application will be developed with the help of the STM32 programming manual and the STM32 technical reference manual. There are 11 different GPIO ports available on the platform, all of which have 16 output pins except for GPIOK which has 8.
+The development board's design dictates that the switches and LEDs on the board are active when the pin goes low. The GPIO will have to be successfully configured to have the switches on GPIOA pin 9 and 10 as inputs and the LEDs on GPIOB pin 8 and GPIOF pin 9 as outputs. The overall goal of the application is to have the L and R switches controll the states of the LEDs and seamlessly move between these states.
 
 ===== Design and Implementation =====
 The design and implementation of the lab was split into four main parts which were:
@@ -130,29 +124,53 @@ GPIOB after configuration
 {{.\pasted_image008.png}}
 GPIOF after configuration
 
-==== Design of application ====
-subroutines for everything
-link register used in some places for this
-can't be used twice
+As seen in the above figures, the GPIOs have been setup correctly for GPIOA to be used for the switches and GPIOB and F to be used for the LEDs
 
-issues with flowchart & better design
-use interrupts?
+==== Design of application ====
+The design of my app in centred around a main loop which has the 50ms delay and reading of the input state at the beginning. It then branches into one of four different states based on the value of the switches. Within each state, another subroutine is used to set the LEDs and delay for the right ammount for the flashing. The BL instruction is used to branch into these subroutines and the BX instruction is used to branch back to where they are called. Each state then branches back to the start of the loop with a regular branch because the BL instruction will overwrite the link register so it can only be used for one level by default.
+
+This design was based of the figure 3 flowchart in the lab specification and follows it pretty closely. Some issues with this design is that the switches are not debounced and the application can take some time to change states, because the delay is done on the CPU.
+
+==== Simulation ====
+To simulate the switches, the value of GPIOA_IDR must be manually set in the assembler simulation
+
+State 1 - No switches pressed
+{{.\pasted_image010.png}}
+Since the switches are active low, both pins would be high when neither is pressed
+
+{{.\pasted_image011.png}}
+The code correctly branches into state1
+
+State 2 - Left switch pressed (GPIOA_IDR9 high and GPIOA_IDR10 low)
+{{.\pasted_image012.png}}
+
+State 3 - Right switch pressed (GPIOA_IDR9 low and GPIOA_IDR10 high)
+{{.\pasted_image013.png}}
+
+State 4 - Both switches pressed (GPIOA_IDR9 low and GPIOA_IDR10 low)
+{{.\pasted_image009.png}}
 
 ==== Deployment ====
-intro text
-pictures
+Once the simulation was verified to be working correctly, the code was tested on the development platform with the J-Link.
 
-===== Discussion =====
-Introduction for section
-what results was I expecing and what was achieved
-improvements:
-current code uses software timer, a hardware timer could be used for more accurcy and to free up the CPU
+State 1
+{{.\IMG_20230405_154956.jpg?width=600}}
+{{.\IMG_20230405_154957.jpg?width=600}}
+
+State 2
+{{.\IMG_20230405_155013.jpg?width=600}}
+{{.\IMG_20230405_155015.jpg?width=600}}
+
+State 3
+{{.\IMG_20230405_155020.jpg?width=600}}
+
+State 4
+{{.\IMG_20230405_155417.jpg?width=600}}
+
 
 ===== Conclusion =====
-In conclusion, 
+In conclusion, the application was a success and the GPIO for all inputs and output were configured successfully. The simulated and real results were the same, so the app is verified to be working correctly. The current code currently uses a software timer, but a hardware timer could be used for more accurcy and to free up the CPU. This would require a more complex design aswell.
 
 ===== References =====
-[1] ST Microelectronics, “RM0090 – Reference Manual”, ST Microelectronics, June 2018,
-Available Online
-[2] ST Microelectronics, “PM0214 – Programming Manual”, ST Microelectronics, February 2019,
-Available Online.
+[1] ST Microelectronics, “RM0090 – Reference Manual”, ST Microelectronics, June 2018, Available Online.
+[2] ST Microelectronics, “PM0214 – Programming Manual”, ST Microelectronics, February 2019, Available Online.
