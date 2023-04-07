@@ -7,7 +7,7 @@ By Christopher Tait (S3899475)
 
 ===== Introduction =====
 This lab will focus on configuring and using GPIO (General Purpose Input/Output) on the STM32 platform using ARM assembly code. The Keil uVision development environment will be used to simulate and debug this code. The culmination of the lab will be deploying the finished code onto the STM32F4II development board and debugging on the real hardware using a J-Link probe. The application will be developed with the help of the STM32 programming manual and the STM32 technical reference manual. There are 11 different GPIO ports available on the platform, all of which have 16 output pins except for GPIOK which has 8.
-The development board's design dictates that the switches and LEDs on the board are active when the pin goes low. The GPIO will have to be successfully configured to have the switches on GPIOA pin 9 and 10 as inputs and the LEDs on GPIOB pin 8 and GPIOF pin 9 as outputs. The overall goal of the application is to have the L and R switches controll the states of the LEDs and seamlessly move between these states.
+The development board's design dictates that the switches and LEDs on the board are active when the pin goes low. The GPIO will have to be successfully configured to have the switches on GPIOA pin 9 and 10 as inputs and the LEDs on GPIOB pin 8 and GPIOF pin 9 as outputs. The overall goal of the application is to have the L and R switches control the states of the LEDs and seamlessly move between these states.
 
 ===== Design and Implementation =====
 The design and implementation of the lab was split into four main parts which were:
@@ -15,11 +15,11 @@ The design and implementation of the lab was split into four main parts which we
 * Setting up the GPIO
 * Creating the main part of the application
 * Hardware testing
-The initial assembly template copied from pab 1 contained the reset, |.text|, Table and Result AREAs, of witch only the reset and |.text| were needed. The target settings were also the same, thought the Sim_ROM.ini file was added to the debug settings to simulate the GPIO.
+The initial assembly template copied from lab 1 contained the reset, |.text|, Table and Result AREAs, of witch only the reset and |.text| were needed. The target settings were also the same, thought the Sim_ROM.ini file was added to the debug settings to simulate the GPIO.
 
 ==== Subroutine for RCC ====
 Through reading the Technical reference manual, it was found that enabling GPIOA, GPIOB and GPIOF required the correct bits to be set in the RCC_AHB1ENR register. Then the RCC_AHB1RSTR register would have to be used to reset the same clocks, by setting the correct bits and then unsetting them. The layout of both of these registers was the same in terms of where the bits for the GPIO were, with bits 0-10 for GPIOA-K.
-This means that bits 0, 1 and 5 were the important bits for GPIOA, B and F, so the mask that was used to enable the bits was 0b100011 = 0x23. The same mask could be used to disasble the bits with the BIC instruction.
+This means that bits 0, 1 and 5 were the important bits for GPIOA, B and F, so the mask that was used to enable the bits was 0b100011 = 0x23. The same mask could be used to disable the bits with the BIC instruction.
 With this information, a subroutine was created to first enable the correct bits in RCC_AHB1ENR, then enable them in RCC_AHB1RSTR, then a delay of two clock cycles was created using two NOP instructions. After this the bits in RCC_AHB1RSTR needed to be unset and another delay of two clock cycles to ensure the reset was successful.
 During the development of this subroutine, a hard to track bug was found that caused the GPIO to not be enabled. The cause was a single ~ character before the mask used in the final BIC instruction. The ~ acted as a bit flip on the value during compilation, which caused only the non important bits to be unset.
 
@@ -48,7 +48,7 @@ screenshot of AHB1RSTR (during initialization)
 The values for GPIOB and F are the same, as LED 6 and 7 are both on pin 8 of B and F.
 
 == Masks required: ==
-Using the BIC instrction is easier than AND, so it will be used to clear specific bits
+Using the BIC instruction is easier than AND, so it will be used to clear specific bits
 
 === MODER ===
 A 32 bit register for each GPIO, with 2 bits for each pin. Setting these two bits to 00 will put the pin into the input state, and setting them to 01 will put it into the output state.
@@ -95,7 +95,7 @@ mask that will be used in BIC:
 = 0x30000
 
 === PUPDR ===
-Used to controll pull-up and pull-down resistors. 00 used for nothing, 01 for pull-up and 10 for pull-down. Pull down resistors are used on the switches and LEDs to prevent a floating state where the input/output could be influenced by any electromagnetic interference.
+Used to control pull-up and pull-down resistors. 00 used for nothing, 01 for pull-up and 10 for pull-down. Pull down resistors are used on the switches and LEDs to prevent a floating state where the input/output could be influenced by any electromagnetic interference.
 
 **GPIOA**
 set pull-up on all used ports
@@ -127,7 +127,7 @@ GPIOF after configuration
 As seen in the above figures, the GPIOs have been setup correctly for GPIOA to be used for the switches and GPIOB and F to be used for the LEDs
 
 ==== Design of application ====
-The design of my app in centred around a main loop which has the 50ms delay and reading of the input state at the beginning. It then branches into one of four different states based on the value of the switches. Within each state, another subroutine is used to set the LEDs and delay for the right ammount for the flashing. The BL instruction is used to branch into these subroutines and the BX instruction is used to branch back to where they are called. Each state then branches back to the start of the loop with a regular branch because the BL instruction will overwrite the link register so it can only be used for one level by default.
+The design of my app in centered around a main loop which has the 50ms delay and reading of the input state at the beginning. It then branches into one of four different states based on the value of the switches. Within each state, another subroutine is used to set the LEDs and delay for the right amount for the flashing. The BL instruction is used to branch into these subroutines and the BX instruction is used to branch back to where they are called. Each state then branches back to the start of the loop with a regular branch because the BL instruction will overwrite the link register so it can only be used for one level by default.
 
 This design was based of the figure 3 flowchart in the lab specification and follows it pretty closely. Some issues with this design is that the switches are not debounced and the application can take some time to change states, because the delay is done on the CPU.
 
@@ -169,7 +169,7 @@ State 4
 
 
 ===== Conclusion =====
-In conclusion, the application was a success and the GPIO for all inputs and output were configured successfully. The simulated and real results were the same, so the app is verified to be working correctly. The current code currently uses a software timer, but a hardware timer could be used for more accurcy and to free up the CPU. This would require a more complex design aswell.
+In conclusion, the application was a success and the GPIO for all inputs and output were configured successfully. The simulated and real results were the same, so the app is verified to be working correctly. The current code currently uses a software timer, but a hardware timer could be used for more accuracy and to free up the CPU. This would require a more complex design as well.
 
 ===== References =====
 [1] ST Microelectronics, “RM0090 – Reference Manual”, ST Microelectronics, June 2018, Available Online.
