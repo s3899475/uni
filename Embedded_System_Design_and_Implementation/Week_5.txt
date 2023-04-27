@@ -3,6 +3,61 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-03-27T13:36:00+11:00
 
 ====== Week 5 ======
+C & C++ development in uVision
+CMSIS Libraries - don't use for labs?
+C project template in this week on canvas- use one in labs
+
+===== Part 1 =====
+cpu only code (no peripherals) can work on all devices in same family.
+C simplifies design process
+assembler can be used when timing is critical - can determine cycle time. Optimization can change timing
+
+CMSIS - Cortex Microcontroller Software Interface Standard
+can simplify common tasks
+also provides hardware abstraction (API)
+
+assembler startup file needed to setup heap, stack and interrupt vectors. Also calls main()
+
+make sure that optimization is off, so that we can step through line-by-line
+
+we will deploy to RAM from now on, so that flash does not degrade. Requires reprogramming every power cycle.
+
+==== Clock Tree ====
+25MHz external crystal oscillator as the main clock for the lab boards
+
+many clock output:
+* ethernet
+* etc.
+
+HSI - High speed Internal
+HSE - High speed external
+
+PLL - Phase lock loop
+steps up crystal to 168 MHz (180 MHz max - overdrive) via multipliers and dividers
+
+16 MHz internal crystal oscillator for startup
+
+2nd external watch crystal oscillator - optional - can use for RTC
+or RTC can use internal
+
+reason for external:
+internal clock frequency changes with temperature
+
+oscillators also usually need 2 capacitors
+
+another clock for ethernet
+
+another for usb - not in design, uses internal
+
+**SYSCLK** - main system clock. can be run by HSI, HSE or PLL
+
+failing to setup clocks can form a boot-loop that cannot be broken using the JTag
+
+==== C Code ====
+use volatile for registers
+make sure that memory is aligned
+
+
 
 reference programming manual + TRM in lab report!
 show how u got bit masks

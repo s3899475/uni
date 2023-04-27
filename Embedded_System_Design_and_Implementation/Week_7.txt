@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-17T13:36:26+10:00
+
+====== Week 7 ======
+lectorial test next week - in person or online
+up to week 7
+design question
+set of short answer questions
+
+===== Lectorial =====
+code like lab 3 has been uploaded in lecture 7
+f3232 VCP driver may be needed
+terraterm needed
+
+switching output to input, and back
+change ODR to low for a few cycles
+change MODER to input
+other registers dont matter, are the same for LEDs and switches
+check IDR - switches active low, need to invert
+set back to output
+
+use switch statement if bits are not together
