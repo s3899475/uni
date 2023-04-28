@@ -3,10 +3,57 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-04-17T13:36:26+10:00
 
 ====== Week 7 ======
+
+[[+Lab3]]
+
+
 lectorial test next week - in person or online
 up to week 7
 design question
 set of short answer questions
+
+===== Part 1 - Serial Overview =====
+Serial - a bit of info at each time step
+up to 8 serial ports avaliable - depends on device
+3.3V
+
+==== U(S)ART - Universal Asynchronus Receive Transmit ====
+S is for synchronus mode - requires/generates a clock (so requires more pins)
+1 device
+Pins for async mode:
+* Tx
+* Rx
+* GND
+
+requires GPIO alternate function
+
+==== SPI - Serial Peripheral Interface ====
+4 wires
+multi device - master or slave mode, using slave select
+usually around 42MBit/s - high speed
+maximum number of devices is dependent on bus loading (capacitance skews square waves)
+can be full-duplex
+pins:
+* SCLK - serial clock
+* [[/SS]] - slave select
+* MISO - master in slave out
+* MOSI - master out slave in
+interface clock matters for speed (speed is bus speed / 2)
+
+==== I2C ====
+2 wires
+multi device
+multi master - master is whoever is communicating on the bus, they generate the clock
+half-suplex
+slow - can be used for sensors
+Pins:
+* SDA - serial data
+* SCLK/SCK - serial clock
+each device has a unique address, so that we don't need a slave select. can usually be set through IO ports (pull up/pull down)
+
+
+
+
 
 ===== Lectorial =====
 code like lab 3 has been uploaded in lecture 7
