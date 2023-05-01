@@ -11,8 +11,11 @@ Creation-Date: 2023-02-24T18:06:30+11:00
 [*] [[+Week_5]]
 [*] [[+Week_6]]
 [ ] [[+Week_7]]
+[ ] [[+Week_8]]
+[ ] [[+Week_9]]
 [ ] 
 
+thursday 3:30 - feedback on the course
 
 Resources:
 * Device: STM32F439IIH6
@@ -23,18 +26,18 @@ Resources:
 ==== Assessments: ====
 === Labs: ===
 [*] Lab 1				24 Mar
-[ ] Lab 2				7 Apr
-[ ] Lab 3				28 Apr
+[*] Lab 2				7 Apr
+[*] Lab 3				28 Apr
 
 === Lectorial quizzes ===
-[ ] Quiz 1			Week 8 Lectorial
+[*] Quiz 1			Week 8 Lectorial
 [ ] Quiz 2			Week 11 Lectorial
 
 === Project Assignment ===
-[ ] Demonstraction	Week 11 Lab
+[ ] Demonstration	Week 11 Lab - no time to work on it in week 11 lab
 [ ] Technical Report	6 Jun
 
-=== Design and Implementation Problem (Timed Assesment)  - Exam ===
+=== Design and Implementation Problem (Timed Assessment)  - Exam ===
 
 
 

@@ -8,8 +8,8 @@ Lectorials On Wednesday (choose either), or recorded on canvas
 * [[https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzU3YjVjN2EtODg3YS00ZjQ4LTlkYjEtZGUwZTk3OTk0NTEx%40thread.v2/0?context=%7b%22Tid%22%3a%22d1323671-cdbe-4417-b4d4-bdb24b51316b%22%2c%22Oid%22%3a%22f6d69810-1eee-4ce0-b77d-53eb49368913%22%7d|17:30-18:30]]
 
 [*] [[+Week 1]] + week 2
-[ ] [[+Week_3]]
-[ ] [[+Week_4]]
+[*] [[+Week_3]]
+[*] [[+Week_4]]
 [ ] [[+Week_5]]
 
 ==== Assessments: ====

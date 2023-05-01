@@ -10,13 +10,13 @@ Creation-Date: 2023-02-24T18:06:41+11:00
 ==== Assessments: ====
 
 === Lab coding exercises (25%) ===
-[ ] Coding Exercise 1					Week 5
-[ ] Coding Exercise 1					Week 9
-[ ] Coding Exercise 1					Week 12
+[*] Coding Exercise 1					Week 5
+[ ] Coding Exercise 2					Week 9
+[ ] Coding Exercise 3					Week 12
 
 === Assignment 1 (20%) ===
 [*] Assignment 1 Milestone Video Demo	24 Mar
-[ ] Assignment 1						9 Apr
+[*] Assignment 1						9 Apr
 
 === Assignment 2 (45%) ===
 [ ] Assignment 2 Lab Milestone Check	Week 11?
