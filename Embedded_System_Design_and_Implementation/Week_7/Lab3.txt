@@ -11,7 +11,7 @@ The aim of this lab is to develop an application that will allow an outside devi
 ===== Design and Implementation =====
 The code was initially designed using the below flowchart, which was then translated into C code. The code was split up into functions for each of the setup steps, as well as utility functions for changing the LEDs.
 
-{{file:///C:/Users/chris/Downloads/flowchart.png}}
+{{.\flowchart.png}}
 Flowchart of the operation of the lab code
 
 ==== LEDs ====
@@ -45,12 +45,12 @@ In the code, a count variable is used to produce the right frequency from the 1m
 
 ==== UART ====
 The STM32 microcontroller used in the lab has various different serial interfaces that can be used to communicate with different devices. This lab used the UART protocol to send data from a PC to the micro. UART3 was setup to have 8 data bits, 1 stop bit and no parity. GPIOB pin 10 and 11 also had to have their alternate function register changed in order for USART3 to work. The baud rate was 38,400, which needed to be converted into a form that could be set in the Baud Rate Register (BRR):
+
 {{./equation.png?type=equation}}
 (42*1e6) / (16*38_400)
 68.359375
 68 = 0x4
-
-Then the fractional part was calculated as follows
+Then the fractional part was calculated as follows:
 0.359375 * 16 = 5.75 = 0x6
 
 {{.\pasted_image001.png}}
