@@ -22,7 +22,8 @@ quick sort is not stable
 ==== Assessments: ====
 [ ] Assignments - 50%
 [ ] Weekly test - 10% - due each Sunday
-[ ] In person paper exam - 40%
+[ ] In person paper exam - 40% - Jun 13?
 
 Assignment 1 - 2 person group - starts in week 3
-Assignment 2 - individual
+Assignment 2 - individual - May 26
+algorithmc latex

@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T13:58:30+10:00
+
+====== Week 10 ======
+
+simulate ADC
+12 bits - need to use uint16_t at least
+sampleSimADC(uint_16 simulatedBalue) {
+uint16_t currentSample = 0;
+// trigger simulated start conversion (sw trigger)
+ADC1->CR2 |= ADC_CR2_SWSTART;
+
+// simulation - set EOC flag
+ADC1->SR |= ADC_SR_EOC;
+
+// wait for the conversion to complete
+while(ADC1->SR & ADC_SR_EOC) == 0);
+
+// mask 12 bits
+currentSample = ADC1->DR & 0x00000FFF;
+
+// simulator - return simulated value
+currentSample = simulatedValue
+};
+
+peripheral view with JTAG reads registers - can unset EOC or UIF flag!

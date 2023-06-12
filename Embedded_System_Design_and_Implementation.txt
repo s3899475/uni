@@ -13,6 +13,7 @@ Creation-Date: 2023-02-24T18:06:30+11:00
 [ ] [[+Week_7]]
 [ ] [[+Week_8]]
 [ ] [[+Week_9]]
+[ ] [[+Week_10]]
 [ ] 
 
 thursday 3:30 - feedback on the course
@@ -35,9 +36,10 @@ Resources:
 
 === Project Assignment ===
 [ ] Demonstration	Week 11 Lab - no time to work on it in week 11 lab
-[ ] Technical Report	6 Jun
+[ ] Technical Report	26 May
 
 === Design and Implementation Problem (Timed Assessment)  - Exam ===
+Jun 5?
 
 
 
