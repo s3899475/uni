@@ -16,12 +16,12 @@ Lectorials On Wednesday (choose either), or recorded on canvas
 
 === Group Lab Reports (40%) (2-3 people): - Lab Day is on Friday ===
 [*] Lab 1&2 - Lab Infrastructure Configuration and Switches-Virtual LANs		13%	2 Weeks after lab 2 finishes, 7pm
-[ ] Lab 3&4 - Routers-IP Addressing and Services and Static Routing 			13%	''
+[*] Lab 3&4 - Routers-IP Addressing and Services and Static Routing 			13%	''
 [ ] Lab 5&6 -  OSPF and BGP 											14%	''
 
 === In-Semester timed Assessments (30%): - 90 mins ===
 [*] [[Timed Assessment 1]]		15%		Week 5 ??? day
-[ ] Timed Assessment 2		15%		Week 9 ??? day
+[*] Timed Assessment 2		15%		Week 9 ??? day
 
 === Research Project Assignment (30%) Week 10-14 (start before week 10): - 3-4 people ===
 requires contribution percentages

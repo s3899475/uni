@@ -9,6 +9,9 @@ ed forum instead of canvas discussions
 merge sort is stable
 quick sort is not stable
 
+[[+Revision]]
+
+
 [*] [[+Week 1]]
 [*] [[+Week_2]]
 [*] [[+Week_3]]
