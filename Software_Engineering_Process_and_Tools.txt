@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-10T16:40:47+10:00
+
+====== Software Engineering Process and Tools (COSC2299) ======
+
+[ ] [[+Week 1]]
+
+==== Assessments: ====
+=== Assessment Group 1 (75%) ===
+[ ] Example Assessment 1 (25%)
+[ ] Example Assessment 2 (50%)
+
+=== Assessment Group 2 (25%) ===
+[ ] Example Assessment (25%)
+

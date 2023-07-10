@@ -1,13 +1,12 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-02-24T16:58:37+11:00
 
+====== Home ======
 ===== Subjects: =====
-* [[:Algorithms_and_Analysis]]
-* [[:Embedded_System_Design_and_Implementation]]
-* [[:Further_Programming]]
-* [[:Network_Engineering]]
+* [[:Advanced Network Engineering|Advanced Network Engineering]]
+* [[:Communication Engineering 1|Communication Engineering 1]]
+* [[:Computing Theory|Computing Theory]]
+* [[:Software Engineering Process and Tools|Software Engineering Process and Tools]]
 
 ===== TODO: =====
-[ ] Embedded - 7 Apr (Friday), presentation due on another day
-[ ] Programming - 9 Apr (Sunday)
+[ ] Task
