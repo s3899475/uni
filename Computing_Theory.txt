@@ -7,10 +7,11 @@ Creation-Date: 2023-07-10T16:41:30+10:00
 [ ] [[+Week 1]]
 
 ==== Assessments: ====
-=== Assessment Group 1 (75%) ===
-[ ] Example Assessment 1 (25%)
-[ ] Example Assessment 2 (50%)
+=== Assignments ===
+[ ] Assignment 1 (15%)
+[ ] Assignment 2 (25%)
 
-=== Assessment Group 2 (25%) ===
-[ ] Example Assessment (25%)
+=== Timed Assessment (50%) ===
+
+=== Weekly Quizzes (10%) ===
 

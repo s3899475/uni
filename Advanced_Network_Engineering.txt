@@ -7,10 +7,13 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 [ ] [[+Week 1]]
 
 ==== Assessments: ====
-=== Assessment Group 1 (75%) ===
-[ ] Example Assessment 1 (25%)
-[ ] Example Assessment 2 (50%)
+=== Laboratories (40%) ===
+[ ] Lab 1-2 Report (14%) - week 7
+[ ] Lab 3-4 Report (13%) - week 10
+[ ] Lab 5-6 Report (13%) - week ?
 
-=== Assessment Group 2 (25%) ===
-[ ] Example Assessment (25%)
+=== Timed Assesments ===
+[ ] Mid-semester Timed Assessment (20%)
+[ ] Final Timed Assessment (25%)
 
+=== Weekly practice activities (15%) ===

@@ -7,10 +7,14 @@ Creation-Date: 2023-07-10T16:40:47+10:00
 [ ] [[+Week 1]]
 
 ==== Assessments: ====
-=== Assessment Group 1 (75%) ===
-[ ] Example Assessment 1 (25%)
-[ ] Example Assessment 2 (50%)
+=== Major Project (40%) - weekly progress marks ===
 
-=== Assessment Group 2 (25%) ===
-[ ] Example Assessment (25%)
+=== Challenges (40%) ===
+[ ] Tools Activity Challenge (20%)
+[ ] Tools Challenge 2 (20%)
+
+=== Lab Progress (10%) ===
+
+=== Final Presentation (10%) - week 12 ===
+
 
