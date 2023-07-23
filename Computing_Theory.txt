@@ -3,7 +3,7 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-07-10T16:41:30+10:00
 
 ====== Computing Theory (COSC1107) ======
-
+[[https://edstem.org/au/courses/12867/discussion/|Ed Forum]]
 [ ] [[+Week 1]]
 
 ==== Assessments: ====
