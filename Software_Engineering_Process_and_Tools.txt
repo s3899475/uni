@@ -5,6 +5,8 @@ Creation-Date: 2023-07-10T16:40:47+10:00
 ====== Software Engineering Process and Tools (COSC2299) ======
 
 [ ] [[+Week 1]]
+[ ] [[+Week_2]]
+[ ] 
 
 ==== Assessments: ====
 === Major Project (40%) - weekly progress marks ===

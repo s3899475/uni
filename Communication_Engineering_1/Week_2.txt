@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-24T13:38:06+10:00
+
+====== Week 2 ======
+
+===== Tutorial =====
+labs use actual hardware
+
+line of sight
+common for higher frequecies - more directional, less bouncing off atmosphere
+radio line of sight is different from visual
+
+los, from curvature of the earth
+{{./equation.png?type=equation}}
+where h is the height of the antenna
