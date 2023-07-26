@@ -9,3 +9,92 @@ find cheapest groceries from different stores
 maybe delivery of groceries
 
 can add extra features
+
+===== Requirements =====
+Must be **verifiable**, not subjective
+Need to be **complete**, they cannot leave out any areas, what the scope is needs to be refined
+also **clear and concise** - only one meaning
+**consistent** - shouldnt contradict
+**modifiable** - structure requirements carefully by:
+* separating functional from non-functional
+**traceable** - why the requirement exists, and when it is released must be recorded
+
+How to capture requirements
+==== User stories ====
+A description of one or more features. They are written from the perspective of an end user
+=== Structure ===
+As a <user role>
+I want <goal>
+So that <benefit>
+=== Steps ===
+* Define your end user
+* Specify what they want
+* Describe the benefit
+* Add acceptance criteria - behaviour of system is acceptable
+
+my e.g.
+as a citizen I want to recieve emergency information so that I can stay safe
+
+Facebook user stories
+as a human, I want to see what my friends are up to, so that I can socialize better
+as an influencer, I want to have what I say seen by as many people as possible, so that I can be famous
+as a user, I want to see content relevant to my interests, so that I can not be bored
+as a photographer, I want to be able to post pictures, so that people can see my nice photos
+
+INVEST Principal for user stories
+* Independent - as independent as possible - so that we can develop them in any order. Allows true prioritisation
+* Negotiable - captures the essence of what is desired. Highlights the result
+* Valuable - User story needs to add some value
+* Estimable - Value and Dev time needs to be able to be estimated, for prioritization
+* Small - 
+* Testable - Acceptance criteria need to be able to be written immediately
+
+==== Acceptance Criteria ====
+Scentario: name of behavoiur
+Given: the beginning state
+When: The specific action that the user makes
+Then: the outcome of the action in "when"
+
+And: used to continue any of the three prevoius statements
+
+would have two behavouirs, two acceptance criteria for password reset. one for valid email, one for invalid email
+
+alternative to above: rules
+e.g. rules for password length and special chars
+
+===== Scrum =====
+scrum guide on canvas
+=== Roles ===
+Product owner - project vision
+Scrum Master - ensures that scrum rules and process is followed
+Development Team
+
+==== 3 Artefacts ====
+=== Product backlog ===
+requirements go into product backlogue
+baclogue is prioritised
+PBIs:
+features
+bugs,
+technical work
+
+=== Sprint Backlogue ===
+Work that needs to be done in the sprint
+set of PBIs that have different tasks
+
+=== Product Increment ===
+Sum of PBIs completed in one sprint
+functions that have been implemented
+team needs to define what done means (DoD)
+needs to be measureable - true or false 
+
+==== 5 Events ====
+fixed duration, in course sprint is 3 weeks
+* Sprint planning - add top priority stuff to sprint backlogue
+	* define what needs to be done, how it needs to be done
+	* define a list of task to comple user stories
+* Daily stand up - what has been done, what will you do today? what are the blockers you are facing?
+* Sprint review - check functionality, check off product backlogue
+* Retrospective - about process
+	* what worked and what didn't?
+	* What could be done better?
