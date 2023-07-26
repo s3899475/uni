@@ -3,4 +3,26 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-07-24T00:16:58+10:00
 
 ====== Week 2 ======
+===== Tutorial =====
+Finite State Automata
 
+marking
+
+platapus game
+5 basic tournaments of 268 random machines
+Tournament requires 36,046 because every machine plays every other machine, only permutations, but a machine can play itself
+average time taken was 21.4s
+
+1 plays n games
+2 plays n-1 games
+3 plays n-2 games
+so that they don't have to do the same mactches
+n(n+1)/2 total
+
+why 268 machines?
+find a machine that beats everybody else
+any colours, any animals, any tree or not
+each space has 2 colours, 4 animals, 2 tree states
+2*4*2 = 16
+7 spaces
+16^7
