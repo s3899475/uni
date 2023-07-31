@@ -23,12 +23,12 @@ Examples:
 * LANs
 
 ==== Systems ====
-a physical transmission link that allows the trasfer of information from one point to the other
-networks are made up of multiple communication systems (e.g. ethernat cables)
-systems can be charactarised by transmission media:
+a physical transmission link that allows the transfer of information from one point to the other
+networks are made up of multiple communication systems (e.g. Ethernet cables)
+systems can be characterised by transmission media:
 * Twisted pair/coax
 * Wireless (air)
-* optical fiber
+* optical fibre
 
 ==== Devices ====
 a physical component that provides some sore of communication function
@@ -44,12 +44,12 @@ examples:
 **Fourier Transform:** transformation from time domain to the frequency domain
 **Laplace Transformation:** transformation from the time domain into the generalised (complex) frequency domain. used in system analysis
 
-**Spectrum:** the fourier transformation of a signal, describes the frequency spectrum
+**Spectrum:** the Fourier transformation of a signal, describes the frequency spectrum
 **Fourier series:** a specific representation that is used **only** for **periodic** signals
 
 ==== Fourier Series ====
 periodic signals can be represented by the sum of sinusoids and/or cosines.
-the Fourier series is used to decompose these periodic time signals into their sine and cosing components
+the Fourier series is used to decompose these periodic time signals into their sine and cosine components
 The frequencies of these functions are multiples of the fundamentals frequency of the signal, f0 = 1/T0
 to completely replicate some signals, e.g. a square wave, an infinite number of sinusoids are needed
 
@@ -64,25 +64,25 @@ ak is the weightings of cosines
 bk is the weighting of sines
 ω0 is the radian frequency, which is the fundamental frequency. k is the multiples of this frequency
 
-== The exponential (complex) fourier series ==
+== The exponential (complex) Fourier series ==
 Euler's formula
 {{./equation007.png?type=equation}}
-fourier series
+Fourier series
 {{./equation008.png?type=equation}}
 where
 {{./equation009.png?type=equation}}
 
 ==== The Fourier Transform ====
-FT is normaly defined as the Fourier Transform pair since the time signal can be obtained from the frequency spectrum by the inverse transformation
+FT is normally defined as the Fourier Transform pair since the time signal can be obtained from the frequency spectrum by the inverse transformation
 The Fourier Transform can also be used on aperiodic signals
 Frequency Domain:
 {{./equation010.png?type=equation}}
 Time Domain (inverse Fourier Transform):
 {{./equation011.png?type=equation}}
 
-information from fourier transform:
+information from Fourier transform:
 * frequency content (spectrum), or
-* If we transform the impulse response, we will get the behavour of a system to different frequencies, known as its **frequency response**
+* If we transform the impulse response, we will get the behaviour of a system to different frequencies, known as its **frequency response**
 
 The output of a real time signal is generally complex
 The allows you to get information about the magnitude (|X(f)|) and phase ∠X(f)
@@ -96,7 +96,7 @@ Normally plotted as two graphs, magnitude vs. frequency and phase vs frequency(f
 * time-shift and freq-shift. Shift in phase will introduce a complex exponential
 * **modulation**
 multiplying a signal by a cosine will split the spectra into two, with each amplitude at half the original
-one copy will be centered arround f0 and the other arround -f0
+one copy will be centred around f0 and the other around -f0
 where f0 is the frequency of the cosine
 {{./equation012.png?type=equation}}
 {{./pasted_image003.png}}
@@ -117,7 +117,7 @@ the delta function samples x at time 0. The output is scaled by the value of x a
 {{./equation016.png?type=equation}}
 the delta function has a magnitude of 1 across all frequencies. i.e. FT(δ(t)) = 1
 
-=== Normalized sinc function ===
+=== Normalised sinc function ===
 {{./equation017.png?type=equation}}
 {{./equation018.png?type=equation}}
 
@@ -129,7 +129,7 @@ integral of a function gets transformed into 1/s
 
 ==== Transfer functions and stability ====
 {{./equation022.png?type=equation}}
-poles = denominator = when it will fo to inf?, will determine stability
+poles = denominator = when it will go to inf?, will determine stability
 zeroes = numerator = when it will go to 0
 
 zeroes = 0, -1

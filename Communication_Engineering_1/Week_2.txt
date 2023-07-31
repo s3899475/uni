@@ -4,13 +4,150 @@ Creation-Date: 2023-07-24T13:38:06+10:00
 
 ====== Week 2 ======
 
-===== Tutorial =====
-labs use actual hardware
+===== Part 1 - Power and Energy Signals =====
+{{./equation001.png?type=equation}}
+=== Average normalised power ===
+normalised over a 1 Ω resistor, R = 1
+== Instantaneous power ==
+power dissipated over a 1Ω resistor by a voltage of amplitude x(t)
+{{./equation002.png?type=equation}}
+== Instantaneous energy ==
+{{./equation003.png?type=equation}}
+where Δt is the amount of time
+=== Total normalised energy ===
+{{./equation004.png?type=equation}}
+=== Average normalised power ===
+{{./equation005.png?type=equation}}
 
-line of sight
-common for higher frequecies - more directional, less bouncing off atmosphere
+==== Power and Energy Signals ====
+Signals can be power signals, energy signals or neither
+* **Power signals** are signals where the normalised average power is finite and non-zero (i.e. 0 < P < inf)
+* A signal is an **energy signal** if its total normalised energy is finite and non-zero (i.e. 0 < E < inf)
+* Signals that have both infinite energy and infinite power cannot be classified as either either energy or power signals. E.g. x(t) = e^-t (over all time, including negative)
+Power signal requirements
+E = inf, P < inf
+Energy signal requirements
+E < inf, P = 0
+
+==== Parseval's Theorem ====
+relates energy and power in signals, in time and frequency domains
+{{./equation006.png?type=equation}}
+This means that signal energy/power can be determined in both the time and frequency domains
+For sine waves:
+{{./equation007.png?type=equation}}
+energy signals converge to 0
+periodic signals are usually power signals
+aperiodic signals are usually energy signals
+
+===== Part 2 - Bandwidth Definitions =====
+spectrum and bandwidth are linked
+**filter bandwidth** - frequency range that the filter will pass through
+
+**Base band signals** - signals with spectra centred around 0 Hz
+
+signals - types of bandwidth:
+**Bandwidth** is based on the positive part of the spectrum, it can be defined in several different ways:
+* **Absolute Bandwidth** is the maximum positive frequency minus the minimum positive frequency in a signal
+* **Single sided bandwidth** is the absolute bandwidth, but > 0 Hz
+* **3-dB (or half-power) bandwidth** contains the part of the spectra whose power falls no less than
+	* used in optical fibres & filter pass regions
+{{./equation008.png?type=equation}}
+in the **power domain** (everything is squared):
+{{./equation009.png?type=equation}}
+on the **dB scale** the range in which no part of the signal is less than -3dB below maximum power
+* **First null-bandwidth** is the width of the positive part of the spectrum from the minimum frequency to the first time the power falls to zero (i.e. a null occurs) in the spectrum
+	* used in digital part - with things like sinc function, where it becomes 0 at set points
+
+==== Effective bandwidth ====
+The spectral region where 95% (or greater in some applications) of the signal power/energy is located
+also called essential bandwidth
+used to find out where most of the energy of a signal is
+
+=== Energy spectral density ===
+{{./equation010.png?type=equation}}
+
+== Effective bandwidth of e^{-at} u(t) ==
+{{./equation011.png?type=equation}}
+symmetry - take one half of spectra and energy
+{{./equation012.png?type=equation}}
+expand and take tan of both sides of equation, then solve for B_{eff}
+{{./equation013.png?type=equation}}
+95% of the signal's energy lies between ± above Hz
+
+===== Part 3 - Wireless Signal Propagation =====
+=== Transmitter ===
+info source - usually baseband
+transducer - change form to electrical - audio, video
+modulation - change to useful frequency
+can also be transmitted without modulation
+=== Receiver ===
+demodulate
+maybe reduce noise or reduce channel distortion and/or noise
+decoding may also occur
+
+wireless transmission requires modulation
+radio waves are affected by the same things light waves are: diffraction, reflection, refraction, absorption and destructive/constructive interference
+==== Wireless Propagation Methods ====
+=== Ground-wave propagation ===
+{{./pasted_image.png}}
+low frequency signals (< 2MHz or MF band) can bend around the earth and objects
+This is used for AM radio to allow long distance reception
+
+=== Ionospheric propagation ===
+also called sky-wave propagation
+{{./pasted_image001.png}}
+Used in the transmission of signals between 2 – 30 MHz (HF band)
+It occurs due to changes in the refractive index between different layers of the ionosphere
+The ionosphere is made up of four main layers: D, E, F1 and F2. Each has their own effects on radio waves
+Is affected by the time of day, because the sun ionises differently at different times of day
+
+follows Snell's Law:
+{{./equation014.png?type=equation}}
+where phi_r is the reflected angle and phi_i is the incident angle, n is the refractive index
+
+=== Line-of-sight propagation (LoS) ===
+{{./pasted_image002.png}}
+Used for signals of high frequency (> 30 MHz or VHF band and above)
+more directional, less bouncing off atmosphere
 radio line of sight is different from visual
 
-los, from curvature of the earth
+LoS, from curvature of the earth
 {{./equation.png?type=equation}}
+Estimation
+{{./equation015.png?type=equation}}
 where h is the height of the antenna
+
+==== Communication Channel Effects ====
+can happen in wired and wireless signals
+=== Multipath Scattering ===
+Signal can be scattered off objects in the transmission medium (e.g. trees or buildings)
+This causes a signal to arrive at a receiver at different times via several different paths - basically echos
+can cause ghosting in TV reception - causes multiple ghost images to appear on screen
+
+can be modelled by FIR filters
+{{./pasted_image003.png}}
+top is the original signal
+α is the attenuation in the scattered path
+{{./pasted_image004.png}}
+
+=== The Doppler Effect ===
+caused by motion of a transmitter and/or receiver
+frequencies can appear to change depending whether the transmitter is moving towards or away from a receiver
+{{./pasted_image005.png}}
+
+=== Noise ===
+many different types
+most important - additive white (Gaussian) noise
+can be caused by naturally occurring factors such as solar radiation and thermal noise from head sources
+
+== Additive White Noise ==
+Has a constant two-sided power spectral density (PSD) for all frequencies
+White → includes all frequencies
+Theoretically this means infinite noise power. However, in practice all channels are **bandlimited** (they only pass a certain range of frequencies)
+Communication systems use BPFs (Band-Pass Filters) to filter out the expected information signal, centred at the carrier frequency, immediately after the RF stage
+
+== Signal-to-Noise Ratio ==
+estimation of the received signal-to-noise ratio
+SNR = Signal power / Noise power
+can also be generated by proximity to other electrical sources
+if there is no modulation (e.g. short range), we call the SNR **baseband SNR** (SNR_{B})

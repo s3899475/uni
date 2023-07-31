@@ -6,7 +6,14 @@ Creation-Date: 2023-07-24T13:48:47+10:00
 
 {{./equation.png?type=equation}}
 {{./equation001.png?type=equation}}
+{{./equation003.png?type=equation}}
+{{./equation004.png?type=equation}}
+
+{{./equation006.png?type=equation}}
 ==== Fourier transform properties: ====
+Symmetry - the Fourier transform of a real function will be symmetrical
 === Shift: ===
 {{./equation002.png?type=equation}}
 this will change the phase in the f domain
+=== Magnitude: ===
+{{./equation005.png?type=equation}}
