@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-28T11:40:10+10:00
+
+====== Week 2 ======
+
+===== Tutorial =====
+router will never recieve label value of 3 in MPLS, it is reserved
+
+MPLS ttl will copy from ip ttl, will minus 1 when it goes through transit
+MPSL ttl will be copied to ip TTL at penultimate
+
+used to suport multiple protocols, not just IP, also 
+
+MPLS TC - used for QoS
+TTL prevents a routing loop
+
+access code removed on weekly check on monday
