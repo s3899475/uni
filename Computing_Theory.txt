@@ -4,8 +4,11 @@ Creation-Date: 2023-07-10T16:41:30+10:00
 
 ====== Computing Theory (COSC1107) ======
 [[https://edstem.org/au/courses/12867/discussion/|Ed Forum]]
-[ ] [[+Week 1]]
+[*] [[+Week 1]]
 [ ] [[+Week_2]]
+
+{a}* → {λ,a,aa,aaa,aaaa,aaaaa...}
+{a^{5}} → {aaaaa}, {a^{n}} → {a n times}
 
 ==== Assessments: ====
 === Assignments ===

@@ -4,7 +4,6 @@ Creation-Date: 2023-07-24T00:16:58+10:00
 
 ====== Week 2 ======
 ===== Tutorial =====
-Finite State Automata
 
 marking
 
@@ -26,3 +25,79 @@ each space has 2 colours, 4 animals, 2 tree states
 2*4*2 = 16
 7 spaces
 16^7
+
+===== Part 1 - Finite State Machines =====
+Aspects of computers:
+* Input and Output
+* Processing
+* Memory
+
+What is the simplest possible computer? - definition of a finite state machine
+* Input: a string
+* Output: yes or no (from a decision problem) - based on the last state reached
+* Memory: a fixed amount - the current machine state
+* Processing: changes between a finite number of states
+	* string is processed one symbol at a time, left to right (as a stream) - can't go backwards
+{{./pasted_image.png}}
+
+==== Formal Definition ====
+Things we need - A finite automaton M is a 5-tuple (Q, Σ, δ, q_{0}, F)
+* Q - finite set of states
+* Σ - finite alphabet
+* δ - Q × Σ → Q is the transition function - takes a state and an input - gives a state or nothing as an output
+* q_{0} is the start state of the machine
+	* There can be only one start state
+* F ⊆ Q is the set of accepting or final states (double circles)
+	* There can be many final states (can include the start state)
+
+=== Example ===
+{{./pasted_image001.png}}
+only accepts $1 or $2 coins, can give coffee or tea (C or T)
+Machine definition: M = ({q_{0},q_{1},q_{2}}, {1,2,C,T}, δ, q_{0}, {q_{0}})
+Transition function (δ):
+{{./pasted_image002.png}}
+Strict version - every case covered (implicitly defined from above)
+{{./pasted_image003.png}}
+when we go into state q3, we cannot leave it, and will never reach a final state. So inputs that take this path will always be rejected (will answer 'no')
+
+==== Language from a Finite State Machine ====
+Language = the set of strings that M accepts:
+L(M) = {w | M accepts w}
+
+M accepts the string w = v_{1}v_{2}...v_{n} if there is a sequence of states (or execution) s_{1},s_{2},...s_{n+1} with each s_{i} ∈ Q such that:
+* s_{1} = q_{0} - starting state
+* δ(s_{i}, v_{i}) = s_{i}+1 for i = 1,2,...n
+* s_{n+1} ∈ F - last state reached is a final state
+
+Otherwise M rejects w
+
+===== Part 2 - Non-determinisim =====
+* Specifying all combinations can be awkward
+* tempting to omit 'error' states
+* Elegant and simpler to include **multiple executions**
+* Makes combining machines a lot simpler
+
+{{./pasted_image005.png}}
+{{./pasted_image006.png}}
+{{./pasted_image008.png}}
+
+L(M) = (0 | 1)* 11 (0 | 1)* = {strings containing 11}
+
+==== Formal definition of a nondeterministic finite state automaton ====
+A finite automaton M is a 5-tuple (Q, Σ, δ, q_{0}, F)
+* Q - finite set of states
+* Σ - finite alphabet
+* **δ - Q × Σ → 2^{Q}** is the **nondeterministic** transition function - outputs a set of possible states
+* q_{0} is the start state of the machine
+* F ⊆ Q is the set of accepting or final states
+
+==== Language of a nontererministic finite state automaton ====
+L(M) = {w | M accepts w (on **some** execution)}
+
+==== Limits of FSAs ====
+=== Example ===
+Give an FSA for the language L = {0^{n}1^{n} | n ≥ 0}
+L = {λ, 01, 0011, 000111, 00001111, 0000011111, ... }
+{{./pasted_image009.png}}
+L = {0^{n}1^{n} | n ≤ k } = {λ, 01, 0011, 000111, ..., 0^{k}1^{k}}
+so it can never cover the whole language, only up to some k zeroes followed by k ones
