@@ -12,7 +12,7 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 [ ] Lab 3-4 Report (13%) - week 10
 [ ] Lab 5-6 Report (13%) - week ?
 
-=== Timed Assesments ===
+=== Timed Assessments ===
 [ ] Mid-semester Timed Assessment (20%)
 [ ] Final Timed Assessment (25%)
 
