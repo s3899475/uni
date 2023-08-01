@@ -3,6 +3,8 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-07-24T13:48:47+10:00
 
 ====== Formulae ======
+Use tables of integrals & tables of fourier transforms
+[[https://www.purplemath.com/modules/idents.htm|Trigonometric Identities]]
 
 {{./equation.png?type=equation}}
 {{./equation001.png?type=equation}}
@@ -17,3 +19,12 @@ Symmetry - the Fourier transform of a real function will be symmetrical
 this will change the phase in the f domain
 === Magnitude: ===
 {{./equation005.png?type=equation}}
+
+==== Power and Energy Signals properites ====
+shift and inversion have no effect on the engergy of a signal
+when a signal's amplitude is multiplied by k:
+E_{kx} = k^{2}E_{x}
+
+=== Convolution - linear time-invariant system ===
+{{./equation004.png?type=equation}}
+usually just x(t) and H(f) are given
