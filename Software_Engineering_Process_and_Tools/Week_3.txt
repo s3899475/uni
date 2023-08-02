@@ -1,0 +1,96 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-01T15:42:54+10:00
+
+====== Week 3 ======
+===== Lectorial =====
+Product backlogue - all potential features
+Sprint backlogue - what will be done this sprint
+Sprint planning  - Make PBIs (different types) and estimate time
+
+Poker estimation - estimate the time
+
+Architecture
+- overall modules and interface, how functionality is split up
+- has to be easy to understand?
+
+==== design Patterns ====
+=== Monolith ===
+single executable unit
+Good:
+* Homogenous Structure
+* Efficiency (one big program)
+* Easy to debug
+Bad:
+* Hard to maintain
+	* Nobody understands the whole program
+* Testing an Deployment can take too long
+* Dependency problems can exist (can be a Big ball of mud)
+=== N-Tiered Architecture ===
+{{./pasted_image.png}}
+=== Microkernel (plugins) ===
+{{./pasted_image001.png}}
+Kernel has essential functionalities
+Provides "extension points"
+Plugins extend functionalities
+Good:
+Plugins
+	are indepented
+=== Messaging Based ===
+{{./pasted_image002.png}}
+async - events
+program-to-program communication
+reliable delivery
+Good:
+* Easier to maintain
+* Solves dependency problems
+Bad:
+* High complexity
+* Requires a broker/channel manager
+
+=== Microservices ===
+{{./pasted_image003.png}}
+A number of services that are completely independent
+Modelled around business concepts
+can use different programming languages, persistence layers, etc.
+small and independently deployable
+fully autonomous
+distributed
+observable and monitoring
+Good:
+* Modular
+* Scalable
+* Fault tolerant and resilient
+* distributed development and deployment
+* changes do not affect other services
+Bad:
+* Design and runtime complexity
+* Distributed environment
+* Networks are slow and an additional source of problems
+
+==== Model-View-Controller ====
+Models
+* Business concepts
+Controllers
+* Handles HTTP Requests
+* Queries business logic and models
+* Extracts models information
+Views
+* Presentation layer
+* UI, en, a
+
+==== Web Services & REST APIs ====
+Uniform interface
+* resource based
+* manipulation of resources through rep
+
+=== HTTPS in REST ===
+GET - read a resource
+POST - create a new resource
+PUT/PATCH - update a resource
+DELETE - remove a resource
+{{./pasted_image004.png}}
+
+
+
+
