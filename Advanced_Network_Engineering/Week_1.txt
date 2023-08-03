@@ -91,7 +91,7 @@ It is pretended to a packet, immediately after the Layer 2 header. It is removed
 It is a 32-bit header that contains:
 * 20 bits - Label
 * 3 bits - Traffic class (TC) - used for class of service
-* 1 bit - Bottom-of-stack bit (S) - set to 1 if this is the last label before the payload
+* 1 bit - Bottom-of-stack bit (S) - set to 1 if this is the last label before the payload (in MPLS Label N)
 * 8 bits - Time to live (TTL) - decremented at each hop
 	* By default, the IP TTL is copied to the MPSL TTL
 
@@ -168,8 +168,8 @@ be missing: the label value itself and the TC bits.
 This disablement can create problems in two types of applications:
 •Class of service applications that use the TC bits to mark packets as belonging to
 different forwarding classes, for example for real-time and non-real-time traffic. If the
-TC bits are lost, the egress router will not be able to recognize which packet
-belongs to which forwarding class, and prioritize traffic correctly.
+TC bits are lost, the egress router will not be able to recognise which packet
+belongs to which forwarding class, and prioritise traffic correctly.
 •Applications that need to preserve the “identity” of a LSP even at the last hop;
 some examples are the distribution of multicast traffic in a VPN environment, and
 circuit-cross-connect (CCC), an early technology to transport layer-2 frames over

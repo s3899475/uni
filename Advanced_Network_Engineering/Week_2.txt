@@ -3,4 +3,104 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-07-28T11:40:10+10:00
 
 ====== Week 2 - MPLS Fundamentals ======
-===== Chapter 1 Part 2 =====
+Chapter 1 Part 2
+==== Junos Tables ====
+Every Junos router has a **control plane** and **data plane** - usually have different hardware
+Routing protocols exchange routing updates on the control plane
+**Routing Table** (RT) - contains all the routing information learned by all routing protocols
+	Also called a Routing Information Base (RIB)
+=== Data Plane Interaction ===
+The **Forwarding Table** (FT) stores Routing information that is actually used to forward packets
+	Also called a Forwarding Information Base (FIB)
+The Control Plane contains an FT, which is copied to the Forwarding Plane's FT
+The route selected for a certain packet usually has the lowest preference value
+
+=== Forwarding Equivalence Class (FEC) ===
+a set of packets with the same or similar characteristics that will be bound to a specific MPLS label
+	i.e. they will be forwarded the same way
+basically an IP prefix (e.g. 10.1.1.0/24)
+
+Routers must learn each other's FEC
+	Will not be distributed by MPLS - uses OSPF or ISIS (an Interior Gateway Protocol (IGP))
+Then label bindings for FECs (what labels will actually be used) must be negotiated between routers
+	When this is done automatically, routers will distribute from downstream to upstream
+		(egress to ingress)
+
+== Upstream - router that is closer to the source ==
+== Downstream - router that is closer to the destination ==
+
+===== Label Distribution Protocol (LPD) Modes =====
+| Protocol | Distribution Mode      | Control Mode | Retention Mode |
+|:---------|:-----------------------|:-------------|:---------------|
+| LDP      | Downstream Unsolicited | Ordered      | Liberal        |
+| RSVP     | Downstream on Demand   | Ordered      | Conservative   |
+
+Two Modes for LDPs:
+=== Downstream Unsolicited ===
+Downstream/Egress router will start advertising a automatically (without being asked) for a specific FEC
+{{./pasted_image.png}}
+=== Downstream on Demand ===
+Egress router will only start advertising a label when it receives a request for its FEC
+{{./pasted_image001.png}}
+{{./pasted_image003.png}}
+
+==== Label Distribution Control Modes ====
+Two modes that define the order in which nodes create and advertise FEC label bindings in an MPLS network:
+=== Ordered Control ===
+**Used for both LDP and RSVP!**
+Only distributes a label for a FEC for which it is the egress router for that FEC **or** is has already received from its next-hop a label binding for that FEC
+**entire LSP must be setup**
+{{./pasted_image005.png}}
+
+=== Independent Control ===
+Distributes labels for its known FECs to its upstream routers, regardless of whether it has received a label from the downstream routers that actually 'own' the FECs
+**can work before the entire LSP is setup**
+{{./pasted_image004.png}}
+
+
+==== Label Retention Modes ====
+=== Conservative ===
+A router validates that the labels received from other routers and only stores the valid labels in its LIB
+Is slower to react to routing changes, but requires less memory
+**Used by RSVP**
+{{./pasted_image006.png}}
+
+=== Liberal ===
+A router stores all the labels it receives from other routers in the LIB
+Allows for quicker reactions to routing changes, but requires more memory
+**Used by LDP**
+{{./pasted_image007.png}}
+
+==== Label Spaces ====
+=== Per Platform ===
+Uses less labels - one per FEC
+{{./pasted_image009.png}}
+
+=== Per Interface ===
+Uses multiple labels per FEC
+Used only for special purpose - e.g. frame relay
+{{./pasted_image008.png}}
+
+===== MPLS Configuration =====
+=== security forwarding-options family mpls mode packet-based ===
+changes the forwarding mode for mpls to packet based - requires router restart?
+=== interfaces family mpls; ===
+purpose = allows an interface to receive and process MPLS frames by uploading the microcode for MPLS decapsulation to line cards
+=== mpls interface ge-x/all; ===
+purpose – inform the routing protocol process (RPD) about which interfaces could be used for MPLS signalling
+=== Static LSPs ===
+label range from 1_000_000 to 1_048_575
+also possible to use label 0 (Explicit Null) between the penultimate and egress router
+=== Tables ===
+== mpls.0 ==
+MPLS label-switching table
+maps incoming labels to forwarding actions
+Used bu transit and egress routers
+== inet.3 ==
+Label of LSP egress points
+Contains signalled LSPs at ingress node
+used in the ingress router to check if there is a level switched path to a given destination
+=== installing static route ===
+set routing-options static route <dest-prefix> static-lsp-next-hop <LSP-name>
+static route will be installed into the inet.0 table
+can configure route preference instead - more annoying

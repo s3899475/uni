@@ -4,8 +4,9 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 
 ====== Advanced Network Engineering (EEET2286) ======
 
-[ ] [[+Week 1]]
-[ ] [[+Week_2]]
+[*] [[+Week 1]]
+[*] [[+Week_2]]
+[ ] [[+Week_3]]
 [ ] 
 
 ==== Assessments: ====
