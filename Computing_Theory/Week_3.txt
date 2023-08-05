@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-05T14:28:10+10:00
+
+====== Week 3 ======
+
+===== Part 1 =====
+==== Pushdown Automata (PDA) ====
+Adds a stack to a finite state automaton
+* Input is a string
+* Output is **yes** or **no**
+* String is processed one symbol at a time, left to right (a stream)
+* Memory is the current machine state + **stack**
+* Output is based on the last state reached and the **stack being empty**
+
+{{./pasted_image.png}}
+=== Stack operations: ===
+* push – add a value to the top of the stack
+* pop – remove a value from the top of the stack
+* pop then push
+* neither – sometimes indicated by λ (empty string)
+
+=== More rules: ===
+* Stack is initially empty
+* String is accepted if execution finishes in an accepting state AND the stack is empty
+* String is rejected if any of the following occur:
+	* Execution finishes before input is finished
+	* Empty stack is popped
+	* Stack not empty at end
+	* Execution finishes in a non-accepting state
+
+=== Example 1 ===
+{{./pasted_image001.png}}
+Language of PDA:
+L(M) = {a^{n}b^{n} | n ≥ 1}, because at least 1 b must be popped
+changing the middle transition b - A, to λ would make it:
+L(M) = {a^{n}b^{n} | n ≥ 0}
+
+=== Example 2 ===
+{{./pasted_image002.png}}
+L(M) = {wcw^{R} | w is a string over {a, b}} – w^{R} is w in reverse
+or
+L(M) = {wcw^{R} | w ∈ {a, b}*}
+**The ordering is created using the stack**
+
+=== Example 3 ===
+{{./pasted_image003.png}}
+L(M) = {wca^{n} | w ∈ {a,b}*, |w| = n}
+
+**These are both languages that cannot be formed with FSAs or Regular Expressions**
+
+== To figure out the language, the important thing is to figure out how the stack is emptied ==
+
+===== Part 2 =====
+=== Variations of PDAs ===
+Some variations of PDAs allow multiple symbols at a time (e.g. entire words), either as input or as stack operations. This makes no overall difference
+PDAs can also have "extra: stack symbols not in the input language
+	e.g. in JFLAP, a Z is added on the stack before the first state
+
+==== Formal Definition Of Pushdown Automata ====
+Is a 6-tuple (Q ,Σ, Γ, δ, q_{0}, F)
+* Q – finite set of states
+* Σ – finite alphabet
+* Γ – stack alphabet – doesn't have to be related to Σ, can overlap
+* δ: Q × (Σ ∪ {λ}) × (Γ ∪ {λ}) → (subsets of) Q × (Γ ∪ {λ}) – Transition function
+	* First (Γ ∪ {λ}) pops something off the stack (or empty string λ)
+	* Second (Γ ∪ {λ}) pushes something onto the stack (or empty string λ)
+* q_{0} – starting state
+* F ⊆ Q – set of accepting (final) states
+
+**(subsets of) = non-determinism - multiple transitions**
