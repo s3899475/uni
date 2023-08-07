@@ -10,10 +10,12 @@ Use tables of integrals & tables of Fourier transforms
 {{./equation001.png?type=equation}}
 {{./equation003.png?type=equation}}
 {{./equation004.png?type=equation}}
+=== Convonution ===
 {{./equation007.png?type=equation}}
 
 {{./equation006.png?type=equation}}
 ==== Fourier transform properties: ====
+{{./pasted_image002.png}}
 Symmetry - the Fourier transform of a real function will be symmetrical
 === Shift: ===
 {{./equation002.png?type=equation}}

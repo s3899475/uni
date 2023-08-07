@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-07T13:28:34+10:00
+
+====== Week 4 ======
+
+===== Tutorial =====
+modulation = multiplied by a cosine:
+{{./equation.png?type=equation}}
+
+wavelength proportional to antenna length
+short antenna = high freq
+cos ident:
+{{./equation001.png?type=equation}}
+β = inf → Suppressed Carrier (SC), Ampliture of carrier = 0
+

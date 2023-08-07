@@ -43,7 +43,7 @@ aperiodic signals are usually energy signals
 spectrum and bandwidth are linked
 **filter bandwidth** - frequency range that the filter will pass through
 
-**Base band signals** - signals with spectra centred around 0 Hz
+== **Base band signals** - signals with spectra centred around 0 Hz ==
 
 signals - types of bandwidth:
 **Bandwidth** is based on the positive part of the spectrum, it can be defined in several different ways:

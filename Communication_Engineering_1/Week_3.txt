@@ -1,0 +1,86 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-07T15:05:17+10:00
+
+====== Week 3 ======
+
+===== Part 1 - Intro to AM =====
+Analogue is the foundation for DSP
+all wireless transmissions are analogue signals
+	Antennas cannot transmit digital signals directly
+	Transmission generally requires analogue modulation/multiplexing techniques
+
+==== Modulation ====
+Involves two signal components:
+* A **modulating signal** — the message m(t) or baseband signal
+* A **carrier** — a high frequency sinusoid
+
+When a signal is modulated, the carrier's **amplitude**, **frequency**, or **phase** is then varied in proportion to the baseband signal m(t)
+
+=== Why Modulate? ===
+== To enable wireless transmission of a baseband signal ==
+* **Efficient** wireless transmission requires an antenna at least λ/4 long (quatre-wavelength monopole antenna), or multiples of this value
+* Human hearing is from 20Hz to 20kHz, which are large wavelengths, antennas would need to be prohibitively large to transmit these frequencies
+
+{{./equation.png?type=equation}}
+antenna length for 20Hz = 3,750 km!
+antenna length for 500MHz = 15 cm
+much more practical
+
+== To allow multiple signals to be transmitted through the air ==
+Signals can be changed to different frequencies, so that many messages can be transmitted at once - transmitting at baseband would interfere with each other
+called Frequency Division Multiplexing (FDM)
+used in AM and FM radio
+
+==== Amplitude Modulation ====
+alters the amplitude of a carrier signal proportionally to the amplitude of an information signal, m(t)
+
+=== Generating Equation ===
+{{./equation001.png?type=equation}}
+Ka = amplitude sensitivity, dictates how far the amplitude of the carrier will change
+[1 + m(t)] — 1 = just carrier signal, m(t) = message
+so, [1 + m(t)]c(t) = carrier + carrier*message
+
+The information signal will decide the **envelope** (instantaneous amplitude) of the modulated signal
+The sinusoidal carrier will decide the **centre frequency** of the modulated signal
+
+=== AM - Time Domain ===
+{{./pasted_image.png}}
+
+=== AM - Frequency Domain ===
+{{./pasted_image001.png}}
+The middle spike at the bottom is the original carrier signal, the spikes to the side are the message signal that has been modulated
+
+=== Double Side Band AM (DSB AM) ===
+used for commercial broadcasting
+Also called conventional AM
+Called double side-band since the negative part of the information spectrum now appears in the positive part of the spectrum, centred around f_{c} Hz
+
+== Bandwidth of DSB AM ==
+need a channel with a bandwidth of at least 2B Hz
+Thsi is because the negative side of the message spectrum now appears in the positive frequency domain
+{{./pasted_image002.png}}
+
+== Power of DSB AM ==
+Power of carrier (sinusoid)
+{{./equation002.png?type=equation}}
+
+Power of message
+{{./equation003.png?type=equation}}
+
+Power of DSB AM:
+{{./equation004.png?type=equation}}
+
+=== Modulation Index (β) ===
+The ratio of message to carrier is the **modulation index**, β
+Is affected by he value selected for sensitivity, as well as the carrier and message amplitudes (Ac and Am)
+{{./equation005.png?type=equation}}
+
+A higher modulation index can make the signal cleared when it is demodulated, as it will have more power
+To avoid over-modulation, the combination of message amplitude and amplitude sensitivite, K_{a}, cannot be too large
+
+The modulation index, β **must be less than 1**
+If this is not fulfilled, the AM signal's **envelope** will not be able to represent the original information.
+In broadcasting, the practical value of the modulation index ranges between 0.8 and 0.9
+{{./pasted_image003.png}}
+When the modulation index is > 1, the upper and lower envelope will overlap, which can be harder to demodulate. This will cause distortion in audio
