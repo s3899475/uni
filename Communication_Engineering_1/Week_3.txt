@@ -4,7 +4,6 @@ Creation-Date: 2023-08-07T15:05:17+10:00
 
 ====== Week 3 ======
 
-===== Part 1 - Intro to AM =====
 Analogue is the foundation for DSP
 all wireless transmissions are analogue signals
 	Antennas cannot transmit digital signals directly
@@ -32,11 +31,12 @@ Signals can be changed to different frequencies, so that many messages can be tr
 called Frequency Division Multiplexing (FDM)
 used in AM and FM radio
 
-==== Amplitude Modulation ====
+===== Amplitude Modulation =====
 alters the amplitude of a carrier signal proportionally to the amplitude of an information signal, m(t)
 
 === Generating Equation ===
 {{./equation001.png?type=equation}}
+== m(t) has its own amplitude!! ==
 Ka = amplitude sensitivity, dictates how far the amplitude of the carrier will change
 [1 + m(t)] — 1 = just carrier signal, m(t) = message
 so, [1 + m(t)]c(t) = carrier + carrier*message
@@ -70,17 +70,59 @@ Power of message
 
 Power of DSB AM:
 {{./equation004.png?type=equation}}
+Most of the power will come from the carrier
 
 === Modulation Index (β) ===
 The ratio of message to carrier is the **modulation index**, β
 Is affected by he value selected for sensitivity, as well as the carrier and message amplitudes (Ac and Am)
+== For y(t) = A_{c}[1+K_{a}m(t)].cos(ω_{c}t) ==
 {{./equation005.png?type=equation}}
+== m(t) has its own amplitude!! = A_{m} ==
 
 A higher modulation index can make the signal cleared when it is demodulated, as it will have more power
 To avoid over-modulation, the combination of message amplitude and amplitude sensitivite, K_{a}, cannot be too large
 
 The modulation index, β **must be less than 1**
 If this is not fulfilled, the AM signal's **envelope** will not be able to represent the original information.
+== When β < 1, this is called under-modulation ==
 In broadcasting, the practical value of the modulation index ranges between 0.8 and 0.9
 {{./pasted_image003.png}}
 When the modulation index is > 1, the upper and lower envelope will overlap, which can be harder to demodulate. This will cause distortion in audio
+
+==== Suppressed Carrier (SC) AM - DSB and SSB ====
+used in niche area
+=== Double sideband suppressed carrier AM (DSB/SC) ===
+Direct modulation. No Additive carrier term
+{{./equation006.png?type=equation}}
+{{./pasted_image004.png}}
+
+{{./pasted_image005.png}}{{./pasted_image007.png}}
+No big spike at f_{c} in frequency spectrum
+
+== Properties: ==
+* More efficient power consumption
+* Modulation index undefined/infinity
+* More complex, synchronous detection techniques required to demodulate
+	* Usually uses a Phase Locked Loop (PLL) – Synchronises the phase of a local carrier to the phase of the carrier used to transmit the signal
+**Power:**
+carrier:
+{{./equation007.png?type=equation}}
+message:
+{{./equation008.png?type=equation}}
+**DSB/SC AM Power:**
+{{./equation009.png?type=equation}}
+
+
+=== Single sideband suppressed carrier AM (SSB/SC) ===
+No additive carrier (SC)
+remove a sideband - redundant information
+	Half the bandwidth of DSB – Improved bandwidth efficiency
+{{./pasted_image008.png}}{{./pasted_image009.png}}
+Only the upper sideband is present in the final spectrum
+
+== Signal equation ==
+{{./equation010.png?type=equation}}
+where hat m(t) is the Hilbert transform of m(t)
+special type of quadrature modulation
+
+==== AM Demodulation ====

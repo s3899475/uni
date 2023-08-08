@@ -5,7 +5,9 @@ Creation-Date: 2023-07-10T16:40:47+10:00
 ====== Software Engineering Process and Tools (COSC2299) ======
 [[https://scrumguides.org/scrum-guide.html|Scrum Guide]]
 [*] [[+Week_2]]
-[ ] [[+Week_3]]
+[*] [[+Week_3]]
+[ ] [[+Week_4]]
+[ ] 
 
 ==== Assessments: ====
 === Major Project (40%) - weekly progress marks ===

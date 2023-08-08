@@ -1,0 +1,51 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-08T18:36:29+10:00
+
+====== Week 4 ======
+
+===== Continuous Integration and Delivery =====
+release candidates
+
+Antipatterns:
+Deployin gSoftware Manually
+Deploying to production only after devlopment is complete
+Manual conf management of prod env
+
+Problems:
+errors can occur when deployments aren't automated
+deployment is not repeatable/reliable
+deployment must be documented
+depend on deployment expert
+can't test deployment
+
+CI
+all members integrate frequently - validate through automated building and testing
+
+==== Key Practices ====
+Single source repo
+Automate building
+Automated testing
+Everyone commits to mainline every day
+every commit should build mainline on integration machine
+fix broken builds immediately
+keep build process fast
+
+==== Maven ====
+
+branch for each feature(user story) - name as such
+must test
+commit and push often
+implement a CI
+
+Tasks
+github project board
+Title - task title
+make issue
+desc = user story and acceptance criteria
+
+group tasks into sprints - use time estimation
+{{./pasted_image.png}}
+{{./pasted_image001.png}}
+
+Link  tasks to issues (user stories)
