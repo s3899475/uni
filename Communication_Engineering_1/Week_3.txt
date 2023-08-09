@@ -126,3 +126,70 @@ where hat m(t) is the Hilbert transform of m(t)
 special type of quadrature modulation
 
 ==== AM Demodulation ====
+Methods - depend on type of AM signal received
+* Envelope Detector
+* Synchronous Detector
+* Square-Law Demodulator
+
+=== Envelope Detector ===
+Carrier transmission enables simplified detection via an envelope detector
+multiplicative and additive term – **no suppressed carrier**
+modulation index must be set so:
+1 + K_{a}m(t) ≥ 0 for all time
+Simple envelope detector circuit:
+{{./pasted_image010.png}}
+Input: DSB AM signal
+{{./pasted_image012.png}}
+diode rectifies signal (only lets positive through) - we want to recover dotted line
+{{./pasted_image011.png}}
+RC - low pass filter - capacitor smooths the signal
+{{./pasted_image013.png}}
+output: message with dc offset (depends on modulation index)
+{{./pasted_image016.png}}
+
+== Design of an envelope detector ==
+charging and discharging capacitor must take into account carrier frequency and discharge slowly
+**charge time**
+{{./equation011.png?type=equation}}
+quick (a lot less than carrier freq)
+**τ_{c} « 1/(2πf_{c})**
+
+**discharge time**
+{{./equation012.png?type=equation}}
+slow (shorter than peaks of the message but longer than the peaks of the carrier)
+**1/(2πf_{c}) « τ_{d} « 1/(2πB)**
+
+When AM signal is positive, diode acts like a closed switch. When signal is negative, diode acts like an open switch
+{{./pasted_image015.png}}
+standard capacitor charge and discharge
+
+== Conventional AM vs DSB/SC ==
+{{./pasted_image017.png}}
+Suppressed carrier will cause the effect shown on the bottom row. Will return absolute value of the message
+
+=== Square-Law Demodulator ===
+no suppressed carrier
+{{./pasted_image018.png}}
+Non linear circuit (not LTI)
+== Output: ==
+{{./equation013.png?type=equation}}
+{{./pasted_image019.png}}
+{{./pasted_image020.png}}
+Output will be slightly corrupted
+Error term relative to amplitude sensitivity
+
+{{./pasted_image021.png}}
+Suppressed carrier will return double the frequency
+not a pure sine wave because of error term
+
+=== Synchronous Demodulation ===
+Works with local oscillator (local carrier), mixed with incoming signal
+{{./pasted_image022.png}}
+d(t) has message + high frequency component
+important that local osc (g(t)) is exactly in phase and matches original carrier. This is done by the Phase Locked Loop (PLL)
+	Compares input, returns error term that adjusts the local oscillator
+
+**if phase of g(t) is 90° to y(t), system will not work**
+
+{{./pasted_image023.png}}
+can work with suppressed carrier
