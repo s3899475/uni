@@ -119,7 +119,7 @@ Packets with the same label are always treated the same
 	* Legal only when it is the sole label stack entry
 	* Indicates that the label must be popped, and the forwarding of the packet based on the IPv6 header
 * **3 - Implicit NULL**
-	* never found in MPLS frames, only used in signalling
+	* never found in MPLS frames, only used in signalling process
 	* When an LSR would otherwise replace the label at the top of the stack with a new label, but the new label is 3 (Implicit null), the LSR pops the stack instead of swapping.
 		* used for penultimate-hop-popping, where the penultimate router pops the last MPLS label
 * **4 – 6 - Unassigned (Reserved)**

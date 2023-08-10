@@ -104,3 +104,16 @@ used in the ingress router to check if there is a level switched path to a given
 set routing-options static route <dest-prefix> static-lsp-next-hop <LSP-name>
 static route will be installed into the inet.0 table
 can configure route preference instead - more annoying
+
+=== Ultimate hop popping ===
+''set protocols mpls label-switched-path RX-to-RY ultimate-hop-popping''
+disables penultimate hop popping, overrides explicit-null
+can be used when it is important to preserve the LSP identity even at the egress
+	e.g. MPLS-TP for performance monitoring and in-band OAM
+allows loss and delay measurement
+	''set protocols mpls label-switched-path RX-to-RY oam mpls-tp-mode''
+	requires 2 LSPs in each direction, need to be associated with
+	''set protocols mpls label-switched-path RX-to-RY associate-lsp RA-to-RB''
+	then use this to measure the loss and delay every second
+	''monitor mpls loss-delay rsvp RX-to-RY''
+
