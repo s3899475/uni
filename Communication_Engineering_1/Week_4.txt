@@ -14,3 +14,22 @@ cos ident:
 {{./equation001.png?type=equation}}
 β = inf → Suppressed Carrier (SC), Ampliture of carrier = 0
 
+===== Lab 2 =====
+noise rms ~= 1.3V
+Bandwidth of message = 9KHz
+f0 = message freq = 4.5KHz
+f_{IF} = 65KHz
+f_{LO} = 15 KHz
+
+β design
+0.8 < β < 1
+β = 0.9 (chosen)
+β = K_{a}A_{m} = 1
+β = G_{1}× G_{2} × 0.5
+G_{1} = 0.9
+G_{2} = 2
+
+VCO 1 connected to Adder after buffer amplifier, adder gain set to 0.5
+
+VCO2 has amplitude of 2.6
+change LPF gain so output has an amplitude of 0.9

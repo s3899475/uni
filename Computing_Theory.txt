@@ -7,14 +7,14 @@ Creation-Date: 2023-07-10T16:41:30+10:00
 [*] [[+Week 1]]
 [ ] [[+Week_2]]
 [ ] [[+Week_3]]
-[ ] 
+[ ] [[+Week_4]]
 
 {a}* → {λ,a,aa,aaa,aaaa,aaaaa...}
 {a^{5}} → {aaaaa}, {a^{n}} → {a n times}
 
 ==== Assessments: ====
 === Assignments ===
-[ ] Assignment 1 (15%)
+[ ] [[+Assignment_1]] (15%)
 [ ] Assignment 2 (25%)
 
 === Timed Assessment (50%) ===
