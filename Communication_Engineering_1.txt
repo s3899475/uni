@@ -13,7 +13,7 @@ Creation-Date: 2023-07-10T16:39:45+10:00
 
 ==== Assessments: ====
 === Laboratories (40%) ===
-[ ] Laboratory 1 - Friday week 4
+[*] Laboratory 1 - Friday week 4
 [ ] Laboratory 2 - Friday week 7
 [ ] Laboratory 3 - Friday week 9
 [ ] Laboratory 4 - Friday week 12

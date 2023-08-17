@@ -101,3 +101,12 @@ L = {λ, 01, 0011, 000111, 00001111, 0000011111, ... }
 {{./pasted_image009.png}}
 L = {0^{n}1^{n} | n ≤ k } = {λ, 01, 0011, 000111, ..., 0^{k}1^{k}}
 so it can never cover the whole language, only up to some k zeroes followed by k ones
+
+==== NFA and DFA ====
+NFA - can contain λ, also can have multiple of the same transition. Also can have no transition for a given state and input
+=== DFA ===
+* **must contain a transition for every input, for every state**
+* no λ 
+
+every DFA is also an NFA
+
