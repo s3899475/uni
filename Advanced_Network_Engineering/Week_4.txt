@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-17T21:36:30+10:00
+
+====== Week 4 ======
+
+===== Chapter 3 =====
+==== LDP ====
+forms a mesh over mpls
+uses IGP best paths
+
+=== LDP Message types ===
+All message types use TCP except Discovery
+* Discovery - locate potential LDP peers - uses UDP
+* Session - manage peer-to-peer TCP sessions
+* Advertisement - create, change or delete label mappings
+* notification - error and advisory information
+
+== Hello based neighbour discovery ==
+2 types, both use **port 646**
+Asymmetric process - router will only respond if session is desired
+
+* basic - only adjacent routers (same subnet) - uses ip IP 224.0.0.2 (all routers on subnet), uses unicast
+* extended - routers don't need to be directly connected. Uses specific IP
+**active node (session initiator) is selected based on the highest IP address**
+
+Hello Message fields
+* LDP-ID 0 6 byte id. used in all LDP messages
+* Transport address
+* Hello Timeout
+* configuration Sequence Number - used to identify configuration changes
+
+=== LDP-ID ===
+{{./pasted_image002.png}}
+Typically, the LDR ID is the system IP address because it must be globally unique
+Last 2 bytes identify a specific label space
+	is set to 0 for platform wide label spaces
+== Example LDP-ID ==
+10.10.10.4:0
+first is system IP, 0 = platform wide label space
+
+=== Hello intervals ===
+dont need to be the same between neighbours, will be negociated
+Hello interval - default 5s for link, 15s for targeted
+Hold timer - default 15s, 45s for targeted hello
+	If hold timer expires, LSR deletes hello adjacency
+	Can be asymmetric as well
+cannot be renegotiated, LDP must be cleared after it is changed
+
+== Timeout mismatch ==
+lower value will be used
+
+==== LDP Tunneling ====
+allows RSVP traffic engineering to be combined with LDP label distribution
+	targeted LDP session is established between RSVP endpoints
+	Forwarding will use label stacking
+
+e.g.
+RSVP used in P routers
+LDP used in PE routers to build mesh simply
+
+requires two LDPs, one in each direction.
+
+==== LDP Policies ====
+types:
+* Import - affects label mappings received from neighbours
+	* Can be used to filter out unwanted labels advertised from a peer
+* Export - affects label mappings sent to neighbours
+	* Can be used to prevent the router from advertising a label mapping
+* Egress - allows the distribution of additional prefixes
+	* The advertising router will become the egress point
+
+
