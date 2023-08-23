@@ -1,0 +1,111 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-23T20:26:32+10:00
+
+====== Week 5 ======
+
+===== Chapter 4 - routing table integration =====
+inet.3 table
+MPLS LSPs for BGP next-hop resolution
+Changing traffic engineering behaviour
+
+== inet.0 ==
+Primary IP unicast routing table
+== inet.3 ==
+Table of LSP egress points
+On the ingress node, it houses LSP destinations, typically as [[/32]] routes
+== mpls.0 ==
+MPLS switching table
+used by trasit and egress routers to take a forwarding based on the incoming label value
+
+==== BGP Traffic Engineering ====
+One of the first MPLS applications
+enabled by default - only requires LSPs and internal BGP to be setup
+
+next hop changes based on type of bgp
+**EBGP** - Next hop is changes to be the advertising router
+**IBGP** - Next hop is not changed, just propagated as it is.
+	results in hidden routes due to unusable next-hop (default rules cause next hop of BGP routes to be the remote end of the inter-AS (autonomous system) link. Hidden routes cannot be used for forwarding)
+{{./pasted_image.png}}
+use show route hidden to show unusable routes
+
+=== BGP next hop ===
+next-hops must be resolved
+	i.e. translated into a forwarding next-hop via route lookup (router must know)
+Without MPLS, next-hops are typically resolved by the IGP
+With MPLS, next hops can be resolved via LSPs, enabling traffic engineering
+
+=== Solutions for hidden routes ===
+* ''next-hop self'' towards IBGP neighbours
+	* recommended
+	* also facilitates MPLS traffic engineering
+	* ''set policy-options policy-statement next-hop-self then next-hop self''
+	* ''set protocols bgp group ibgp export next-hop-self''
+* Distribute the inter-AS link in the IGP (R4 to Site 2)
+	* not recommended
+	* problems with stability, extraneous addresses in the IGP (bigger routing tables)
+
+=== Preference values ===
+MPLS has lower preference by default - will be used over OSPF, IS-IS
+{{./pasted_image001.png}}
+
+=== Successful setup ===
+{{./pasted_image002.png}}
+{{./pasted_image003.png}}
+will go along LSP R1-to-R4
+if this goes down, will fallback to IGP
+
+==== Binding Additional Prefixes to LSPs ====
+In some scenarios, it might be useful to install additional prefixes in inet.3 (**instead of next-hop self**)
+* This means telling the LSR that a given network is reachable via the egress of an LSP
+* ''install <prefix>'' command for RSVP or egress policy for LDP
+	* LDP also requires the additional prefixes to be in the IGP
+	* RSVP does not need this by default, unless you want to be able to keep on forwarding traffic via normal IGP paths if the LSP goes down
+	* ''install <prefix> active'' = install in inet.0 table instead of inet.3
+**not considered best practice**
+	redistributing inter-AS links in the IGP to enable BGP traffic engineering without next-hop self might have a negative impact on IGP scalability and stability
+
+== another way to put it in inet.0 - static lsp routes ==
+
+Can install egress policy
+''policy options policy statement advertise-prefix from route-filter <ip>/<mask> exact then accept''
+''protocols ldp egress policy advertise-prefix''
+''protocols isis export advertise-prefix''
+== if you configure an egress policy, it will override the default one (which is the loopback address) ==
+any route not matching the policy will not be distributed
+
+==== Altering the Default Traffic Engineering Behaviour ====
+default behaviour:
+* Use LSPs for BGP next-hop resolution
+* BGP can use the contents of inet.3 for forwarding
+* Internal destinations are typically not associated with a BGP next hop and do not use LSPs
+
+altering behaviour - several options are available
+''protocols mpls traffic-engineering''
+* **bgp** - default
+	* install LSP egress points into inet.3
+	* inet.3 used for BGP next-hop resolution, but not for directly forwarding IP traffic
+		* MPLS will be used for forwarding only when traffic is following a BGP route which has a MPLS egress point as next-hop
+	* other MPLS applications (such as VPNs) can also use the inet.3 table
+* **bgp-igp**
+	* provides traffic engineering for internal destincations
+	* moves all inet.3 prefixes into inet.0
+		* LSPs can be used for forwarding even without BGP
+		* inet.3 is empty, other MPLS applications (e.g. VPNs) will not work
+	* Lacks support for VPNs and other applications
+		* limits the usefulness of this option
+* **bgp-igp-both-ribs**
+	* Extends the behaviour of bgp-igp
+	* copies (instead of moves) all inet.3 prefixes into inet.0
+	* LSPs egress points both in inet.0 and inet.3
+	* LSPs can be used for forwarding even without BGP
+	* Other MPLS applications will work (VPNs)
+* **mpls-forwarding**
+	* Completely changes the mode of operation of a router
+	* addresses issues with RSVP and LDP routes overshadowing IGP routes
+	* Causes MPLS routes to be used for forwarding, but to be excluded from best route computation
+	* Keeps routes in inet.3 for VPNs and BGP route resolution
+== • cant build lsp over other LSP, lower preference value will win ==
+
+	
+== = ==
