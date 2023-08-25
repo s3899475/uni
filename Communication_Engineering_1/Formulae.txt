@@ -31,3 +31,12 @@ E_{kx} = k^{2}E_{x}
 === Convolution - linear time-invariant system ===
 {{./equation004.png?type=equation}}
 usually just x(t) and H(f) are given
+
+==== Amplitude Modulation ====
+=== Conventional AM ===
+{{./equation008.png?type=equation}}
+{{./pasted_image.png}}
+
+=== DSB/SC ===
+{{./equation009.png?type=equation}}
+{{./pasted_image001.png}}

@@ -3,6 +3,168 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-08-07T13:28:34+10:00
 
 ====== Week 4 ======
+===== Part 1 - Practical Systems for Modulating AM =====
+Difficult to generate high voltages in lab (V instead of kV)
+kV requires linear power amplifiers which are not very efficient when operating at RF frequencies
+High power AM transmission is practically achieved by using several different techniques:
+* square-law devices
+* switching devices - early type of am modulation
+* balance modulators - used for DSB/SC
+
+==== Square Law Device ====
+Can be used for modulation as well as demodulation
+{{./pasted_image.png}}
+non linear
+BPF = band pass filter
+{{./pasted_image002.png}}
+spikes at ±10 Hz are the message
+{{./equation002.png?type=equation}}
+
+==== Switch Modulators (Switching devices) ====
+start my adding carrier and message signals together
+{{./equation003.png?type=equation}}
+d(t) is then sampled with a square wave, p_{s}(t) of amplitude V_{0} and frequency equal to that of the carrier
+{{./pasted_image003.png}}
+Output:
+{{./equation004.png?type=equation}}
+effectively imitates the Fourier series, as square waves have infinite harmonics, many AM signals are produced at the harmonic frequencies.
+A BPF is needed to isolate the appropriate signal
+{{./pasted_image004.png}}
+z(t) has infinite harmonics (30Hz, 40Hz, 50Hz, etc)
+
+==== Balanced Modulators ====
+used for DSB/SC generation
+
+Combines two AM signals in such a way as to cancel out the carrier components, leaving a double sideband suppressed carrier (DSB/SC) AM signal
+This can be changed into a single sideband suppressed carrier s(SSB/SC) AM signal with a band pass filter
+{{./pasted_image005.png}}
+-1 = -1 multiplication (180° phase change)
+
+{{./pasted_image006.png}}
+Carrier (high freq) has 180° phase difference between z1 and z2
+
+===== Part 2 =====
+==== Commercial AM radio broadcasting ====
+In Australia
+AM carrier frequencies: 531 - 1602 kHz with a separation of 9 kHz between channels (2B = 9kHz)
+=== Different classes of signal power: ===
+* Typically 1-50 kW for local broadcasting
+* Up to 0.5 MW for international broadcasting
+=== Examples: ===
+* 774 ABC Melbourne (national broadcast), power = 50 kW
+* 693 3AW Melbourne (commercial broadcast), power = 5 kW
+* 855 3CR Melbourne (community broadcast), power = 2 kW
+=== Frequency generation ===
+AM generation circuits generally don't provide a carrier frequency sufficient for radio transmission
+Carrier frequency must be raised using up-converters
+Commercially two stages are used:
+* Raise carrier to an intermediate frequency (IF) (typically kHz range)
+* Then raise carrier to RF frequency (0.53 to 1.6 MHz range)
+Amplifiers and BPFs are used after each conversion, as every conversion reduces the carrier power by 1/4x and produces an unwanted image
+
+==== Superheterodyne Receivers ====
+Down-convert frequency in a two-step process
+{{./pasted_image009.png}}
+Single state down-converter receiver
+{{./pasted_image010.png}}
+Dual stage down-converter
+
+At each mixing stage, harmonics are created from the non-linear nature of the multiplication process
+	Hence, a narrow band-filtering is required after each mixing stage
+In many practical situations, a dual or even tri-stage down-conversion process is used to further improve the frequency selectivity of the receiver.
+	This just means that more mixing stages are added to the receiver with different local oscillator ferquencies and different BPF centre frequencies
+
+=== Example ===
+IF = 455 kHz, convert to this frequency
+find local osc frequencies that will allow the following radio stations to be demodulated:
+* fc1 = 774 kHz
+* fc2 = 1026 kHz
+* fc3 = 693 kHz
+What unwanted harmonics are produced?
+Intermediate osc frequencies:
+* f_{IF1} = 774 kHz ± 455 kHz = 319 kHz or 1229 kHz
+* f_{IF2} = 1026 kHz ± 455 kHz = 571 kHz or 1481 kHz
+* f_{IF3} = 693 kHz ± 455 kHz = 184 kHz or 1094 kHz
+Mixing process - before BPF:
+{{./equation005.png?type=equation}}
+Unwanted harmionics:
+f_{IF1} 
+774 + 319 = 1091
+774 + 1229 = 2001
+f_{IF2} 
+774 + 571 = 1597
+774 + 1481 = 2507
+f_{IF3} 
+774 + 184 = 931
+774 + 1094 = 1841
+
+=== Frequency Selectivity ===
+Since mixing produces harmonies, it's possible that interference can occur if a receiver has poor frequency selectivity at its input.
+e.g at 693 kHz we would use a local oscillator of 1,148 kHz to produce an IF of |693 - 1148| = 455 kHz
+But a station at 1603 kHz could also be detected, since |1,603 - 1,148| = 255 kHz
+this is called an **image signal** and it will cause interference
+
+===== Part 3 - Multiplexing =====
+Used to allow multiple messages to be transmitted simultaneously through the same channel with no interference
+==== Time Division Multiplexing (TDM) ====
+used to multiplex multiple (~=24 or 32) telephone calls on a single four-wire cable in both the T-carrier (USA) and E-carrier (Europe) telecommunications standards, respectively
+cycles through the different messages, analogous to people speaking at different times
+{{./pasted_image012.png}}
+TDM is used for messages that have been **encoded as pulses**, e.g. pulse amplitude (PAM) or pulse code (PCM) modulated signals.
+**synchronisation** is highly important for TDM as multiple messages are being transmitted during different clock cycles.
+	In telephone systems that utilise TDM, there are often timeslots allocated for synchronisation buts to be transmitted on.
+
+==== Frequency Division Multiplexing (FDM) ====
+Multiple messages are modulated on different carrier frequencies far enough apart so as to have no spectral overlap
+analogous to people speaking with different pitches
+{{./pasted_image013.png}}
+
+==== Code Division Multiple Access (CDMA) ====
+A spread spectrum technique used in 3G telecomunications
+multiple users can make phone calls using parts of the same spectral region
+Each digitised message is encoded using a fast-rate, pseudo-random code known to both the transmitter and receiver, only the receiver that knows the code can decode the message
+analogous to a room of people speaking in different languages. Only people speaking the same language can understand each other, other conversations arround them sound like noise and are ignored
+
+==== Orthogonal Frequency Division Multiplexing (OFDM) ====
+Also called Orthogonal Frequency Division Multiple Access (OFDM(A))
+Utilised in both 4G and 5G telecommunications
+also a spread spectrum technique
+
+allows multiple users to communicate in the same spectral region by allocating multiple, closely spaces, orthogonal sub-carriers to users.
+* Each sub-carrier transmits **part of** a conversation/data, the receiver(s) will know which sub-carriers contain the data
+* Sub carriers can overlap
+analogous to many people having conversations at the same time, but each conversation is spearated by walls (separate rooms)
+
+==== Examples ====
+=== Design a TDM system that will accommodate the following sources: ===
+* s1 = analogue 2 kHz bandwidth
+* s2 = analogue 4 kHz bandwidth
+* s3 =analogue 2 kHz bandwidth
+Nyquist's theorem: minimum sampling rate = 2B for aliasing to not occur
+* f_{s1} = 2 × 2000 = 4000 samples / sec
+* f_{s2} = 2 × 4000 = 8000 samples / sec
+* f_{s3} = 2 × 2000 = 4000 samples / sec
+
+Multiplexing and clock cycle details
+{{./pasted_image014.png}}
+red = s1, green = s3, blue = s2
+{{./pasted_image015.png}}
+
+=== Design a FDM system that will accommodate the following types of signals: ===
+* s1 = Voice signals (approx. 4kHz baseband bandwidth)
+* s2 = Video signals (2.5 MHz baseband bandwidth)
+Assume AM is the modulation method
+
+Bandwidth usage and carrier spacing:
+modulation effectively doubles bandwidth requirements
+minimum bandwidth (in practice would be a bit higher):
+B_{voice} = 2 × 4 kHz = 8 kHz
+{{./pasted_image016.png}}
+B_{video} = 2 × 2.5 MHz = 5 MHz
+{{./pasted_image017.png}}
+
+Spike arrow is the carrier frequencies
+
 
 ===== Tutorial =====
 modulation = multiplied by a cosine:
