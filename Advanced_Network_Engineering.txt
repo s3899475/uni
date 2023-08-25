@@ -18,7 +18,7 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 [ ] Lab 5-6 Report (13%) - week ?
 
 === Timed Assessments ===
-[ ] Mid-semester Timed Assessment (20%)
+[ ] [[+Mid-semester Timed Assessment|Mid-semester Timed Assessment]] (20%)
 [ ] Final Timed Assessment (25%)
 
 === Weekly practice activities (15%) ===

@@ -16,7 +16,7 @@ Table of LSP egress points
 On the ingress node, it houses LSP destinations, typically as [[/32]] routes
 == mpls.0 ==
 MPLS switching table
-used by trasit and egress routers to take a forwarding based on the incoming label value
+used by transit and egress routers to take a forwarding based on the incoming label value
 
 ==== BGP Traffic Engineering ====
 One of the first MPLS applications
@@ -61,7 +61,7 @@ In some scenarios, it might be useful to install additional prefixes in inet.3 (
 * ''install <prefix>'' command for RSVP or egress policy for LDP
 	* LDP also requires the additional prefixes to be in the IGP
 	* RSVP does not need this by default, unless you want to be able to keep on forwarding traffic via normal IGP paths if the LSP goes down
-	* ''install <prefix> active'' = install in inet.0 table instead of inet.3
+	* ''install <prefix> active'' = **install in inet.0 table instead of inet.3**
 **not considered best practice**
 	redistributing inter-AS links in the IGP to enable BGP traffic engineering without next-hop self might have a negative impact on IGP scalability and stability
 
@@ -105,7 +105,7 @@ altering behaviour - several options are available
 	* addresses issues with RSVP and LDP routes overshadowing IGP routes
 	* Causes MPLS routes to be used for forwarding, but to be excluded from best route computation
 	* Keeps routes in inet.3 for VPNs and BGP route resolution
-== • cant build lsp over other LSP, lower preference value will win ==
+== • cant build lsp over other LSP, lower preference value will win (with BGP) ==
 
 	
 == = ==

@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-24T13:53:37+10:00
+
+====== Mid-semester Timed Assessment ======
+
+===== Q1 =====
+
+
+===== Q2 =====
+
+
+===== Q3 =====
+
+
+===== Q4 =====
+
+
+===== Q5 =====
+
+
+===== Q6 =====
+
+
+===== Q7 =====

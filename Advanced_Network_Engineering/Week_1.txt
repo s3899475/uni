@@ -148,7 +148,8 @@ Only the top label's TC will be used in processing
 === TTL Field ===
 8 bits - functions similarly to the IP TTL field
 Used as a protection mechanism against forwarding loops.
-TTL = 0 will not be transmitted to the next-hop
+TTL = 0 **will not be transmitted** to the next-hop. ICMP message **may** be sent if there is a path back to ingress router and then to host.
+{{./pasted_image008.png}}
 In most cases the TTL of the top label is used in processing
 Two approaches to MPLS TTL Handling:
 == **Pipe Mode** ==
