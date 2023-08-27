@@ -32,7 +32,9 @@ Christopher Tait - S3899475
 ==== b) ====
 === i) ===
 It is not possible to check for palindromic scores as Regular Expressions only operate on a single character at a time, and have no memory of the characters that came before. Checking for palindromes would require something more like a pushdown automata, that can store the characters and check whether the 2nd half of the string is the same as the first but in reverse.
+
 === ii) ===
+It is also not possible to select the longest sequence of consecutive matches for each house because this would require keeping track of how many consecutive matches each house has. Regular Expressions are unable to do this as they have no ability to store data.
 
 === iii) ===
 It is possible to find a sequence of matches in which no triplets were scored pretty easily, you could just change all of the (1-3)s in the syntactically correct regex above to (1-2)
@@ -52,15 +54,19 @@ S → SHN → SHNHN → HNHN → eNHN → eNgN → eDNgN → eDDgN → eDDgD →
 S → SHN → SHNHN → SHNHNHN → SHNHNHNHN → HNHNHNHN → ... → eNgNpNwN → ... → eDgDpDwD → ... → e1g2p3w1
 === iii) p1111 ===
 S → SHN → HN → pN → pDN → pDDN → pDDDN → pDDDD → ... → p1111
+
 ==== b) ====
 λ ∈ L(G) because the staring state, S, can immediately become an empty string (λ). The derivation would be:
 S → λ
+
 ==== c) ====
 L(G) = { {0-9}^{+}{a | e | p | w} }*
 This is correct as the language consists of a string of numbers followed by a, e, p or w, any number of times. There must also be at least one digit because N must become at least one D, it cannot become an empty string.
+
 ==== d) ====
 Sneaky's claim is not correct as there is no limit to the number of times a e, g, p or w appears in a row. This means that there could be multiple scores for the same house in a row. For example, e1e1e1d2d2 is in L(G). So the language also contains "syntactically incorrect" scores.
 The language also contains scores that are not 1, 2 or 3 which cannot happen in a Buckscratch match.
+
 ==== e) ====
 S → E | G | P | W
 N → D | DN
@@ -81,6 +87,7 @@ This language is correct as it solves the two problems with the original grammar
 1. 00300700900100 (q10)
 2. 37910003791 (q19)
 3. 9993373791 (q5)
+
 ==== b) ====
 M1 is non-deterministic as there are states with transitions of the same character. There are also empty string (λ) transitions.
 Examples of states with more than one successor for a specific input:
@@ -89,13 +96,17 @@ Examples of states with more than one successor for a specific input:
 * q15 (3)
 * q1 (3) 
 * q9 (1) 
+
 ==== c) ====
 The languages of the top and bottom parts of the machine are subsets of the language of the middle, as it allows for any numbers between the digits 3791.
 L(M_{1}) = {w_{1}3w_{2}7w_{3}9w_{4}1w_{5} | w_{1},w_{2},w_{3},w_{4},w_{5} ∈ {0-9}*}
+
 ==== d) ====
 It would be possible to just delete the entire upper and lower branches of the machine, and it would still have the same language. This is because the input only needs to reach one of the final states, and the languages of the top and bottom branches are subsets of the middle branch.
+
 ==== e) ====
 M_{3} is not equivalent to M_{1} as strings such as 379100 which used to be accepted by q10 are now rejected. This is because none of the states now have transitions for any numbers after 3791 is inputted.
+
 
 ===== 4. Pushdown Automata =====
 ==== a) ====
@@ -116,6 +127,7 @@ L(q0 → q6 → q7 → q3) = {bw_{1}adw_{2} | w_{1} ∈ {a,b,c}* w_{2} ∈ {a,c}
 
 So the final language of this machine is the union of all four branches
 L(M_{4}) = {adaw | w ∈ {a,b,c}*, number of a's in w = number of b's and c's, number of a's must never exceed number of b's and c's at any point in the string} ∪ {wbdbw_{R}a | w ∈ {a-c}*} ∪ {wbdbw_{R}a | w ∈ {a,b,c}*} ∪ {bw_{1}adw_{2} | w_{1} ∈ {a,b,c}* w_{2} ∈ {a,c}*, |w_{1}| = |w_{2}|, number of a's in w_{1} = number of a's in w_{2}}
+
 ==== c) ====
 This would change the language of that branch to:
 L(q0 → q4 → q3) = {a^{n}ca^{m}dwa^{n+m} | w ∈ {b,c}, |w| = 1, n,m ≥ 0}
@@ -124,7 +136,9 @@ L(M_{4}) = {adaw | w ∈ {a,b,c}*, number of a's in w = number of b's and c's, n
 
 ==== d) ====
 {{./pasted_image.png}}
+
 This machine is correct as it will accept any string in the language {w | w = c*b*a*, |w| ≥ 1, w ! = c}. This will occur if you follow all of the lambda transitions after q1. The first state q0 is the only state that adds to the stack, the remaining states selectively pop the stack to ensure the order of the string is in the form a*b*c*b*a*. States q10, q7, q8 and q9 have been added to allow the 2nd half of the string (b*a*) to be any length that is greater than the first half.
+
 
 ===== 5. Turing Machines =====
 ==== a) ====
@@ -140,10 +154,13 @@ bbccbaacb
 bbcabb
 λ
 bbcccc
+
 ==== b) ====
 The machine M_{7}, obtained by deleting all transition from q1 to q1 is equivalent to M_{6} because a Turing machine does not need to consume all of its input to accept a string, it only needs to end up in a final state. Hence, when the machine gets to state q1 and has no transitions out of that state, it will always accept the input.
+
 ==== c) ====
 The machine M_{8}, obtained by adding a transition from q3 to q3 with input a that writes an a and moves right is equivalent to M_{6}. This is because when this path is taken, when the machine gets to q6 on an input, it will go left until it hits the a character on the tape. There is no transition out of q6 with an a, so the Turing machine will halt. q6 is not a final state so the input will be rejected. Since this transition is non-deterministic (there is another transition out of q3 with the input as 'a') and this will happen whenever this path is taken, the path has no influence on the language of the machine.
+
 
 ===== 6. Creative Task =====
 https://github.com/s3899475/COSC1107-Assignment-1
@@ -165,6 +182,7 @@ Output of the ant 'LURURURURULU'. Forms a square pattern
 
 {{./pasted_image005.png}}
 Output of the ant 'LNRU'. Is very chaotic
+
 
 ===== 7. Platypus Game =====
 ==== a) ====
