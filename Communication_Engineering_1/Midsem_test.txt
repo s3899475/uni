@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-25T21:31:31+10:00
+
+====== Midsem test ======
+
+===== Q1) =====
+The two mistakes that Bob has made are:
+1)
+The bandwidth will be 10 kHz for a double sideband amplitude modulated message of 5 kHz
+This violates the bandwidth requirement of 9 kHz
+2)
+The message amplitude |M| will at times be too high, as the maximum amplitude of 2cos(10,000π t) is 2
+This does not conform with the requirement of |M| ≤ 1
+
+===== Q2) =====
+Bob is currently trying to use a suppressed carrier (SC) signal with an envelope detector.
+The reason this does not work is that an envelope detector will only detect the correct signal if the envelope (message) is entirely above the y axis. If it is not, the portion below the y axis will interfere with it.
+Another way to explain it is that the modulation index, β, must be less than or equal to 1. With a suppressed carrier signal, the modulation index is effectively infinite.
+
+The changes that Bob could make to fix the problem are either:
+1) transmitter end
+Bob could add the carrier signal to the modulated system output y(t)
+This would change the signal to an additive carrier AM signal, which could be correctly demodulated by an envelope detector
+
+2) receiver end
+Bob could change the envelope demodulator to a synchronus demodulator
+This would work because synchronous demodulators are able to demodulate suppressed carrier AM signals, through the use of a local oscillator set at the right carrier frequency.
+
+
+===== Q3) =====
+Frequency deviation of Kevin's signal
+max voltage = 1V
+Δω = Kω × m(t)_max = 140,000π × 1V
+Δω = 140,000π rad/sec
+Δf = Δω / (2π) = 70,000 Hz
+
+Bandwidth of Kevin's signal:
+Using Carson's rule:
+W = 2Δf + Bm
+W = 2×70,000 + 15,000
+W = 155,000 Hz
+
+Since the bandwidth (W) is below 200,000 Hz, this fulfils the bandwidth requirement
+The frequency deviation is below 75,000 Hz, so the frequency deviation requirement is fulfilled.
+The message's bandwidth is acceptable as it is equal to the upper limit of 15,000 Hz
+
+===== Q4) =====
+The input of the superheterodyne receiver is an amplitude modulated signal. This signal is initially amplified to improve the signal strength.
+The mixer modulates the incoming 100.3Mhz signal with the local oscillator signal, which splits the frequency of it around 111 MHz. The output equation of the mixer is as follows:
+r(t) = A_c [1 + m(t)].cos((ω_c + ω_LO)t) + A_c [1 + m(t)].cos(|ω_c - ω_LO|t)
+This will produce two harmonics, centred around the following frequencies:
+(ω_c + ω_LO) = 100.3 Mhz + 111 Mhz = 211.3 Mhz
+|ω_c - ω_LO| = |100.3 Mhz - 111 Mhz| = 10.7 Mhz
+The signal is again amplified at this stage to increase its strength.
+Only one of these frequencies is the correct intermediate frequency, so the bandpass filter (BPF) is used to filter the other frequency out.
+The intermediate frequency signal will then be demodulated to recover the message signal.
+The message signal is sent through a final amplifier to raise its volume, and then sent to the speaker to be transformed into a sound signal.
+
+
