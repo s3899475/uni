@@ -251,3 +251,23 @@ Finally, a 19kHz pilot tone is added to aid with synchronisation. Also indicates
 
 == Receiving Stereo Audio ==
 {{./pasted_image014.png}}
+
+
+===== Lab 2p3 =====
+B1 = 4.5 kHz single sided baseband
+B2 = 3.5 kHz single sided baseband
+
+Double sided bandwidth = 2 * base bandwidth
+Source 1: B = 2*4.5 = 9kHz
+Source 1: B = 2*3.5 = 7kHz
+
+theoretically gap must be larger than 4.5kHz + 3.5kHz = 8kHz
+So the signals must be at least 9kHz appart, accounting for some variance in the message and carrier signal frequencies
+
+carrier signal = 65 kHz to 150 kHz
+
+**DSB/SC AM Signals**
+f_{c1} = 80 kHz
+so, freq of signal 1 will be 80 ± 4.5
+f_{c2} = 120 kHz
+freq of signal 2 will be 120 ± 3.5

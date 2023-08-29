@@ -1,0 +1,92 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-23T14:37:16+10:00
+
+====== Week 6 ======
+
+===== Tutorial =====
+==== Converting NFAs to DFAs ====
+JFLAP can convert NFA to DFA
+There is a difference between a Deterministic and Nondeterministic Pushdown Automata
+
+Can find multiple DFAs for a NFA - equivalent machines
+
+What DFAs can's do:
+* Recognise context-free languages
+* context-sensitive languages
+* ?
+
+NFA key issues
+conains λ
+may contain more than one transition for a given state and input
+
+Solutions
+compute λ closure
+	consider abc as λ* a λ* b λ* c λ*
+
+{{./pasted_image.png}}
+fold lambda
+
+{{./pasted_image001.png}}
+{{./pasted_image002.png}}
+=== e.g. 2 ===
+at least one must be afinal state for combined to be a final state
+
+{{./pasted_image004.png}}
+
+=== Steps: ===
+* Start with λ closure for each state
+* Generate t table
+* Initial state of DFA is the λ closure of initial state in NFA
+* Construct DFA
+	* Keep adding states until all transitions are to existing states
+
+DFA may be exponentially larger!!
+n -> 2^{n} states in DFA max
+e.g.
+{{./pasted_image005.png}}
+
+
+
+thur-fri - ron
+
+
+
+==== Pumping Lemma ====
+Reasoning about what DFAs can't do
+property of regular languages
+
+DFAs have bounded memory - known before it is run
+any string over a certain length with contain repeated sections - some sequences of states will be repeated
+
+For any string w ∈ L(M) with |w| ≥ [[#states]] in M, there is a cycle
+=== Definintion ===
+Let L be any regular language
+Then there is a DFA M such that L = L(M)
+Let the number of states in M be n
+Consider w ∈ L(M) with |w| ≥ n, so w=a1a2a3...anan+1
+{{./pasted_image006.png}}
+cannot avoid a cycle with a string of length n or above
+basically same as pidgeon hole principle
+{{./pasted_image007.png}}
+|xy| ≤ n
+
+For any regular language L, there is n ≥ 1 such that for any w ∈ L with |w| ≥ n, there exist x, y, z such that xyz and:
+* |xy| ≤ n
+* y ! = λ
+* x y^{i} z ∈ L for all i ≥ 0
+
+So for any L, for some n find w = xyz ∈ L with |w| ≥ n
+* If L is regular, the xz, xyz, xyyz, ... **are all in L**
+* If xy^{j}z ∉ L for some j ≥ 0, then **L is not regular**
+	* any example can prove this! - proof by contradiction
+== not regular = there is no DFA! ==
+
+=== Proof ===
+* Assume L is regular
+* Apply Pumping Lemma
+* Choose string w ∈ L
+* 
+
+
+{{./pasted_image008.png}}
