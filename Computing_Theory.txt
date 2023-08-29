@@ -8,6 +8,9 @@ Creation-Date: 2023-07-10T16:41:30+10:00
 [ ] [[+Week_2]]
 [ ] [[+Week_3]]
 [ ] [[+Week_4]]
+[ ] a
+[ ] [[+Week_6]]
+[ ] 
 
 {a}* → {λ,a,aa,aaa,aaaa,aaaaa...}
 {a^{5}} → {aaaaa}, {a^{n}} → {a n times}
