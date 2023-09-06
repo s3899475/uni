@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-04T14:53:10+10:00
+
+====== Week 6 ======
+
+===== Part 1 - Review of Sampling Theory =====
+=== Why sample? ===
+most naturally occurring signals are analogue (e.g. audio, temperature, EEG, ECG)
+If we want to process this information using computers or store the information on a computer we need this data in digital format.
+To achieve this we utilize a process of signal sampling (discrete time) together with quantisation (discrete amplitude) and binary encoding to create digital signals to be processed/stored on computers/DSPs
+
+==== Ideal Uniform Sampling ====
+sampling is the process of taking discrete instances from an analogue signal at a uniform rate called the **sampling rate/frequency, f_{s}**
+
+This is achieved by multiplying a train of impulses with the analogue signal, x(t)
+{{./equation.png?type=equation}}
+impulses spaces T_{s} seconds apart
+
+In the frequency domain, sampling gives the original signal's spectrum repeated infinitely every f_{s} Hz (called aliases)
+
+==== Nyquist's Criteria ====
+Sampling and reconstructing a signal can only be successful these are fulfilled
+
+1. For a signal with single-sided bandwidth, W, a sampling rate of **f_{s} > 2W** must be used to avoid aliasing
+2. The reconstruction filter needs to be designed to have a cutoff frequency f_{c} of: **f_{c} = f_{s}/2**. This will remove aliases
+
+Due to thees rules (and aliasing) the digital equivalent of infinity is f_{s}/2, everything above this is a spectral repetition (alias) and can be disregarded
+
+If Nyquist's criteria are not fulfilled a digitised signal will not be able to be reconstructed accurately when it is converted back to an analogue signal.
+
+This is called **alias distortion** and is due to not enough samples being taken of a signal to accurately represent it or a filter allowing aliases to pass through at reconstruction
+
+=== Time Domain alias distortion ===
+{{./pasted_image.png}}
+A digital-to-analogue converter can only see the blue samples
+The red lines are the estimate this system makes of the original signal.
+The bottom graph does not contain enough samples to make an accurate estimate of the correct frequency
+
+=== Frequency Domain alias distortion ===
+{{./pasted_image001.png}}
+using a chirp signal
+
+alias distortion causes overlap of the repeated spectral components in the freqency domain.
+This means that the reconstruction filter cannot discriminate between the original spectra and the aliases

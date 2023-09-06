@@ -1,0 +1,81 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-04T13:41:00+10:00
+
+====== Week 7 ======
+
+===== Tutorial =====
+y(t) = sinc(100t)
+fourier transform is a block from -50 to 50  hz, height = 1/L = 1/100
+min. sampling rate = 2 * 50 Hz = 100 samp/sec
+
+y(t) = sinc^{2}(100t)
+Y(f) = 1/100Δ_{2×100}(f) 
+Fourier transform is triangle from -100 to 100 Hz
+min. sampling rate = 2*100 Hz = 200 samp/sec
+
+y(t) = sinc(100t) + sinc(50t)
+min. sampling rate is the max of both
+min. sampling rate = 2*50 Hz = 100 samp/sec
+
+PAM = (quantisized) amplitude levels
+PCM = Binary number from PAM, choose number of bits (e.g. 4 bits = 16 discrete levels)
+
+==== Q2 ====
+100,000 ascii code (128 characters)
+128 = 2^{7} = 7 bits per character (or per symbol)
+
+bits per second = 100,000 * 7 = 700,000 bps
+
+min bandwidth
+when a peice of information is a bit and using sinc shape(ideal, theoretical):
+	channel can transmit 2 pieces of information per second per Hz - bandwidth will be half of bitrate
+	In an ideal situation
+700,000 / 2 = 350,000 Hz
+
+If a parity bit is added, there will be 8 bits per character
+bitrate = 800,000 bps
+min. samp freq = 400,000 Hz
+
+==== Q3 ====
+analogue signal converted into a PCM signal that is transmitted using a square-shaped polar Non-return-to-zero (NRZ) line-code. The signal is transmitted over a channel that is absolutely bandwidth limited to 4 kHz. Assume the PCM quantiser has 16 levels
+
+max PCM bit-rate
+bitrate = bandwidth
+bitrate = 4 kpbs
+
+max bandwidth of original analogue signal
+number of bits in each level = log2(16) = 4 bits per symbol
+bitrate / bits per symbol = 4000/4 = 1000 symbols (sampling rate)
+fs = 2B → B = fs/2
+bandwidth = 1000/2 = 500 Hz
+
+
+repeat with raised cosine, r=0.5
+bit-rate
+{{./equation001.png?type=equation}}
+Rb = 2*4kHz / (1+0.5)
+bitrate = 5333.3 bps
+
+max bandwidth of original analogue signal
+5333.3 / 4 = 1333.3 sampling rate
+bandwidth = 1333.3 / 2 = 666.7
+
+=== Line codes ===
+NRZ - signal does not return to zero, is held to voltage level during entire bit period
+square wave
+Bt = Rb
+bandwidth = bitrate
+
+Raised cosine
+slightly smoothed square wave
+{{./equation.png?type=equation}}
+r = rolloff factor
+
+===== Lab 3p1 =====
+message freq = 8 kHz
+Gain of message = 1V
+
+Frequency of carrier = 100 kHz
+frequency deviation = W/2 - B
+= 60/2 - 8 = 22 kHz
