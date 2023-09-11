@@ -43,3 +43,267 @@ using a chirp signal
 
 alias distortion causes overlap of the repeated spectral components in the freqency domain.
 This means that the reconstruction filter cannot discriminate between the original spectra and the aliases
+
+===== Part 2 - Quantisation and Binary Encoding of Data =====
+==== Quantisation ====
+rounds each sample's amplitude to the closest value from a finite set of values
+causes some loss of information (in the form of quantisation noise)
+**turns amplitudes into symbols, which can then be turned into bits**
+
+causes some loss of information (in the form of quantisation noise)
+{{./pasted_image003.png}}
+top is finely quantised, bottom is coarsely quantised
+
+=== Pulse Amplitude Modulated (PAM) and Pulse Code Modulated (PCM) data ===
+PAM is the direct output of the quantisation process
+PAM signals consist of discrete voltage levels
+Binary codewords (strings) can then be assigned to each sample/voltage, producing a string of zeroes and ones.
+This is **pulse code modulated (PCM)** data
+
+== PAM example ==
+{{./pasted_image004.png}}
+Symbol (codeword) = 1010
+Bits = 1, 0, 1, 0
+
+== PCM example ==
+{{./pasted_image005.png}}
+
+
+=== Symbol (sampling) Rate and Bit Rate ===
+After PCM encoding we will end up with much more data (bits) per signal sample.
+If we are using a PCM encoding method with K bits to encode each sample we will have K times as much data as we had before binary encoding
+So if our signal samples are entering a binary PCM encoder at a rate of f_{s} Hz, the output **bit rate** will be R_{b} = K f_{s} bits/sec
+
+== definitions ==
+When transmitting **individual bits** through a communication system we talk about the **bit rate in bits/second**
+
+If transmitting **symbols** through a comms system we talk about **symbol rate in bauds**
+Baud rate = symbol rate
+
+==== Transmission Bandwidth ====
+PCM encoding will impact on the amount of bandwidth a signal occupies
+This in turn affects the amount of transmission bandwidth required to transmit data over a channel
+In an **ideal situation**, a channel with bandwidth of B Hz can be used to transmit 2B independent pieces of information
+
+This means for our example with the **PAM** encoded (sampled) data we could have transmitted this data with minimum bandwidth B_{T} = f_{s}/2 hz
+
+After PCM envoding though we had K times as many 'pieces of information' therefore we would need a channel with at least B_{T} = K f_{s} / 2 Hz
+
+== A channel can transmit 2 'pieces of information' per second per Hz bandwidth ==
+This 'information' can be in the form of bits, as in the case of PCM, so the channel can transmit 2 bits/second/Hz
+Or it can be in the form of levels, as in the case of PAM, so the channel can transmit 2 voltage levels/second/Hz
+
+e.g. A 3000 Hz channel therefore could transmit 6000 bits.second (for PCM) or 6000 voltage levels (for PAM) which would be equivalent to (for example, with 4-bit quantisation) 6000 x 4-bits = 24,000 bits
+
+=== Nyquist's criterion for zero ISI ===
+A set of rules that looks at the amount of channel bandwidth required to transmit a digital signal. Reduces inter-symbol interference. An Ideal **using perfect Nyquist shaped pulses**
+For an analogue signal of bandwidth W Hz that has been sampled at the Nyquist rate (2W samples/sec) and then either PAM or PCM encoded:
+|                          | PAM Encoded       | PCM Encoded (using K-bits) |
+|:-------------------------|:------------------|:---------------------------|
+| Data rate                | R_s = f_s sym/sec | R_b = K f_s bits/sec       |
+| Required transmission BW | B_T ≥ W Hz        | B_T ≥ K W Hz               |
+
+==== Grey Coding ====
+| Label | NBC  | Grey |
+|:------|:-----|:-----|
+| V0    | 0000 | 0000 |
+| V1    | 0001 | 0001 |
+| V2    | 0010 | 0011 |
+| V3    | 0011 | 0010 |
+| V4    | 0100 | 0110 |
+| V5    | 0101 | 0111 |
+| V6    | 0110 | 0101 |
+| V7    | 0111 | 0100 |
+| V8    | 1000 | 1100 |
+| V9    | 1001 | 1101 |
+| V10   | 1111 | 1111 |
+| V11   | 1011 | 1110 |
+| V12   | 1100 | 1010 |
+| V13   | 1101 | 1011 |
+| V14   | 1110 | 1001 |
+| V15   | 1111 | 1000 |
+As you increment in grey coding, one bit is changed at a time (when incrementing voltage levels)
+Helps with single bit parity, as usually only a single bit will change when the signal is effected by noise in grey coding
+
+===== Part 3 - Bandwidth Efficiency and Line-coding =====
+PCM signals need much higher transmission bandwidth than analogue signals
+although:
+* PCM signals are easier to merge together with other signals (multiplexing - e.g. TDM)
+* Noise performance is generally better in a digital system and using appropriate coding methods can improve quality further
+{{./pasted_image006.png}}
+general digital communication system
+
+=== Source Coding ===
+usually involves compression
+e.g.
+huffman encoding
+run-length encoding (RLE)
+discrete cosine encoding (DCE)
+
+==== Binary Signalling ====
+The format for 'zeroes' and 'ones'
+e.g. as voltage levels
+^ called **line-coding**
+== Line coding - the process of taking 'zeroes' and 'ones' and converting to an analogue (voltage) signal ==
+
+=== Desirable Properties for efficiency: ===
+* bandwidth efficient
+* power efficient
+* ideally should have some potential ability for error correction
+* ideally should have a power spectral density that is zero at f = 0 Hz (no DC offset)
+* should have timing capabilities so a receiver clock can be synchronised to the incoming code
+* Should have a low bit error rate (so it is not easily affected by channel distortion and noise)
+
+==== Types of Line-codes ====
+| Line code    | &apos;First null&apos; bandwidth |
+|:-------------|:---------------------------------|
+| Polar NRZ    | Rb Hz                            |
+| Unipolar NRZ | Rb Hz                            |
+| Polar RZ     | 2Rb Hz                           |
+| Unipolar RZ  | 2Rb Hz                           |
+| Manchester   | 2Rb Hz                           |
+| Bi-polar     | Rb Hz                            |
+RZ = return to zero = voltages held for half a bit period
+
+=== Unipolar non-return to zero (NRZU) ===
+Also called on-off signalling
+{{./pasted_image007.png}}
+binary 'one' - positive voltage level
+binary 'zero' as zero voltage level
+common. e.g. 5V and 3.3V GPIO
+non-return to zero - means that the signal does not return to zero in between data (held for entire bit period)
+
+needs 3dB more (twice as much) signal power to be as effective and to achieve equal noise immunity to NRZL
+because time average is half the power
+== Bandwidth ==
+consumption is the same as NRZL
+{{./pasted_image010.png}}
+
+bandwidth can be estimated by looking for the first non-DC null (at R_{b})
+This is **twice as much** as the theoretical bandwidth (using Nyquist's theorem) needed to transmit R_{b} pulses per second
+
+=== Polar non-return to zero (NRZL) ===
+{{./pasted_image008.png}}
+same as NRZU but uses negative voltages for 'zeroes'
+more popular than NRZU
+more power efficient than NRZU
+
+== Bandwidth ==
+consumption is the same as NRZU
+{{./pasted_image009.png}}
+can be a DC build up if there are long runs of 1s or 0s
+
+=== Manchester coding ===
+{{./pasted_image011.png}}
+Used in Ethernet
+a 'zero' is represented by a negative going transition, a 'one' us represented by a positive going transition
+basically uses signal edges - depends on the standard
+
+has regular transmissions every period that can be used for synchronisation at the receiver
+
+== Bandwidth ==
+{{./pasted_image013.png}}
+has a null at DC - removes issues with DC build up
+narrowing of pulses causes bandwidth to increase - first non-DC null is at 2R_{b}
+
+=== Alternate mark inversion (AMI) ===
+also called a **bi-polar** signalling scheme
+{{./pasted_image012.png}}
+not very commonly used, but is on the TIMS
+'zero' - 0V
+'one' - alternating negative and positive voltages
+
+== Bandwidth ==
+{{./pasted_image014.png}}
+has a null at DC - removes issues with DC build up
+half positive voltage, half negative - cancels out
+
+==== Multilevel Signalling ====
+Multilevel encoding can takes the bits generated in the A/D process and convert them to different voltage levels.
+{{./equation001.png?type=equation}}
+L - number of levels
+n - bits needed to encode data
+
+groups multiple bits into symbols, entire symbols are transmitted (as voltage levels) at a time
+
+By encoding using multi-level PAM encoding, theoretically, we could increase the bit rate while maintaining a constant minimum transmission bandwidth:
+{{./equation002.png?type=equation}}
+Multilevel encoded digital data can be used to modulate a carrier to produce a digitally modulated signal
+
+===== Part 4 - Inter-symbol Interference and Pulse Shaping =====
+Channel capacity
+ISI - inter symbol interference
+caused by filtering in a communication channel, is one type of distortion
+	e.g. another is AWGN
+pulse shaping
+
+==== Inter-Symbol Interference (ISI) ====
+All channels, wired or wireless are **bandlimiting** (act as low-pass or band-pass filters) on signals transmitted through them.
+If the square pulse line-codes are used to transmit binary data, the channel will filter this data.
+
+{{./pasted_image015.png}}
+A signal transmitted through a bandlimiting channel
+
+In this case the information signal is infinite in frequency so will be truncated in the channel
+In the time domain this means that the pulses will become infinite in time and spread into the neighbouring signalling periods
+This reduces the data rate we can transmit the symbols at
+
+==== Pulse Shaping ====
+shape pulses so that the spreading in time domain is reduced
+Using a **pulse shaping filter** on this data before transmission is one way this can be achieved
+common in RF systems where bandwidth is very restricted (and expensive_
+When designing the pulse shaping filter, the Nyquist theorem for zero ISI needs to be fulfilled
+
+=== Nyquist's Theorem for Zero ISI ===
+for an infinite digital binary PAM signal:
+{{./equation004.png?type=equation}}
+Where a_{k} are the quantised voltage levels.
+If this is transmitted over a noise free channel, H_{c}(f), through a transmit filter, H_{T}(f) and received through a receive filter, H_{R}(f) the received data will be:
+{{./equation003.png?type=equation}}
+where
+{{./equation005.png?type=equation}}
+i.e. overall impulse response
+
+This data can be accurately received only if the combination of all the filtering has a total impulse response of:
+{{./equation006.png?type=equation}}
+And a constant frequency response of T (T = symbol period)
+
+=== Nyquist's pulse shape ===
+a sinc shaped pulse
+fulfils zero ISI:
+we filter the pulses to be:
+* Non-zero at the centre of the current signalling period, and
+* Zero at the centre of the next signalling period so no interference is caused to the next pulse
+
+{{./pasted_image016.png}}
+
+{{./pasted_image017.png}}
+{{./pasted_image018.png}}
+B = R_{b}/2 for sinc pulses
+
+== caveats ==
+sinc shape is not ideal for practical applications
+sinc shape has a slow decay time of only 1/t secs
+	everything must be synchronised
+In practical Tx/Rx systems, phase/frequency may not be perfectly synchronised to R_{b}
+This could lead to interference from pulses transmitted much earlier
+
+=== Raised Cosine Pulse ===
+{{./pasted_image019.png}}
+another pulse shape the fulfils the Nyquist zero ISI criteria
+This type of pulse also has an impulse response that is non-zero at kT=0 and zero at kT ! = 0 (k is an integer)
+AND the envelope of this pulse shape decays much faster than the 1/t decay rate of sinc pulses
+
+== definition ==
+{{./equation007.png?type=equation}}
+== bandwidth ==
+{{./equation008.png?type=equation}}
+where r is the **roll-off factor** of the raised cosine pulse in the frequency domain
+requires slightly more bandwidth than the ideal sinc pulse
+
+{{./pasted_image020.png}}
+
+==== Pulse Shaping with Multilevel Line-codes ====
+multilevel line codes can be used to transmit several bits per voltage level.
+This increases bandwidth efficiency as bit-rate can be increased proportional to the number of levels used to encode the data:
+{{./equation009.png?type=equation}}
