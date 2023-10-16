@@ -17,8 +17,8 @@ Creation-Date: 2023-07-10T16:41:30+10:00
 
 ==== Assessments: ====
 === Assignments ===
-[ ] Assignment 1 (15%) - 27 Aug
-[ ] Assignment 2 (25%)
+[*] Assignment 1 (15%) - 27 Aug
+[ ] [[+Assignment 2|Assignment 2]] (25%)
 
 === Timed Assessment (50%) ===
 
