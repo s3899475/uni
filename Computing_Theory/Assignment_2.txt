@@ -8,23 +8,23 @@ Christopher Tait - S3899475
 ===== 2. Nondeterminism =====
 ==== a) ====
 I constructed this NFA by slowly adding transitions, and making sure that the converted DFA Form after each transition was added did not have many states.
-{{~/a2/2.png}}
+{{./2.png}}
 DFA form:
-{{~/a2/3-expand.png}}
+{{./3-expand.png}}
 
 ==== b) ====
 This NFA was constructed by chance when I was trying to constuct one that had a DFA with 2 or 3 states.
-{{~/a2/5.png}}
+{{./5.png}}
 
 DFA form:
-{{~/a2/5-expand.png}}
+{{./5-expand.png}}
 
 ==== c) ====
 To construct this NFA, I first removed the bottom lambda transition and then tested adding transitions to see what would increase the final state cound the most.
-{{~/a2/7.png}}
+{{./7.png}}
 
 DFA Form:
-{{~/a2/7-expand.png}}
+{{./7-expand.png}}
 
 ===== 3. Pumping Lemma =====
 ==== a) ====
@@ -105,7 +105,7 @@ The two estimations I used were the Nearest Neighbour algorithm, which is a simp
 
 
 ===== 5. Creative Cloud =====
-{{~/a2/Firefly A game that includes the platypus, which simulates a turing machine 25742.jpg?width=500}}
+{{./Firefly A game that includes the platypus, which simulates a turing machine 25742.jpg?width=500}}
 This image was created using Adobe Firefly with the prompt "A game that includes that platypus, which simulates a turing machine". I used this prompt to try and get something mechanical looking, and slected the final image from the four generated based on the one that had the correct number of legs.
 
 ===== 6. Get Creative! =====
