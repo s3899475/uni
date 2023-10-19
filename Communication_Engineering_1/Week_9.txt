@@ -1,0 +1,368 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-29T12:39:25+10:00
+
+====== Week 9 - Introduction to Optical Fibres ======
+
+===== Part 1 - What is an optical fibre? =====
+Optical fibres are widely used in telecoms, used in NBN (FFTN, FTTP)
+
+{{./pasted_image.png?height=600}}
+Optical fibre spectrum range
+close to the visible range - **near-infrared**
+ - commonly operate in the near-infrared range (800 nm - 1600 nm), just outside the longest visible wavelength for human vision
+
+==== Information Capacity ====
+The frequency determines the amount of information that can be transmitted.
+In theory, the higher the carrier frequency, the greater the transmission bandwidth and information carrying capacity
+* Bandwidth for communication systems is typically 5-10% of the carrier frequency
+
+Optical frequencies offer an increase in potential usable bandwidth in Hz of ~10,000 over microwave frequencies
+ - huge increase in information capacity
+
+{{./pasted_image001.png?width=800}}
+Block Diagram of an optical fibre communication system
+
+==== Advantages of Optical Fibre ====
+* Large potential bandwidth
+	* Optical carrier frequency is ~10^{14} Hz (100 THz)
+	* Available bandwidth is not fully utilised yet
+* Small size and weight
+	* Diameter of fibres is typically 250 µm
+	* Smaller and lighter than coaxial cables
+* Low transmission loss
+	* ~0.2 dB/km (coax = ~5 dB/km)
+	* Large link lengths
+* Electrical isolation
+	* Suited to hazardous environments
+* Immunity to interference
+	* free from electromagnetic interference (EMI)
+* Negligible Crosstalk
+* System Reliability
+	* Reduced maintenance time
+* Potential low cost
+	* Economic advantages
+* Ruggedness and Flexibility
+	* Can be bent and twisted up to a point without damage
+* Signal Security
+	* Security applications
+
+==== Light - properties ====
+Light is an electromagnetic (EM) wave with both an elevtric field and magnetic field components at right angles to each other.
+{{./equation.png?type=equation}}
+velocity (v)
+frequency (f)
+wavelength (λ)
+
+The velocity of light depends on the medium through which it is propagated. This defines the **refractive index** of the medium.
+The speed of light in free space (in a vaccum) is
+c = 3×10^{8} m/s
+
+=== Refractive Index ===
+defined as:
+{{./equation001.png?type=equation}}
+or v = c/n
+n cannot be below 1
+
+The **higher** the refractive index, the slower the light travels
+For glass n ≈ 1.5 and hence the velocity of light in glass is:
+{{./equation002.png?type=equation}}
+When light enters glass its wavelength shortens because its velocity decreases.
+The frequency of the light **does not change**
+
+==== What is an Optical Fibre ====
+An optical fibre consists of:
+* A cylindrical guiding region called the **core**, with a refractive index n_{co}, which may have a **step-index** or **graded-index** profile.
+* A surrounding layer with a smaller refractive index n_{cl}, known as the **cladding**
+* A coloured plastic jacket for protection and identification
+
+both the cladding and core are made of glass
+Optical fibres are usually made of low-loss **silica glass** with small amounts of doping material to change the refractive index. 
+
+{{./pasted_image002.png}}
+
+=== Optical Fibre Geometry - step-index vs graded-index ===
+The **refractive index profiles** below show how the refractive index varies within the core of an optical fibre. The fibre core has a diameter of 2a
+* A **step-index** core has a constant refractive index throughout the core which is higher than the refractive index of the cladding
+* a **graded-index core** has a refractive index which gradually deceases from n_{co} to n_{cl} as the distance from the fibre axis increases.
+
+
+{{./pasted_image003.png}}
+
+=== Optical Fibre Dimensions ===
+Typical dimensions are:
+|                   | Multimode Fibre | Single-mode Fibre |
+|:------------------|:----------------|:------------------|
+| Core diameter     | 50-62.5 µm      | 8-10 µm           |
+| Cladding diameter | 125 µm          | 125 µm            |
+| Plastic jacket    | 250 µm          | 250 µm            |
+
+{{./pasted_image004.png?width=800}}
+
+==== Refraction ====
+When a ray of light passes from a medium of **lowe**r refractive index into a medium of **higher** refractive index:
+* It passes directly through if it is **normal** (perpendicular) to the boundary
+* If it approaches the boundary at an angle, it is bent **towards** the normal. This is called **refraction**
+{{./pasted_image005.png?width=800}}
+
+In **reverse** (from a **higher** refractive index medium to a **lower** refractive index medium), light is bent **away** from the normal, up to a point called the **critical angle**, after which the interface acts like a mirror.
+
+{{./pasted_image006.png?width=800}}
+
+==== Snell's Law ====
+Refraction at an interface is governed by **snell's law**:
+{{./equation003.png?type=equation}}
+{{./pasted_image007.png?width=800}}
+A fraction of the light is reflected
+
+We can rewrite snell's law as:
+{{./equation004.png?type=equation}}
+If n_{1} > n_{2} then θ_{2} > θ_{1}
+
+When θ_{2} = π/2 then θ_{1} = **critical angle**, θ_{c}
+ - therefore sin(θ_{c}) = n_{2}/n_{1}
+
+If θ_{1} > θ_{c}, **total internal reflection occurs**
+ - This is the mechanism by which light can travel down an optical fibre
+
+=== Total Internal Reflection ===
+{{./pasted_image008.png?width=800}}
+Ray A undergoes **total internal reflection**
+Ray B undergoes **partial reflection** and **partial transmission** at the air/glass interface
+ - loss of power occurs
+
+==== Light Propagation in Optical Fibres ====
+In an optical fibre light **propagates** or travels via a series of multiple internal reflections if θ_{1} > θ_{2} at the interface between the core and cladding regions
+{{./pasted_image009.png?width=800}} 
+φ = 90° - θ_{1} because the lines are perpendicular
+
+==== Modes ====
+Rays of light won't propagate at all angles in a fibre, even if θ_{1}>θ_{c}
+Only rays whose total phase shift over successive zig-zags is an integer multiple of 2π radians can propagate.
+These ray paths are called **modes**
+{{./pasted_image010.png?width=800}}
+
+The blue ray path corresponds to the **fundamental** or **lowest order mode** and travels almost straight down the fibre axis.
+The purple and green ray paths are **higher order modes**
+
+== larger code diameter = more possible modes ==
+
+
+===== Part 2 - Optical Fibre characteristics =====
+==== Types of Optical Fibre ====
+=== Step-Index Single-Mode Fibres ===
+{{./pasted_image011.png?width=800}}
+The refractive index of the core is **uniform** in step-index fibres. There is an abrupt decrease in refractive index at the boundary between the core and cladding regions
+Only **one mode** can propagate down this type of fibre
+Core diameter is very small
+
+=== Step-Index Multimode Optical Fibres ===
+{{./pasted_image012.png?width=800}}
+Again the refractive index of the core is uniform and has an abrupt decrease at the core/cladding boundary
+With these fibres many modes can propagate down the fibre using the laws of total internal reflection
+Core diameter is relatively large
+
+=== Graded-Index Multimode Optical Fibres ===
+{{./pasted_image013.png?width=800}}
+Graded-index fibres have a **non-uniform refractive index** throughout the core; the refractive index gradually decreases with distance from the centre of the core
+Many modes can propagate, but note the way the ray bends almost sinusoidally rather than zig-zags throughout the medium
+modes = amplitudes of the sinusoids
+
+==== Acceptance Angle ====
+For a ray of light to be transmitted by total internal reflection within the fibre core, it must be incident on the core within an acceptance cone defined by and **acceptance angle, θ_{a}**_{.}
+{{./pasted_image014.png?width=800}}
+θ_{a} is the maximum angle to the fibre axis that light may enter the fibre in order to propagate - refraction + limit of total internal reflection
+=== Example Calculation ===
+By Snell's Law:
+{{./equation005.png?type=equation}}
+Since θ_{c} is the critical angle, sin(θ_{c}) = n_{cl}/n_{co} and hence,
+{{./equation006.png?type=equation}}
+Therefore,
+{{./equation007.png?type=equation}}
+
+== Acceptance Angle Formula ==
+{{./equation008.png?type=equation}}
+where n_{0} is the refractive index of the material outside the fibre. For air in front of the fibre, n_{0}=1
+
+==== Numerical Aperture ====
+A measurement of an optical fibre's light gathering ability
+{{./equation009.png?type=equation}}
+For optical fibres used in telecommunications, the difference between n_{co} and n_{cl} is very small (<1%), and the NA is typically 0.1 < NA < 0.3
+
+==== V Parameter ====
+used to characterise the guiding properties of an optical fibre - determine multimode or single-mode
+{{./equation010.png?type=equation}}
+where λ is the wavelength of the guided light and a is the radius of the core
+
+Optical fibres with V » 1 have many possible ray paths (typically hundreds). These fibres are known as **multimode optical fibres**
+Optical fibres with V < 2.4 allow only a single ray path. These fibres are known as **single-mode optical fibres**
+
+===== Part 3 - Components of an optical fibre communication system =====
+{{./pasted_image001.png?width=800}}
+==== Optical Fibre ====
+Discussed above
+
+==== Optical Sources ====
+Convert electrical energy in the form of a current into optical energy (light)
+The optical sources used in optical fibre communication systems are typically **semiconductor laser diodes (LSs)**
+ - Allow for good frequency control
+ - Typically forward biased p-n junction diodes formed in III-V compound semiconductor materials
+   - not silicon - group 3-5 of periodic table
+
+=== Optical Absorption and Emission ===
+For emission and absorption of light, the particle theory of light is used
+The particle or quantum theory regards light as consisting of **photons** - discrete packets of energy
+The energy of a photon of light at a frequency f, is:
+{{./equation011.png?type=equation}}
+Where h is **Planck's constant**, h = 6.624 × 10^{-34} Joules×Seconds
+
+The equation can also be expressed with electron volts (eV):
+{{./equation012.png?type=equation}}
+1 eV = 1 Joule / 1.6×10^{-19}
+
+The processes of **optical absorption** and **optical emission** arise from electron transitions between atomic energy levels.
+The frequency or wavelength of absorbed or emitted light is related to the energy difference between the energy levels. This relationship can be written as:
+{{./equation013.png?type=equation}}
+
+Three processes of interest are:
+* absorption
+* spontaneous emission
+* stimulated emission
+ 
+{{./pasted_image015.png?width=800}}
+E_{i} - energy level of the electron
+
+Spontaneous Emission → **Incoherent Radiation**
+* Light is emitted by random transitions from a large number of atoms. Frequency and wavelength can vary
+Stimulated Emission → **Coherent Radiation**
+* Each emitted photon has the same energy as the incident photon which caused it and therefore the light associated with it has the same frequency and wavelength.
+* Light associated with the stimulating and stimulated photons is in phase and has the same polarisation (electric and magnetic field orientation)
+* Optical waves of both photons add in a constructive manner, providing optical amplification
+
+=== Semiconductor Light Sources ===
+Laser Diodes (LDs) and Light Emitting Diodes (LEDs) are formed using III-V compound semiconductor materials.
+The wavelength emitted by a laser diode (or LED) depends on the composition of the semiconductor material.
+* Aluminium Gallium Asenide (AlGaAs) compounds are used for wavelengths in the 800-900 nm range
+* Indium Gallium Arsenide Phosphide (InGaAsP) compounds are used for the longer wavelengths of interest in the 1300-1600 nm range
+
+==== Laser Diodes (LDs) ====
+make use of coherent stimulated emission
+* emit high power (typically 1-20 mW or more)
+* exhibit a narrow spectral linewidth (range of wavelengths present), equivalent to spectral bandwidth (range of frequencies present)
+	* 1-5 nm for multimode laser diodes
+	* < 1 nm for single-mode laser diodes
+* emit with a small, highly asymmetric beamwidth (making it easy to couple to a fibre)
+	* light is in a tightly directed beam
+
+=== Fabry-Perot (FP) Laser Diode ===
+The simplest form of laser diode
+consists of a short Fabry-Perot **optical cavity** fabricated with partially reflecting mirrors.
+Current injected through the **forward biased** p-n junction results in the emission of photons.
+* electrons and holes recombine and generate photons
+* lasing occurs above a certain threshold current when the **optical gain** in the cavity equals the **optical losses** in and from the cavity
+	* build up of photons occurs
+
+{{./pasted_image017.png}}
+
+=== L-I Curve ===
+The light output power versus current characteristic (L-I curve) of a typical laser diode is shown below
+{{./pasted_image018.png}}
+Below the **lasing threshold current** (I_{th}) the optical output is purely due to spontaneous emission (same as LEDs)
+Lasing occurs for currents above I_{th} due to stimulated emission and the optical output increases rapidly
+power is directly relational to the current
+
+=== Spectrum of a Fabry-Perot LD ===
+The reflecting ends of the F-P cavity provide optical feedback and **constructive interference** for certain wavelengths
+Lasing occurs for wavelengths such that the cavity length (L) is a multiple of a half-wavelength
+{{./equation014.png?type=equation}}
+where λ_{0} is the free-space wavelength, n is the refractive index of the semiconductor material and m is an integer.
+
+The laser output consists of a number of narrow spectral lines called **longitudinal modes**
+The spacing of longitudinal modes is:
+{{./equation015.png?type=equation}}
+
+== Fabry-Perot laser diodes are multimode lasers ==
+A pulse of light emitted by a Favry-Perot laser diode contains many wavelengths (longitudinal modes)
+ - This can lead to large pulse broadening in an optical fibre
+ - explored later, because different wavelengths have different speeds in the fibre
+
+The spectral linewidth is typically defined as the **full-width at half maximum (FWHM)** spectral bandwidth
+{{./pasted_image019.png}}
+
+=== Single-Mode Laser Diodes ===
+most high bit rate optical fibre communications systems use single-mode laser diodes to minimise the effects of chromatic dispersion in single-mode optical fibre
+Single-mode laser diodes use grating structures in the cavity to provide strong optical feedback and lasing at a single wavelength
+**Distributed Feedback (DFB)** laser diodes are the most important single-mode laser diode at wavelengths of 1300-1600 nm
+ - spectral linewidths are < 0.1 nm
+
+{{./pasted_image020.png}}
+{{./pasted_image021.png}}
+
+==== Modulation Formats ====
+The electrical signal which modulates an optical carrier can be either an analogue or a digital signal
+Since to optical power or optical inteinsity varies in proportion to the drive current of the optical source this type of modulation is called **Intensity Modulation** (IM)
+The majority of fibre systems use intensity modulation
+
+=== Analogue Modulation of LDs ===
+{{./pasted_image023.png?width=1000}}  
+
+=== Digital Modulation of LDs ===
+{{./pasted_image022.png}}
+Laser Diodes are usually given a substantial applied bias in the off-state for digital modulation.
+The laser is biased near but **just above** the threshold current in the off state because:
+* It reduces the switch-on delay
+* It allows easy compensation for changes in ambient temperature and device ageing
+
+Although there is some output optical power in the 'off' state, stimulated emission in the 'on' state is much larger, generally by a factor of 10 or more
+ - can clearly differentiate zero and ones
+
+==== Optical Detectors ====
+=== Photodetectors ===
+converts an optical signal to an electrical signal (effectively demodulates the signal)
+Basic requirements:
+* **Sensitivity** at the required wavelength
+* **Efficient conversion** of photons to electrons to product a maximum electrical signal for a given optical power
+* **Fast response** since they are required to operate at high frequencies or high bit rates
+* **Low noise**
+
+=== Semiconductor Photodiodes ===
+In optical fibre systems **semiconductor photodiodes** are used for optical detection
+ - these are reverse biased pn-junctions
+
+If an incident **photon's energy (hf)** is greater than the **bandgap energy** of a semiconductor (E_{g}), the photon is absorbed
+This causes **electron-hole pairs** to be created in the semiconductor material
+ - an electron is excited into the conduction band and a hole is left in the valence band
+
+The bandgap energy is a threshold energy above which the material absorption coefficient increases rapidly
+{{./pasted_image024.png?width=1000}}
+Ec = conduction band
+Ev = valence band
+
+For photon energies less than the bandgap energy, the absorption coefficient of a semiconductor material is zero.
+
+The wavelength corresponding to the bandgap energy is called the **bandedge wavelength**, λ_{g} and is found by:
+{{./equation016.png?type=equation}}
+Where E_{g} is the bandgap energy in **electron volts (eV)**
+
+A photodiode only responds to wavelengths **less than** λ_{g}
+With no incident light, there is a small leakage current in a photodiode which is known as the **dark current**
+ - dark current increases with increasing temperature and reverse bias
+As the incident light increases, more electrons and holes are generated and the photocurrent increases **linearly** (over many orders of magnitude)
+
+=== Quantum Efficiency and Reponsivity ===
+Important parameters of a photodiode
+**quantum efficiency (η)** - the efficiency of a photodiode in producing photocarriers (electrons and holes)
+* It is the probability that an incident photon will produce an electron-hole pair
+
+**responsivity (R_{0} Amps/Watt)** - the photo**current** produced per unit of incident **optical power**:
+{{./equation017.png?type=equation}}
+
+== Example Responsivity of different materials ==
+{{./pasted_image026.png?width=800}}
+
+=== PIN Photodiode ===
+To maximise the quantum efficiency (and hence responsivity), the photon absorption in the depletion region can be enhanced by placing a very lightly doped **intrinsic** region between the p and n type regions to form a p-i-n structure or an 'PIN' photodiode
+== intrinsic = undoped ==
+{{./pasted_image025.png?width=800}}
+
+
