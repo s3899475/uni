@@ -3,5 +3,18 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-03-04T18:38:06+11:00
 
 ====== Research Methods for Engineers ======
+[ ] [[+Week 1|Week 1]]
 
-t
+==== Assessments: ====
+=== Laboratories (40%) ===
+[ ] Laboratory 1 - Friday week ?
+[ ] Laboratory 2 - Friday week ?
+[ ] Laboratory 3 - Friday week ?
+[ ] Laboratory 4 - Friday week ?
+
+=== Timed Assessments ===
+[ ] Mid-Semester Timed Assessment - ? (10%)
+[ ] Final Timed Assesment - Friday week ? (20%)
+
+=== Assignments (30%) ===
+[ ] Assignment 1 - Friday Week ?
