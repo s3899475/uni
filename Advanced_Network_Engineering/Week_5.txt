@@ -106,6 +106,3 @@ altering behaviour - several options are available
 	* Causes MPLS routes to be used for forwarding, but to be excluded from best route computation
 	* Keeps routes in inet.3 for VPNs and BGP route resolution
 == • cant build lsp over other LSP, lower preference value will win (with BGP) ==
-
-	
-== = ==

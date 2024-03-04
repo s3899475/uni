@@ -9,6 +9,7 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 [*] [[+Week_3]]
 [*] [[+Week_4]]
 [ ] [[+Week_5]]
+[ ] [[+Week_6]]
 [ ] 
 
 ==== Assessments: ====
@@ -19,6 +20,6 @@ Creation-Date: 2023-07-10T16:38:29+10:00
 
 === Timed Assessments ===
 [ ] [[+Mid-semester Timed Assessment|Mid-semester Timed Assessment]] (20%)
-[ ] Final Timed Assessment (25%)
+[ ] [[+Final Timed Assessment]] (25%)
 
 === Weekly practice activities (15%) ===

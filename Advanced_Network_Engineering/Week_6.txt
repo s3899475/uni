@@ -1,0 +1,136 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-11T23:26:08+10:00
+
+====== Week 6 ======
+
+===== Chapter 5 Part 1 - CSPF =====
+Constrained Shortest Path First (CSPF)
+
+==== RSVP behaviour without CSPF ====
+without traffic engineering extension to the IGP, RSVP reserves bandwidth hop-by-hop
+* If an interface on the path does not have enough free bandwidth, the LSP setup just fails
+* This happens even when alternative, non-best paths with enough bandwidth are available
+	* Main problem: RSVP is not aware of the whole network topology, only of IGP best routes
+{{./pasted_image001.png}}
+
+Placing bandwidth wherever there is a requirement is called **traffic management**
+Possible solutions **without** MPLS:
+* Add more bandwidth (buy new links)
+	* Drawbacks:
+		* Expensive
+		* Some links might still be underutilised
+		* Traffic patterns might change over time
+* Modify IGP costs to allow for load balancing
+	* Drawbacks:
+		* Almost impossible to find a solution for all traffic
+		* Hard to manage and not scalable
+* Use Policy-based routing at each hop
+	* Drawbacks:
+		* Very complicated to implement and maintain
+		* Prone to errors and routing loops
+
+=== RSVP with IGP-TE Extensions and CSPF ===
+Using IGP traffic engineering extensions to improve bandwidth utilisation
+Main idea:
+	Distribute information on available bandwidth and MPLS topology by extending the IGP
+This allows the endpoint to discover if there is a path verifying a set of constraints, e.g., on bandwidth, even if it is not the minimum metric IGP path
+The ingress router will compute a strict ERO and signal the LSP on any path with enough available bandwidth
+{{./pasted_image002.png}}
+
+==== Traffic Protection ====
+Chapter 6
+
+Trafic engineering extensions to OSPF or ISIS allow each router to calculate and signal protection paths around a failed link or node
+Current MPLS traffic protection methods rely on the use of the TE-extensions to the IGP and the CSPF algorithm:
+* Fast Reroute
+* Link protection and link-node protection
+
+==== CSPF Summary ====
+IGP extensions propagate additional information
+* IS-IS uses TLVs (type/length/value)
+* OSPF uses opaque LSA type 10
+This information is propagated within the OSPF area or IS-IS level only
+The information is:
+* Bandwidth available at each priority level
+* Administrative groups (link colours)
+
+===== IGP Extensions =====
+==== ISIS-TE Extensions ====
+**octet == byte** but in networking context
+**Traffic engineering extensions are active by default in ISIS**
+Defined in RFC5307 and RFC6119
+4 different TLVs:
+* Traffic Engineering Router ID TLV
+	* used to advertise the 4-octet router-ID of an IS-IS router
+* Extended IP Reachability TLV
+	* Contains a 4-octet IP Prefix (not used for TE purposes)
+* Extended IS Reachability TLV
+	* Used to carry the TE related information (bandwidth, admin-group, etc.)
+	* Contains different types of Sub-TLVs in the LINK INFO TLV
+	* up to 244 bytes of sub-TLVs
+* Shared Risk Link Group (SRLG) TLV
+	* Used to carry SRLG membership information (chapter 7)
+{{./pasted_image004.png}}
+ISIS will use TLVs in a link-state PDU
+1 bytes type
+1 byte length - length of the value (i.e. max 255 bytes for value), not including padding (length must be 4 byte aligned)
+
+=== Sub-TLV codes and definitions ===
+| Sub-TLV type | Length (octets) | Name                                    |
+|:-------------|:----------------|:----------------------------------------|
+| 3            | 4               | Administrative group (colour)           |
+| 6            | 4               | IPv4 interface address                  |
+| 8            | 4               | IPv4 neighbour address                  |
+| 9            | 4               | Maximum link bandwidth                  |
+| 10           | 4               | Reservable link bandwidth               |
+| 11           | 32              | Unreserved bandwidth                    |
+| 18           | 3               | TE Default metric                       |
+| 250-254      |                 | Reserved for vendor specific extensions |
+| 255          |                 | Reserved for future expansion           |
+
+
+==== OSPF-TE Extensions - Opaque LSA Support ====
+Defined in RFP5250
+3 types - 9, 10, 11
+difference is their flooding scope
+The exact use fo the Opaque LSAs is not defined in the RFC
+	can be used directly or by the application
+
+=== Type 10 Opaque LSA - Area Local LSA ===
+{{./pasted_image005.png}}
+used for MPLS Traffic Engineering
+Many IGP deployments use a single area due to MPLS Traffic Engineering requirements
+
+== Format ==
+{{./pasted_image007.png}}
+Multople Type Length Values can exist ing an opaque LSA
+MPLS TE information is carried in Type 10 Opaque LSA TLVs
+makes OSPF more flexible
+
+== TLV types for OSPF Type 10 Opaque LSA ==
+Router Address TLV
+* Used to advertise the 4-octet router-ID of an OSPF router
+* Only one Router Address TLV per router
+Link TLV
+* Used to advertise the RSVP enabled router links
+* One LSA can contain one link TLV with information for a single link
+* Carries a set of sub-TLVs that carry TE-related information about a single link
+
+**Sub TLVs**
+| Name                          | Length (octets) |
+|:------------------------------|:----------------|
+| Link type                     | 1               |
+| Link ID                       | 4               |
+| Local interface IP address    | 4               |
+| remote interface IP address   | 4               |
+| Traffic engineering metric    | 4               |
+| Maximum bandwidth             | 4               |
+| Maximum reservable bandwidth  | 4               |
+| Unreserved bandwidth          | 32              |
+| Administrative group          | 4               |
+| Shared Risk Link Group (SRLG) | variable        |
+Similar to IS-IS Sub-TLVs
+
+===== Traffic Engineering Database (TED) =====
+

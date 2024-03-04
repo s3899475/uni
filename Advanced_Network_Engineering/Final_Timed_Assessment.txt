@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-26T07:07:21+11:00
+
+====== Final Timed Assessment ======
+
+Q6
+LSP Optimization Rules:
+1. CSPF metric is not higher
+2. if CSPF metric is equal, path must have fewer hops
+3. New path does not cause preemption ()
+4. Reduces congestion by at least 10%
+
+20 20 100
+15 30 30
+
+Q7
+200 -> 200% over-subscription, will double bandwidth
+
+The CSPF algorithm computes the path of LSPs one at a time, beginning with the
+highest-priority LSP, the one with the numerically lowest setup priority value. Among
+LSPs of equal priority, CSPF begins with those that have the highest bandwidth
+requirement.
+LSP setup and hold priorities range in value from 0 (the strongest) to 7 (the weakest). The default
+settings disable preemption by assigning all LSPs the weakest setup priority (7) and the strongest
+hold priority (0). Note that you cannot commit a configuration in which an LSP’s hold priority is
+weaker than its setup priority because such a configuration can lead to preemption churn.
+a)
+either blue + green or just red
+b)
+
+==== Q7 ====
+a)
+The three paths that have the lowest IGP metrics are:
+1. R1-R2-R3-R6-R8 (4)
+2. R1-R4-R3-R6-R8 (4)
+3. R1-R4-R7-R2 (4)
+
+Path 3 would be chosen as it has the fewest number of links, however the bandwidth of R7-R8 of 250m will not be accepted as the LSP requires 300m. The other paths will have enough available bandwidth.
+This means that the most-fill tie breaking strategy will be used to decide between path 1 and 2. Since path 1 has the lower bandwidth ratios, it will be used. So the final path will be:
+R1-R2-R3-R6-R8
+
+b)
+R3 will find its downstream node to be R6, so it will path around it to R8. The detour path will not honour the bandwidth constraints, so the path will be:
+R3-R4-R7-R8
+R6 will avoid the link between R6 and R8 for its detour path, so it will create the detour as follows:
+R6-R5-R8
+
+c)
+The bypass LSP will route around the link R6-R8, so the bypass LSP will go through R6-R5-R8
+
+==== Q9 ====
+a)
+The LSP A-to-F can be established as the inter-domain keyword has been configured and the OSPF protocol is being used. This means that the LSP can cross OSPF areas. Also, since Router D has 'expend-loose-hop' configured, a CSPF calculation will occur at ABR Router C, so the path will have a valid bandwidth.
+b)
+If the ERO={C loose, D strict, F strict} is used, then there will be no CSPF calculation at the ABR, and the Path messages will be sent using inet.0 to router D. After this point the OSPF metrics will be used to find the path with the least cost, which will be D-E-F. Since this path does not have enough available bandwidth, The LSP will not be established
+c)
+The LSP will be established if the ERO={D loose} is used, as a CSPF calculation will occur at ABR Router C. This calculation will find the path C-D-F to have enough available bandwidth.
+
+
