@@ -79,3 +79,6 @@ Gain of message = 1V
 Frequency of carrier = 100 kHz
 frequency deviation = W/2 - B
 = 60/2 - 8 = 22 kHz
+
+{{./equation002.png?type=equation}}
+β = 22 / 8 = 

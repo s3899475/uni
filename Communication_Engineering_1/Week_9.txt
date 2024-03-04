@@ -1,6 +1,5 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-09-29T12:39:25+10:00
 
 ====== Week 9 - Introduction to Optical Fibres ======
 
@@ -365,4 +364,55 @@ To maximise the quantum efficiency (and hence responsivity), the photon absorpti
 == intrinsic = undoped ==
 {{./pasted_image025.png?width=800}}
 
+===== Tutorial =====
+Constellation diagrams for digital modulation schemes
+usually 2^{n} scheme
+5 symbol scheme:
+{{./pasted_image.png}}
+distance from center is the amplitude
 
+What does each point's waveform look like?
+{{./equation.png?type=equation}}
+s1
+y1(t) = 0.5cos(ω_{c} t) - 0.5sin(ω_{c} t)
+convert to polar form
+Amp = hypot
+A_{S1}=sqrt(x^{2} + y^{2}) = sqrt(0.5^{2} + 0.5^{2}) = 1/sqrt(2)
+angle = invers tan
+Φ_{S1}=tan^{-1}(y/x) = tan^{-1}(0.5/0.5) = π/4
+so the final waveform for S1 is:
+{{./equation001.png?type=equation}}
+so its pretty obvoius that the angle of S2, S3, S4 will be 3π/4, 5π/4, 7π/4
+inverse tan will not give us the quadrant, must account for this ^
+and amplitudes will be the same
+
+and S5's amplitude will be 0, angle undefined?
+so the waveform will just be 0?
+
+=== Decision regions ===
+points that aare mid-way between symbols
+how min didstance calculator will work
+{{./decision.png}}
+red = decision points
+black = decision regions
+
+== 4-QAM and QPSK are the same ==
+
+==== 8-QPSK Scheme ====
+{{./pasted_image001.png}}
+ititial offset = π/8
+data: 101101001010
+symbols:
+101, 101, 001, 010
+**101**
+angle = -π/2 - π/8 = -5π/8
+amplitude = 1
+so, the symbol waveform is cos(ω_{c}t - 9π/8)
+**001**
+angle = π/2 - π/8 = 3π/8
+amplitude = 1
+cos(ω_{c}t + 7π/8)
+**010**
+angle = π/2 + π/8 = 5π/8
+amplitude=1
+cos(ω_{c}t + 9π/8)
