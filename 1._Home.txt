@@ -3,10 +3,10 @@ Wiki-Format: zim 0.6
 
 ====== Home ======
 ===== Subjects: =====
-* [[:Advanced Network Engineering|Advanced Network Engineering]]
-* [[:Communication Engineering 1|Communication Engineering 1]]
-* [[:Computing Theory|Computing Theory]]
-* [[:Software Engineering Process and Tools|Software Engineering Process and Tools]]
+* [[:Cloud Computing|Cloud Computing]]
+* [[:Computer Architecture and Organisation|Computer Architecture and Organisation]]
+* [[:Programming Project 1|Programming Project 1]]
+* [[:Research Methods for Engineers|Research Methods for Engineers]]
 
 ===== TODO: =====
 [ ] Task
