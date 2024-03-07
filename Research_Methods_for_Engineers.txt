@@ -6,15 +6,11 @@ Creation-Date: 2024-03-04T18:38:06+11:00
 [ ] [[+Week 1|Week 1]]
 
 ==== Assessments: ====
-=== Laboratories (40%) ===
-[ ] Laboratory 1 - Friday week ?
-[ ] Laboratory 2 - Friday week ?
-[ ] Laboratory 3 - Friday week ?
-[ ] Laboratory 4 - Friday week ?
+=== Assignments ===
+[ ] Assignment 1 (20%) - **Group** - Week 4
+	* [[./sensors-23-05458-with-cover.pdf|paper]]
+	* 2 page limit
+[ ] Assignment 2 (40%) - Literature Review
+[ ] Assignment 3 (40%) - Research proposal
 
-=== Timed Assessments ===
-[ ] Mid-Semester Timed Assessment - ? (10%)
-[ ] Final Timed Assesment - Friday week ? (20%)
-
-=== Assignments (30%) ===
-[ ] Assignment 1 - Friday Week ?
+Assignment 2&3 are linked

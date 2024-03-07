@@ -4,4 +4,31 @@ Creation-Date: 2024-03-04T18:46:23+11:00
 
 ====== Week 1 ======
 
-t
+Prelude to capstone project
+
+===== Abstract =====
+//Direction-of-Arrival (DoA) Estimation Performance for Satellite Applications in a Multipath Environment with Rician Fading and Spatial Correlation//
+
+== Direction-of-Arrival (DoA) ==
+ Angle at which the signal hits the satellite (uplink side)
+{{./pasted_image.png?width=500}}
+
+Angle at which the signal hits the earth station (ES) 
+{{./pasted_image001.png?width=500}}
+
+//paper provides a framework for modeling the DoA angle in satellite communications with respect to the elevation angle//
+== elevation angle ==
+
+//paper evaluates DoA estimation performance using root mean square error (RMSE) measurements for different satellite communication link conditions (uplink and downlink) through extensive Monte Carlo simulations.//
+== root mean square error (RMSE) ==
+
+== Monte Carlo simulations ==
+
+//The simulation’s performanceis evaluated by comparing it with the Cramer–Rao lower bound (CRLB) performance metric under additive white Gaussian noise (AWGN) conditions, i.e., thermal noise.//
+
+== Cramer–Rao lower bound (CRLB) ==
+
+== additive white Gaussian noise (AWGN) ==
+
+=== Results ===
+//The simulation results demonstrate that incorporating a spatial signal correlation model for DoA estimations significantly improves RMSE performance in satellite systems//
