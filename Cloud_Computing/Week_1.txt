@@ -4,4 +4,13 @@ Creation-Date: 2024-03-04T18:44:37+11:00
 
 ====== Week 1 ======
 
-t
+===== Lectorial =====
+not AWS specific course (Cloud Foundation is tho)
+
+java is used in exercises (can use anything that is supported by AWS)
+
+assignment 2 & 3 are written assignments
+
+marking will not be generous - will probably not increase if u ask (so use helpdesk/workshop sessions!)
+
+no aws certification

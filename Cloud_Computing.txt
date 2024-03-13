@@ -6,15 +6,8 @@ Creation-Date: 2024-03-04T18:38:03+11:00
 [ ] [[+Week 1|Week 1]]
 
 ==== Assessments: ====
-=== Laboratories (40%) ===
-[ ] Laboratory 1 - Friday week ?
-[ ] Laboratory 2 - Friday week ?
-[ ] Laboratory 3 - Friday week ?
-[ ] Laboratory 4 - Friday week ?
-
-=== Timed Assessments ===
-[ ] Mid-Semester Timed Assessment - ? (10%)
-[ ] Final Timed Assesment - Friday week ? (20%)
-
-=== Assignments (30%) ===
-[ ] Assignment 1 - Friday Week ?
+=== Assignments ===
+[ ] Assignment 1 (40%) - 15/4
+	- demo in week 6/7 (book in week 5)
+[ ] Assignment 2 (30%) - 17/5
+[ ] Assignment 3 (30%) - 7/6
