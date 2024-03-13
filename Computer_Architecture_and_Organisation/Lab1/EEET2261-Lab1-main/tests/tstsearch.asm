@@ -21,3 +21,5 @@ main:
         lw    a2, -4(a2)        # the search target (here, the last element in the data vector)
         jal   ra, search        # call search()
         exit                    # exit
+
+.include "../search.asm"

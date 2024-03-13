@@ -18,3 +18,5 @@ main:
         lw    a1, n             # number of elements in the data vector
         jal   ra, min           # call min()
         exit                    # exit
+
+.include "../min.asm"
