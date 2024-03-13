@@ -4,4 +4,4 @@ Creation-Date: 2024-03-04T18:46:29+11:00
 
 ====== Week 1 ======
 
-t
+implement functional units of a CPU

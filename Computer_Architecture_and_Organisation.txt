@@ -4,17 +4,22 @@ Creation-Date: 2024-03-04T18:38:04+11:00
 
 ====== Computer Architecture and Organisation ======
 [ ] [[+Week 1|Week 1]]
+[ ] [[+Week_2]]
 
 ==== Assessments: ====
-=== Laboratories (40%) ===
+=== Laboratories (30%) ===
 [ ] Laboratory 1 - Friday week ?
 [ ] Laboratory 2 - Friday week ?
 [ ] Laboratory 3 - Friday week ?
-[ ] Laboratory 4 - Friday week ?
 
-=== Timed Assessments ===
-[ ] Mid-Semester Timed Assessment - ? (10%)
-[ ] Final Timed Assesment - Friday week ? (20%)
+=== Lectorial Quizes (15%) ===
+[ ] Quiz 1 - week 5
+[ ] Quiz 2 - week 10
 
-=== Assignments (30%) ===
-[ ] Assignment 1 - Friday Week ?
+=== Laboratory group project (35%) ===
+[ ] Quartus project
+[ ] demo
+[ ] code + report
+
+=== Timed Assessments (20%) ===
+[ ] Final Timed Assessment - Friday week ? (20%)
