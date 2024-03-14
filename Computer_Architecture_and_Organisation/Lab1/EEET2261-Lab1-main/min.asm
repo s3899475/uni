@@ -8,11 +8,12 @@
 # returns:
 #
 #   a0: index of the minimum value in the supplied array
-.globl min
 .eqv t0_min_addr t0
 .eqv t1_min t1
 .eqv t2_cur_addr t2
 .eqv t3_cur t3
+
+.globl min
 min:
 	# place your code here
 	mv t0_min_addr, a0 # min number's address

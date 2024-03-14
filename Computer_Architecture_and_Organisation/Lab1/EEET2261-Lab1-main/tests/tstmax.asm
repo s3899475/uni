@@ -19,4 +19,4 @@ main:
         jal   ra, max           # call max()
         exit                    # exit
 
-.include "../max.asm"
+#.include "../max.asm"

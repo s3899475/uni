@@ -8,11 +8,12 @@
 # returns:
 #
 #   a0: index of the maximum value in the supplied array
-.globl max
 .eqv t0_max_addr t0
 .eqv t1_max t1
 .eqv t2_cur_addr t2
 .eqv t3_cur t3
+
+.globl max
 max:
 	# place your code here
 	mv t0_max_addr, a0 # max number's address

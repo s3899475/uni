@@ -21,4 +21,4 @@ main:
         jal   ra, sort          # call sort()
         exit                    # exit
 
-.include "../sort.asm"
+#.include "../sort.asm"

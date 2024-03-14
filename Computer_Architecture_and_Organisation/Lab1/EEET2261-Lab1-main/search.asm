@@ -9,38 +9,50 @@
 # returns:
 #
 #   a0: index of the target (or -1)
-.globl search
-.eqv t0_offset t0
-.eqv t1_cur_addr t1
+.eqv t0_L t0
+.eqv t1_R t1
 .eqv t2_cur t2
-.eqv t3_base t3
+.eqv t3_ptr t3
+
+.globl search
 search:
 	# place your code here
-	mv t3_base, a0
-loop:
-	# divide by 2
-	srli a1, a1, 1
-	# stop if equal to zero - not found
-	beqz a1, not_found
-	# compare current and target
-	slli t0_offset, a1, 2 # convert to byte offset (from word offset)
-	add t1_cur_addr, t3_base, t0_offset # get addr of current
-	lw t2_cur, (t1_cur_addr) # get value of current
+	# initialize
+	li t0_L, 0 # L = 0
+	mv t1_R, a1 # R = n-1
+	addi t1_R, t1_R, -1
+	#slli t1_R, t1_R, 2 # multiply by 4
 	
-	bgt t2_cur, a2, left  # cur > target: go left
-	blt t2_cur, a2, right # cur < target: go right
+	mv t3_ptr, a1
+	#slli t3_ptr, t3_ptr, 2 # multiply by 4
+	
+loop:
+	bgt t0_L, t1_R, not_found # end loop if L > R
+	
+	# m = floor((L+R)/2)
+	add t3_ptr, t0_L, t1_R
+	srli t3_ptr, t3_ptr, 1
+	
+	# get current number's  address
+	slli t2_cur, t3_ptr, 2 # multiply by 4 to word align
+	add t2_cur, a0, t2_cur # convert to absolue address
+	lw t2_cur, (t2_cur) # get current number
+	
+	# compare to target
+	bgt t2_cur, a2, left  # cur > target: go left in array
+	blt t2_cur, a2, right # cur < target: go right in array
 	beq t2_cur, a2, end   # cur == target: finished
 	
 left:
-	sub t3_base, t3_base, t0_offset
+	addi t1_R, t3_ptr, -1 # R = ptr - 1
 	j loop
 right:
-	add t3_base, t3_base, t0_offset
+	addi t0_L, t3_ptr, 1 # L = ptr + 1
 	j loop
-end:
-	sub a0, t1_cur_addr, a0 # get index * 4
-	srli a0, a0, 2 # divide by 4
-	ret # do not remove this line
 not_found:
 	li a0, -1
 	ret
+end:
+	mv a0, t3_ptr # return stored in a0
+	ret # do not remove this line
+

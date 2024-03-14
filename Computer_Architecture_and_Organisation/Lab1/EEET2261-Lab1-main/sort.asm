@@ -9,7 +9,6 @@
 # returns:
 #
 #   n/a
-.globl sort
 .eqv t0_tmp t0
 .eqv t6_tmp2 t6
 #.eqv lo t1
@@ -17,41 +16,44 @@
 .eqv t3_pivot t3
 .eqv t4_addr1 t4
 .eqv t5_addr2 t5
+
+.globl sort
 sort:
 	# place your code here
 	bge a1, a2, skip_sort # only run if lo < hi
 	
+	addi sp, sp, -32 # stack frames should be multiples of 16?
 	# push return address & make new frame
-	sw ra, -4(sp)
-	sw a0, -8(sp)
-	sw a1, -12(sp)
-	sw a2, -16(sp)
+	sw ra, 0(sp)
+	sw a0, 4(sp)
+	sw a1, 8(sp)
+	sw a2, 12(sp)
 
 	jal partition # a0 set to p
 	mv t0, a0
 
-	sw t0, -20(sp) # store p
-	addi sp, sp, -32 # stack frames should be multiples of 16?
+	sw t0, 16(sp) # store p
 	
-	lw a0, 24(sp) # hmm
-	lw a1, 20(sp)
-	lw a2, 16(sp)
+	
+	lw a0, 4(sp)
+	lw a1, 8(sp)
+	lw a2, 12(sp)
 	
 	addi a2, t0, -1 # hi = p - 1
 	
 	jal sort # recurse
 	
 	# get from stack
-	lw a1, 20(sp)
-	lw a2, 16(sp)
-	lw t0, 12(sp)
+	lw a1, 8(sp)
+	lw a2, 12(sp)
+	lw t0, 16(sp)
 	
 	addi a1, t0, 1 # lo = p + 1
 	
 	jal sort # recurse
 	
-	# pop return address & free the frame
-	lw ra, 28(sp)
+	# get return address & return stack pointer
+	lw ra, 0(sp)
 	addi sp, sp, 32
 
 skip_sort:
