@@ -4,6 +4,8 @@ Creation-Date: 2024-03-04T18:38:05+11:00
 
 ====== Programming Project 1 ======
 [ ] [[+Week 1|Week 1]]
+[ ] [[+Meeting_1]]
+[ ] 
 
 ==== Assessments: ====
 === Laboratories (40%) ===

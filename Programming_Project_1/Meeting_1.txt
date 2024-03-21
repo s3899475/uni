@@ -1,0 +1,79 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-19T10:52:32+11:00
+
+====== Meeting 1 ======
+
+Project Meeting 1 with mentor
+
+Questions:
+What is the objective of the project?
+What software and tools can we use?
+What is the existing codebase?
+
+IMAV
+ - there is an aerospace RMIT team working on it too
+ - aerospace design (fixed wing or quadcopter) + software
+- not just a coding challenge
+
+project structure
+- scope due end of the week
+- software side of the **outside IMAV challenge**
+ - look at the rules for last year
+ - working with aerospace engineering
+ - lots of opportunity for management
+ - marks allocated to reports & documentation
+
+Tim = more of the mentor than the client
+client = Simon Watkins & associate dean of aerospace engineering (Jennifer Palmer)
+
+client brief
+aerospace team will do the design of drone 
+ardupilot will be used
+don't have to worry about hardware or comms
+plug in to drone control via ardupilot
+
+overall project is a combination of computer vision + autonomous control
+
+vision: existing tools
+- investigate existing tools
+ - upskill in tools
+ - not expected to build a full vision system
+
+vision toolkits:
+scikit-learn, tensorflow, YOLO vision, openCV
+
+control:
+ardupilot
+ - ardupilot scripting
+ - python or c style API?
+
+ros (robot operating system)
+ - software library for robot systems
+- has offline simulation
+ - has communication with ardupilot - has been done before (existing codebase)
+ - ros2 would be used
+
+GCS (ground control station) - laptop, maybe. or Raspberry Pi, can do vision processing
+there is a pi on the aircraft
+
+first deliverables:
+upskilling - tests with CV/control
+meeting and deciding details with IMAV team
+
+expected 10 hrs per week - includes meetings
+have to decide how to run the project - management
+a unique part of the project is the integration with another student team
+ - they are not the clients
+
+group roles need to be assigned
+admin
+task logs
+contact points
+team lead
+etc.
+
+next up:
+get in contact with clients + IMAV team
+check out crash courses for ros2 on the construct
+can send week 3 document to tim by tomorrow night to check over it
