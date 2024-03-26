@@ -21,10 +21,8 @@ search:
 	li t0_L, 0 # L = 0
 	mv t1_R, a1 # R = n-1
 	addi t1_R, t1_R, -1
-	#slli t1_R, t1_R, 2 # multiply by 4
 	
 	mv t3_ptr, a1
-	#slli t3_ptr, t3_ptr, 2 # multiply by 4
 	
 loop:
 	bgt t0_L, t1_R, not_found # end loop if L > R

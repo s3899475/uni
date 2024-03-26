@@ -1,0 +1,103 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-26T11:02:56+11:00
+
+====== Meeting 2 ======
+
+2024-03-26
+
+Attendees:
+Christopher Tait
+Martin Lawrence
+Timothy Wiley
+Owen Griffiths
+
+find out reason others cannot attend
+* have multiple messaging channels (so that messages don't get lost)
+
+change scope in project charter if scope is modified
+need to be clear on the scope of expected work
+* assessed at end of sem (have u met the scope in project charter?)
+
+review of project charter 1st draft
+may want to define more team roles in charter
+* add in main contact with RMIT IMAV
+	* can be a rolling job (change the designated person)
+
+=== risk management edit ===
+- main risk is the timeline of development (dependent on aerospace for hardware)
+- access to equipment
+ - joint collaboration
+may need to reevaluate timeline
+
+next biggest risk is hardware failure
+ - equipment will probably fail, need to be ready for it
+
+=== ros2 ===
+* may want to use ros2 humble instead of ros2 iron - more supported
+* ros2 doesn't have to use mavlink directly
+* various methods of navigation (LiDar, GPS, Slam??)
+
+=== IMAV team ===
+try and see if you can have someone attend (in person) RMIT IMAV team
+question to IMAV:
+* can we have off craft compute? - does it have to be on raspberry pi or nvidia jetson
+	* see what hardware IMAV can produce
+* what are will the vision sensor be?
+* what will the control platform be (GPS, maybe other?)
+
+=== hardware sourcing ===
+Tim has:
+* Raspberry Pi 3B
+* Pi 400
+* logitech webcam
+* noname brand webcam
+* budget is up to what Tim and Simon can provide
+* The Construct subscriptions
+	* Ros2 basics in 5 days
+* we may need to to supply sdcards
+
+Martin action item:
+- Martin to pick up Raspberry Pi's today
+- source SD card (16Gb for ros install)
+
+Owen:
+* see how raspberry pi works with YOLO and a webcam
+* use OpenCV for image preprocessing
+	* Then pass data on to tensorflow or YOLO (YOLO is the preference as we don't have to train it)
+* Get previous year's vision code from Tim - send him an email
+
+control decision to make:
+* go fully ros
+* OR python interface to MAVLINK
+
+Tim's student has simulation code for MAVLINK without ros -  can send it to us
+
+**In the next two weeks:**
+* investigate vision options
+* investigate control problem (interface code - MAVLINK, ros, ardupilot, aircraft)
+
+==== IMAV RULES ====
+task 1:
+flying to area - leave for the moment
+
+task 2:
+animal census
+recognise zebra
+find existing models (off the shelf)
+ - need to do pre-processing (isolate zebras based on colour, find bounding box)
+ - don't do ML vision on the whole camera image
+train your own
+ - generate dataset
+make sure that each animal is counted individually
+
+Tasks:
+1 - go through rules rigorously
+2 - ask question to Simon - ask about the difficulties/different configurations that might be used for the zebras
+
+task 3:
+dynamic imaging of animals
+need to control position of the drone to get a better image of the animal
+
+task 4:
+uses ArUco tag

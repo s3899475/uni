@@ -20,7 +20,7 @@ max:
 	lw t1_max, (a0) # max number
         
 	mv t2_cur_addr, a0 # current number's address
-	# a5 - current number
+	# t3_cur - current number
 
 loop:
 	
