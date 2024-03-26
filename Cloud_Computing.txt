@@ -4,6 +4,8 @@ Creation-Date: 2024-03-04T18:38:03+11:00
 
 ====== Cloud Computing ======
 [ ] [[+Week 1|Week 1]]
+[ ] [[+Week_2]]
+[ ] 
 
 ==== Assessments: ====
 === Assignments ===

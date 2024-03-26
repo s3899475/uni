@@ -1,0 +1,65 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-15T15:38:32+11:00
+
+====== Week 2 ======
+
+===== Lectorial =====
+==== Q1+2 ====
+signed binary arithmetic
+negative numbers are two's complement (bit flip to get value)
+adding positive and negative numbers can never overflow
+
+ ''11010100''
+''+10101011''
+''---------''
+ ''01111111''
+carry out of msb
+and no carry into msb → result of adding 2 negative numbers is positive
+so there is overflow
+
+  ''10111001''
+''+11010110''
+''---------''
+ ''10001111''
+carry out of msb
+and carry into msb
+no overflow
+
+==== Q3 ====
+=== original ===
+''power:''
+	''beqz a1, endif''
+	''addi sp, sp, -8''
+	''addi a1, a1, -1''
+	''call power''
+	''call multiply''
+	''ret''
+''endif:''
+	''li a0, 1''
+	''ret''
+=== fixed ===
+''power:''
+	''beqz a1, endif''
+	''addi sp, sp, -8''
+	''addi a1, a1, -1''
+	''sw ra, 0(sp)''
+	''sw a0, 4(sp)''
+	''call power''
+	''lw a1, 4(sp) # a0 = power(x, y-1), a1 = x''
+	''call multiply''
+	''lw ra, 0(sp)''
+	''addi sp, sp, 8''
+	''ret''
+''endif:''
+	''li a0, 1''
+	''ret''
+
+==== Q3b ====
+sp = 0x10041124 at start, x=y=3
+what is the value of sp when the 2nd ret is called?
+
+power will be called 4 times, but last time will not decrement sp
+sp = sp - 3*(8)
+0x10041124 - 0x18
+0x1004110C

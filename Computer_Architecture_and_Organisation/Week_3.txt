@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-22T15:33:20+11:00
+
+====== Week 3 ======
+
+===== Lectorial =====
+==== lectorial quiz ====
+closed book
+refernce sheet
+pen and paper
+40 minutes
+
+==== jalr datapath ====

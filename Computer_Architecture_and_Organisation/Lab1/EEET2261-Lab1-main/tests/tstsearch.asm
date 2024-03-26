@@ -19,7 +19,7 @@ main:
         slli  a2, a1, 2
         add   a2, a0, a2
         lw    a2, -4(a2)        # the search target (here, the last element in the data vector)
-        #addi  a2, a2, 1
+        addi  a2, a2, 1
         jal   ra, search        # call search()
         exit                    # exit
 

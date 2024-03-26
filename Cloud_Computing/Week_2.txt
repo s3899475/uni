@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-15T13:35:09+11:00
+
+====== Week 2 ======
+
+Lab lasts for 4 hrs
+ - start less than 4h before demo
